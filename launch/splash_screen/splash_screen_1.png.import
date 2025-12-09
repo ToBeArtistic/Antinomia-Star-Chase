@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://ccsqq1p5y4fni"
+path="res://.godot/imported/splash_screen_1.png-b382609b72a8a233853eae0003724b9d.image"
+
+[deps]
+
+source_file="res://launch/splash_screen/splash_screen_1.png"
+dest_files=["res://.godot/imported/splash_screen_1.png-b382609b72a8a233853eae0003724b9d.image"]
+
+[params]
+

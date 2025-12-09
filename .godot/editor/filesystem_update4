@@ -1,0 +1,5 @@
+res://content/levels/level_1/level_1.tscn
+res://assets/themes/main_theme.tres
+res://assets/shaders/speed_line_shader.gdshader
+res://assets/shaders/edge_detection.gdshader
+res://common/player/camera/camera_player/post_process.gdshader

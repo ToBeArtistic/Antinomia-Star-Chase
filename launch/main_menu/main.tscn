@@ -1,0 +1,213 @@
+[gd_scene load_steps=6 format=3 uid="uid://kp27o3ab5qnc"]
+
+[ext_resource type="Script" uid="uid://clpkfg2nca1mf" path="res://common/gui-utils/swap_scene.gd" id="1_8kpce"]
+[ext_resource type="Texture2D" uid="uid://1npw0cd0a5dh" path="res://assets/icons/gear.png" id="1_cggwd"]
+[ext_resource type="Script" uid="uid://58camabammqf" path="res://launch/main_menu/main.gd" id="1_wxjou"]
+[ext_resource type="Script" uid="uid://bxvgvipvqt2ja" path="res://launch/main_menu/exit.gd" id="4_2sajt"]
+[ext_resource type="Texture2D" uid="uid://d3dckog777vp5" path="res://assets/icons/exit.png" id="4_wxjou"]
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wxjou")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = -284.0
+offset_right = 469.0
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+icon = ExtResource("1_cggwd")
+expand_icon = true
+
+[node name="SceneSwapper" type="Node" parent="VBoxContainer/Settings"]
+script = ExtResource("1_8kpce")
+scene_file = "uid://cqjkndwjh0ovb"
+metadata/_custom_type_script = "uid://clpkfg2nca1mf"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+icon = ExtResource("4_wxjou")
+expand_icon = true
+script = ExtResource("4_2sajt")
+
+[node name="Level 1" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -758.0
+offset_top = -405.0
+offset_right = -549.0
+offset_bottom = -264.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+
+[node name="SceneSwapper" type="Node" parent="Level 1"]
+script = ExtResource("1_8kpce")
+scene_file = "uid://cnw1mp8wm61d8"
+add_to_history = false
+metadata/_custom_type_script = "uid://clpkfg2nca1mf"
+
+[node name="Level 2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -630.0
+offset_top = -246.0
+offset_right = -421.0
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "2
+"
+
+[node name="Level 3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -391.0
+offset_top = -339.0
+offset_right = -182.0
+offset_bottom = -198.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3"
+
+[node name="Level 4" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -401.0
+offset_right = 64.0
+offset_bottom = -260.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "4"
+
+[node name="Level 5" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -230.0
+offset_right = 91.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "5"
+
+[node name="Level 6" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -50.0
+offset_right = 196.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "6"
+
+[node name="Level 7" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 101.0
+offset_top = 132.0
+offset_right = 310.0
+offset_bottom = 273.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "7"
+
+[node name="Level 8" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 335.0
+offset_top = -6.0
+offset_right = 544.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "8"
+
+[node name="Level 9" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 438.0
+offset_top = -174.0
+offset_right = 647.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "9"
+
+[node name="Level 10" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 586.0
+offset_top = -332.0
+offset_right = 795.0
+offset_bottom = -191.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "10
+"
