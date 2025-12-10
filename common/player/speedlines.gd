@@ -18,5 +18,6 @@ func update_speed_lines() -> void:
 	#handle lines intensifying with player velocity
 	if velocity > 20.0:
 		speedline_intensity = velocity/100.0
-
-	material.set_shader_parameter("line_density", speedline_intensity)
+	
+	var shader_material : ShaderMaterial = material as ShaderMaterial
+	shader_material.set_shader_parameter("line_density", speedline_intensity)

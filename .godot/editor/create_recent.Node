@@ -1,6 +1,7 @@
+StaticBody3D
+MeshInstance3D
 CSGBox3D
 CSGCombiner3D
-MeshInstance3D
 MultiMeshInstance3D
 Label
 RichTextLabel

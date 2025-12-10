@@ -88,8 +88,6 @@ text = "<<"
 
 [node name="SceneSwapper" type="Node" parent="Back"]
 script = ExtResource("1_capxp")
-scene_file = null
 add_to_history = false
 back_button = true
-load_scene_on_ready = null
 metadata/_custom_type_script = "uid://clpkfg2nca1mf"

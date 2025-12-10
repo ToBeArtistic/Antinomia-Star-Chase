@@ -1,9 +1,10 @@
+res://assets/materials
+res://common/autoload
 res://common/gui-utils
 res://launch/main_menu
 res://content/levels/level_1
 res://launch/options_menu
 res://common
-res://common/signals
 res://assets/themes
 res://launch/splash_screen
 res://

@@ -34,7 +34,6 @@ const COYOTE_TIME = 0.3
 const MOMENTUM_FACTOR = 8
 
 #Camera variables
-var _mouse_input : bool = false
 var _rotation_input : float
 var _tilt_input : float
 var _mouse_rotation : Vector3
@@ -58,10 +57,10 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _unhandled_input(event : InputEvent) -> void:
-	_mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
-	if _mouse_input:
-		_rotation_input = -event.relative.x
-		_tilt_input = -event.relative.y
+	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		var mouse_event : InputEventMouseMotion = event as InputEventMouseMotion
+		_rotation_input = -mouse_event.relative.x
+		_tilt_input = -mouse_event.relative.y
 
 func _update_camera(delta: float) -> void:
 	_mouse_rotation.x += _tilt_input * delta * MOUSE_SENS_X
@@ -152,4 +151,3 @@ func handle_jump() -> void:
 		_double_jump = false
 		jump_velocity = JUMP_VELOCITY / DOUBLE_JUMP_FACTOR
 	velocity.y = jump_velocity
-
