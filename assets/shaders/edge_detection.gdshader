@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode specular_disabled, ambient_light_disabled;
+render_mode unshaded, specular_disabled, ambient_light_disabled;
 
 uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear_mipmap;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_nearest;
@@ -7,8 +7,8 @@ uniform sampler2D NORMAL_TEXTURE : hint_normal_roughness_texture, filter_nearest
 
 uniform float lightIntensity = 1.25;
 uniform float lineAlpha = 0.7;
-uniform bool useLighting = false;
-uniform float lineHighlight = 0.0;
+uniform bool useLighting = true;
+uniform float lineHighlight = 0.2;
 uniform float lineShadow = 0.55;
 
 varying vec2 screenUV;
@@ -40,7 +40,7 @@ float NormalEdgeIndicator(vec3 normalEdgeBias, vec3 normal, vec3 neighborNormal,
 }
 
 void vertex(){
-  POSITION = vec4(VERTEX.xy, 1.0, 1.0);
+  POSITION = vec4(VERTEX.xy, 0.5, 0.5);
 }
 
 void fragment() {
@@ -56,7 +56,7 @@ void fragment() {
 
 	// Using alpha channel (screen roughness) to mask objects to not receive outlines
 	float outlineMask = texture(NORMAL_TEXTURE, SCREEN_UV).a;
-	outlineMask = ceil(outlineMask); // Objects with Roughness = 0 will not have an outline
+	outlineMask = ceil(outlineMask); // Objects with Roughness = 0 will not have and outline
 
 	// Edge detection with Depth
 	float depthDifference = 0.0;
@@ -90,16 +90,11 @@ void fragment() {
 
 
 	if (!useLighting){
-		ALBEDO += clamp((normalDifference - depthDifference), 0.0, 1.0) * lineHighlight;
+		ALBEDO -= clamp((normalDifference - depthDifference), 0.0, 1.0) * lineHighlight;
 		ALBEDO -= ALBEDO * depthDifference * lineShadow;
 	}
 }
 
-void light()
-{
-	DIFFUSE_LIGHT = vec3(1.0);
-}
-/*
 void light (){
 	if (useLighting){
 		vec4 normal = texture(NORMAL_TEXTURE, screenUV);
@@ -115,4 +110,4 @@ void light (){
 	}
 	else
 		DIFFUSE_LIGHT = vec3(1.0);
-}*/
+}

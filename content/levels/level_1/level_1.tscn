@@ -1,7 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://cnw1mp8wm61d8"]
+[gd_scene load_steps=22 format=3 uid="uid://cnw1mp8wm61d8"]
 
 [ext_resource type="Shader" uid="uid://b2wd5hxdtbga4" path="res://assets/shaders/speed_line_shader.gdshader" id="1_jy6mt"]
 [ext_resource type="PackedScene" uid="uid://cqy3aqhl2lfin" path="res://common/player/player.tscn" id="1_upjnr"]
+[ext_resource type="Material" uid="uid://okfa87bw25y2" path="res://assets/materials/pixel_outline_shaded.tres" id="2_i072v"]
+[ext_resource type="Script" uid="uid://c0432ymlyk8ps" path="res://content/levels/geometry_material_applier.gd" id="2_p3k6f"]
 [ext_resource type="Script" uid="uid://detr0jnsap7mx" path="res://common/player/speedlines.gd" id="2_q17il"]
 [ext_resource type="Script" uid="uid://rpumb1dbtqiv" path="res://common/pause.gd" id="3_q17il"]
 [ext_resource type="Script" uid="uid://clpkfg2nca1mf" path="res://common/gui-utils/swap_scene.gd" id="4_c3yel"]
@@ -52,11 +54,6 @@ bg_color = Color(1, 1, 1, 0.6117647)
 
 [node name="Level1" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_upjnr")
-camera_attributes = SubResource("CameraAttributesPractical_8uhj0")
-compositor = SubResource("Compositor_jy6mt")
-
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 texture_filter = 1
 anchors_preset = 15
@@ -64,7 +61,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stretch = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
@@ -88,7 +86,9 @@ directional_shadow_pancake_size = 23.1
 transform = Transform3D(0.48366424, 0, 0.8752537, 0, 1, 0, -0.8752537, 0, 0.48366424, 0, 10.503412, 0)
 
 [node name="Geometry" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport"]
+material_overlay = ExtResource("2_i072v")
 use_collision = true
+script = ExtResource("2_p3k6f")
 
 [node name="BasePlatform" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Geometry"]
 
@@ -592,6 +592,11 @@ size = Vector3(17.568237, 29.2387, 23.512177)
 [node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D2/CSGBox3D/CSGCombiner3D"]
 transform = Transform3D(1.0000026, 0, -6.0535967e-09, 0, 1, 0, 6.0535967e-09, 0, 1.0000026, 13.451538, 12.122543, -1.1971588)
 size = Vector3(17.568237, 35.810757, 50.924187)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_upjnr")
+camera_attributes = SubResource("CameraAttributesPractical_8uhj0")
+compositor = SubResource("Compositor_jy6mt")
 
 [node name="UI" type="Control" parent="."]
 z_index = 3

@@ -1,3 +1,4 @@
+MeshInstance3D
 VBoxContainer
 MarginContainer
 Label
@@ -10,5 +11,4 @@ ScrollContainer
 CSGCombiner3D
 CSGBox3D
 StaticBody3D
-MeshInstance3D
 MultiMeshInstance3D

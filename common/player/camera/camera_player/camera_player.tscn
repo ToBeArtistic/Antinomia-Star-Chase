@@ -1,7 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcpoe44pybdqr"]
+[gd_scene load_steps=7 format=3 uid="uid://bcpoe44pybdqr"]
 
 [ext_resource type="Script" uid="uid://ppkat51ha003" path="res://common/player/camera/camera_player/camera_player.gd" id="1_pex7r"]
+[ext_resource type="Shader" uid="uid://6fgtrtvgf214" path="res://assets/shaders/edge_detection.gdshader" id="2_bmlwh"]
+[ext_resource type="Shader" uid="uid://kaqxirnojhyh" path="res://assets/shaders/depth_visualized.gdshader" id="3_lucf3"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_trvec"]
+flip_faces = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lucf3"]
+render_priority = 0
+shader = ExtResource("2_bmlwh")
+shader_parameter/lightIntensity = 1.25
+shader_parameter/lineAlpha = 0.7
+shader_parameter/useLighting = false
+shader_parameter/lineHighlight = 0.2
+shader_parameter/lineShadow = 0.55
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ck4ra"]
+render_priority = 0
+shader = ExtResource("3_lucf3")
 
 [node name="camera_player" type="Camera3D"]
 fov = 85.0
 script = ExtResource("1_pex7r")
+
+[node name="post_processing_mesh" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("QuadMesh_trvec")
+surface_material_override/0 = SubResource("ShaderMaterial_lucf3")
+
+[node name="post_processing_mesh2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5538821, 0)
+visible = false
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_trvec")
+surface_material_override/0 = SubResource("ShaderMaterial_ck4ra")
