@@ -48,13 +48,20 @@ var _camera_rotation : Vector3
 @export var TILT_UPPER_LIMIT := deg_to_rad(89)
 @export var CAMERA_CONTROLLER : Camera3D
 
-@export var MOUSE_SENS_Y := 0.5
-@export var MOUSE_SENS_X := 0.5
+var MOUSE_SENS_Y := 0.5
+var MOUSE_SENS_X := 0.5
 
 @onready var camera : Camera3D = $camera_player
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_load_configs()
+	Config.settings_changed.connect(_load_configs)
+	
+func _load_configs() -> void:
+	MOUSE_SENS_X = Config.get_setting(Config.SECTION.GAME, "sensitivity_x") / 100.0
+	MOUSE_SENS_Y = Config.get_setting(Config.SECTION.GAME, "sensitivity_y") / 100.0
+
 
 func _unhandled_input(event : InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:

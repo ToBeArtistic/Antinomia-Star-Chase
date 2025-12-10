@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqjkndwjh0ovb"]
+[gd_scene load_steps=7 format=3 uid="uid://cqjkndwjh0ovb"]
 
+[ext_resource type="PackedScene" uid="uid://bkybgcu7e85gl" path="res://launch/options_menu/keybind_button.tscn" id="1_6pcvm"]
 [ext_resource type="Script" uid="uid://clpkfg2nca1mf" path="res://common/gui-utils/swap_scene.gd" id="1_capxp"]
+[ext_resource type="Script" uid="uid://bvq4mcb15rftm" path="res://launch/options_menu/keybinds.gd" id="1_f02ta"]
+[ext_resource type="Script" uid="uid://bi3rbqk253yns" path="res://launch/options_menu/game.gd" id="1_klw63"]
+[ext_resource type="PackedScene" uid="uid://bv88uvw34cwi8" path="res://launch/options_menu/sensitivity_slider.tscn" id="1_oulcd"]
+[ext_resource type="Script" uid="uid://v7rhe7u2kqss" path="res://launch/options_menu/escape_listener.gd" id="4_l6qpn"]
 
 [node name="Options" type="Control"]
 process_mode = 3
@@ -25,47 +30,59 @@ theme_override_constants/tab_separation = 17
 tab_alignment = 1
 current_tab = 0
 
-[node name="Game" type="Control" parent="TabContainer"]
+[node name="Game" type="Control" parent="TabContainer" node_paths=PackedStringArray("container")]
 layout_mode = 2
+script = ExtResource("1_klw63")
+container = NodePath("MarginContainer/VBoxContainer")
+sensitivity_scene = ExtResource("1_oulcd")
 metadata/_tab_index = 0
 
-[node name="Button" type="Button" parent="TabContainer/Game"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Game"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -522.0
-offset_top = -315.0
-offset_right = -401.0
-offset_bottom = -277.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "AAAAAAA
-"
 
-[node name="Controls" type="Control" parent="TabContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Game/MarginContainer"]
+layout_mode = 2
+
+[node name="SensitivitySlider" parent="TabContainer/Game/MarginContainer/VBoxContainer" instance=ExtResource("1_oulcd")]
+layout_mode = 2
+
+[node name="Keybinds" type="Control" parent="TabContainer" node_paths=PackedStringArray("keybind_container")]
 visible = false
 layout_mode = 2
+script = ExtResource("1_f02ta")
+keybind_button_scene = ExtResource("1_6pcvm")
+keybind_container = NodePath("MarginContainer/ScrollContainer/KeybindContainer")
 metadata/_tab_index = 1
 
-[node name="Button" type="Button" parent="TabContainer/Controls"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Keybinds"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -522.0
-offset_top = -315.0
-offset_right = -401.0
-offset_bottom = -277.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "BBBBB
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-"
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Keybinds/MarginContainer"]
+layout_mode = 2
+
+[node name="KeybindContainer" type="VBoxContainer" parent="TabContainer/Keybinds/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="KeybindButton" parent="TabContainer/Keybinds/MarginContainer/ScrollContainer/KeybindContainer" instance=ExtResource("1_6pcvm")]
+layout_mode = 2
+
+[node name="KeybindButton2" parent="TabContainer/Keybinds/MarginContainer/ScrollContainer/KeybindContainer" instance=ExtResource("1_6pcvm")]
+layout_mode = 2
 
 [node name="Video" type="Control" parent="TabContainer"]
 visible = false
@@ -91,3 +108,6 @@ script = ExtResource("1_capxp")
 add_to_history = false
 back_button = true
 metadata/_custom_type_script = "uid://clpkfg2nca1mf"
+
+[node name="UICancelListener" type="Node" parent="Back"]
+script = ExtResource("4_l6qpn")

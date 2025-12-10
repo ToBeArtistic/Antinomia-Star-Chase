@@ -12,3 +12,9 @@ res://common/player/speedlines.gd
 res://content/levels/level_1/level_1.tscn
 res://common/gui-utils/timer_label.gd
 res://content/levels/level_1/level_1.gdshader
+res://launch/options_menu/keybind_button.tscn
+res://launch/options_menu/keybinds.gd
+res://launch/options_menu/keybind_button.gd
+res://launch/options_menu/escape_listener.gd
+res://launch/options_menu/game.gd
+res://launch/options_menu/sensitivity_slider.tscn

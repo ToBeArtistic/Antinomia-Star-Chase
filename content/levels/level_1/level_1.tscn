@@ -461,103 +461,137 @@ size = Vector3(1, 10, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 31.756742)
 size = Vector3(1, 10, 1)
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Geometry"]
+[node name="Abstract Towers" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Geometry"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.09808, 111.17921, -160.92969)
 size = Vector3(6.4643555, 228.31766, 4.9991455)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.83032, 25.06747, -152.73476)
 size = Vector3(6.4643555, 56.094185, 4.9991455)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.255035, 15.495111, -166.20868)
 size = Vector3(6.4643555, 32.886936, 9.287659)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.30265, 7.0597544, -155.78683)
 size = Vector3(6.4643555, 16.016222, 9.287659)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(0.82746285, 0, -0.56152046, 0, 1, 0, 0.56152046, 0, 0.82746285, 131.42218, 102.651306, -154.13774)
 size = Vector3(6.4643555, 228.31766, 4.9991455)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(0.82746285, 0, -0.56152046, 0, 1, 0, 0.56152046, 0, 0.82746285, 121.634224, 16.53957, -150.87622)
 size = Vector3(6.4643555, 56.094185, 4.9991455)
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(0.82746285, 0, -0.56152046, 0, 1, 0, 0.56152046, 0, 0.82746285, 115.484665, 6.967211, -171.33276)
 size = Vector3(6.4643555, 32.886936, 9.287659)
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(0.82746285, 0, -0.56152046, 0, 1, 0, 0.56152046, 0, 0.82746285, 114.63677, -1.4681492, -159.3132)
 size = Vector3(6.4643555, 16.016222, 9.287659)
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(0.82746285, 0, -0.56152046, 0, 1, 0, 0.56152046, 0, 0.82746285, 131.42218, 102.651306, -175.96236)
 size = Vector3(6.4643555, 228.31766, 4.9991455)
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(0.82746285, 0, -0.56152046, 0, 1, 0, 0.56152046, 0, 0.82746285, 121.634224, 16.53957, -172.70084)
 size = Vector3(6.4643555, 56.094185, 4.9991455)
 
-[node name="CSGBox3D11" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D11" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(-0.9930992, 0, -0.117277175, 0, 1, 0, 0.117277175, 0, -0.9930992, 118.01782, 3.9334106, -146.38084)
 size = Vector3(6.4643555, 32.886936, 9.287659)
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D12" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(-0.9930992, 0, -0.117277175, 0, 1, 0, 0.117277175, 0, -0.9930992, 110.78968, -4.5019493, -156.02153)
 size = Vector3(6.4643555, 16.016222, 9.287659)
 
-[node name="CSGBox3D13" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D13" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(-0.8274497, 0.00563729, 0.5615115, -0.004664648, -0.9999841, 0.0031654537, 0.56152046, 0, 0.82746285, 154.76332, 126.99365, -165.93465)
 size = Vector3(6.4643555, 56.094185, 4.9991455)
 
-[node name="CSGBox3D14" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D14" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(-0.8274497, 0.00563729, 0.5615115, -0.004664648, -0.9999841, 0.0031654537, 0.56152046, 0, 0.82746285, 160.85883, 136.60054, -186.39119)
 size = Vector3(6.4643555, 32.886936, 9.287659)
 
-[node name="CSGBox3D15" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D15" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(-0.8274497, 0.00563729, 0.5615115, -0.004664648, -0.9999841, 0.0031654537, 0.56152046, 0, 0.82746285, 161.65915, 145.04054, -174.37163)
 size = Vector3(6.4643555, 16.016222, 9.287659)
 
-[node name="CSGBox3D16" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D16" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(-0.8274497, 0.00563729, 0.5615115, -0.004664648, -0.9999841, 0.0031654537, 0.56152046, 0, 0.82746285, 145.46095, 40.82811, -191.02078)
 size = Vector3(6.4643555, 228.31766, 4.9991455)
 
-[node name="CSGBox3D20" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D20" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(-0.7106186, 0.03660144, -0.7026247, 0.046071507, 0.99892324, 0.0054406817, 0.7020674, -0.028504731, -0.71153986, 159.7008, -14.345367, -135.26363)
 size = Vector3(6.4643555, 16.016222, 9.287659)
 
-[node name="CSGBox3D21" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D21" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(-0.30727893, -0.032158025, 0.9510761, 0.03372713, -0.99916905, -0.022887403, 0.9510217, 0.025044251, 0.3081081, 193.07912, 114.96865, -173.82292)
 size = Vector3(6.4643555, 56.094185, 4.9991455)
 
-[node name="CSGBox3D22" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D22" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(-0.30727893, -0.032158025, 0.9510761, 0.03372713, -0.99916905, -0.022887403, 0.9510217, 0.025044251, 0.3081081, 185.66547, 124.28242, -193.97754)
 size = Vector3(6.4643555, 32.886936, 9.287659)
 
-[node name="CSGBox3D23" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D23" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(-0.30727893, -0.032158025, 0.9510761, 0.03372713, -0.99916905, -0.022887403, 0.9510217, 0.025044251, 0.3081081, 193.99039, 132.67621, -185.22632)
 size = Vector3(6.4643555, 16.016222, 9.287659)
 
-[node name="CSGBox3D24" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D24" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(-0.30727893, -0.032158025, 0.9510761, 0.03372713, -0.99916905, -0.022887403, 0.9510217, 0.025044251, 0.3081081, 167.18015, 29.32743, -185.44934)
 size = Vector3(6.4643555, 228.31766, 4.9991455)
 
-[node name="CSGBox3D17" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D17" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(-0.8274497, 0.00563729, 0.5615115, -0.004664648, -0.9999841, 0.0031654537, 0.56152046, 0, 0.82746285, 154.76332, 126.99365, -187.75926)
 size = Vector3(6.4643555, 56.094185, 4.9991455)
 
-[node name="CSGBox3D18" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D18" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(-0.05217991, 0.00036810746, 0.9986378, 0.0055983886, -0.9999842, 0.0006611255, 0.99862206, 0.0056252587, 0.052176997, 158.31209, 139.00058, -161.43927)
 size = Vector3(6.4643555, 31.648058, 9.287659)
 
-[node name="CSGBox3D19" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+[node name="CSGBox3D19" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/Abstract Towers"]
 transform = Transform3D(0.9930834, 0.00563729, 0.117275305, 0.005598388, -0.9999841, 0.00066112546, 0.117277175, 0, -0.9930992, 165.49767, 146.57266, -171.07996)
 size = Vector3(6.4643555, 12.969537, 9.287659)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Geometry"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 279.67963, 27.908194, -192.02095)
+size = Vector3(34.37378, 42.811142, 32.805603)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D/CSGBox3D"]
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D/CSGBox3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.786621, -6.7862206, 12.508865)
+size = Vector3(17.568237, 29.2387, 23.512177)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D/CSGBox3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.451538, 12.122545, 12.508865)
+size = Vector3(17.568237, 35.810757, 23.512177)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Geometry"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D2"]
+transform = Transform3D(0.999976, 0, 0.006928928, 0, 1, 0, -0.006928928, 0, 0.999976, 294.15863, 60.477295, -219.32648)
+size = Vector3(72.856995, 128.38742, 36.91159)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D2/CSGBox3D"]
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D2/CSGBox3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.786621, -6.7862206, 12.508865)
+size = Vector3(17.568237, 29.2387, 23.512177)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCombiner3D2/CSGBox3D/CSGCombiner3D"]
+transform = Transform3D(1.0000026, 0, -6.0535967e-09, 0, 1, 0, 6.0535967e-09, 0, 1.0000026, 13.451538, 12.122543, -1.1971588)
+size = Vector3(17.568237, 35.810757, 50.924187)
 
 [node name="UI" type="Control" parent="."]
 z_index = 3

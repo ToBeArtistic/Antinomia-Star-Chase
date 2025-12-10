@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bv88uvw34cwi8"]
+
+[node name="SensitivitySlider" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Action" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 200.0
+value = 50.0
+
+[node name="Value" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
