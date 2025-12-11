@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://bynobdwhxchbj"]
+
+[ext_resource type="Script" uid="uid://ca8yrwrpn33qk" path="res://content/story/records/records.gd" id="1_aexog"]
+[ext_resource type="PackedScene" uid="uid://cfe4m46mokgju" path="res://common/gui-utils/back_button.tscn" id="2_awssc"]
+[ext_resource type="PackedScene" uid="uid://dwhj0o7tgea8a" path="res://content/story/records/record.tscn" id="3_fl8cg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fl8cg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_726ui"]
+
+[node name="Records" type="Control" node_paths=PackedStringArray("container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aexog")
+record_scene = ExtResource("3_fl8cg")
+container = NodePath("RecordContainer")
+
+[node name="Back" parent="." instance=ExtResource("2_awssc")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 121.0
+offset_bottom = 38.0
+
+[node name="RecordContainer" type="VBoxContainer" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 19.0
+offset_top = -479.0
+offset_right = 560.0
+offset_bottom = 484.5
+grow_vertical = 2
+
+[node name="Record" parent="RecordContainer" instance=ExtResource("3_fl8cg")]
+layout_mode = 2
+
+[node name="Record2" parent="RecordContainer" instance=ExtResource("3_fl8cg")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -924.0
+offset_top = 196.0
+offset_right = -176.0
+offset_bottom = 632.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fl8cg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_726ui")
+text = "The Collector's robes hide items of unknowable nature. Its wind chimes are an omen of capture.
+In this case, being unremarkable is of the greatest importance."
+horizontal_alignment = 1
+vertical_alignment = 1

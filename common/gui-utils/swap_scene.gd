@@ -1,4 +1,3 @@
-@tool
 extends Node
 
 class_name SceneSwapper
@@ -19,9 +18,10 @@ func _ready() -> void:
 	if get_parent() is Button:
 		var button : Button = get_parent()
 		button.pressed.connect(swap_scene)
+		print_debug(name + " connected to " + button.name)
 
 func swap_scene() -> void:	
-	print_debug("trying scene swap")
+	print_debug(name + " trying scene swap to " + scene_file)
 	if back_button:
 		swap_to_previous_scene()
 		return
@@ -40,7 +40,13 @@ func swap_scene() -> void:
 	get_tree().change_scene_to_packed(scene)
 
 func swap_to_previous_scene() -> void:
+	var previous : String
 	if scene_history.is_empty():
-		return
-	var previous : String = scene_history.pop_back()
-	get_tree().change_scene_to_file(previous)
+		print_debug("scene history is empty, using fallback scene")
+		previous = scene_file
+	else:
+		previous = scene_history.pop_back()
+	print_debug("try swap to " + previous)
+	if not scene:
+		scene = load(previous)
+	get_tree().change_scene_to_packed(scene)

@@ -14,6 +14,19 @@ enum SECTION
 	RECORDS
 }
 
+var record_names : Array[String] = [
+	"LEVEL ONE",
+	"LEVEL TWO",
+	"LEVEL THREE",
+	"LEVEL FOUR",
+	"LEVEL FIVE",
+	"LEVEL SIX",
+	"LEVEL SEVEN",
+	"LEVEL EIGHT",
+	"LEVEL NINE",
+	"LEVEL TEN",
+]
+
 func _ready() -> void:
 	if !FileAccess.file_exists(CONFIG_FILE_PATH):
 		_reset_config_file()
@@ -23,15 +36,22 @@ func _ready() -> void:
 	for section : SECTION in SECTION.values():
 		if not _config.has_section(_get_section(section)):
 			_reset_config_file()
-
-	_initialize_settings_in_game()
 	
+	for _name in record_names:
+		if not _config.has_section_key("records", _name):
+			_reset_records()
+	_initialize_settings_in_game()
+
+func _initialize_settings_in_game() -> void:
+	_load_keybinds()
+	_load_display_setting()
+
 func save_setting(section : SECTION, key : String, value : Variant) -> void:
 	_config.set_value(_get_section(section), key, value)
 	_config.save(CONFIG_FILE_PATH)
 
 func get_setting(section : SECTION, key : String) -> Variant:
-	return _config.get_value(_get_section(section), key)
+	return _config.get_value(_get_section(section), key, null)
 
 func has_setting(section : SECTION, key : String) -> bool:
 	return _config.has_section_key(_get_section(section), key)
@@ -60,7 +80,7 @@ func _get_section(section : SECTION) -> String:
 			return "records"
 	return ""
 
-func _initialize_settings_in_game() -> void:
+func _load_keybinds() -> void:
 	for action in get_section_keys(SECTION.KEYBIND):
 		var keybind : String = get_setting(SECTION.KEYBIND, action)
 		InputMap.action_erase_events(action)
@@ -72,6 +92,18 @@ func _initialize_settings_in_game() -> void:
 			var input : InputEventKey = InputEventKey.new()
 			input.keycode = OS.find_keycode_from_string(keybind)
 			InputMap.action_add_event(action, input)
+
+func _load_display_setting() -> void:
+	var display_mode : String = get_setting(Config.SECTION.VIDEO, "display") 
+	var full_screen: bool = display_mode == "full_screen"
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if full_screen else DisplayServer.WINDOW_MODE_WINDOWED)
+
+func set_full_screen(value : bool) -> void:
+	var string_value : String = "windowed"
+	if value:
+		string_value = "full_screen"
+	save_setting(Config.SECTION.VIDEO, "display", string_value)
+	_load_display_setting()
 
 func _reset_config_file() -> void:
 		_config = ConfigFile.new()
@@ -94,6 +126,10 @@ func _reset_config_file() -> void:
 		_config.set_value("audio", "music", 75)
 		_config.set_value("audio", "sound_effects", 75)
 
-		_config.set_value("records", "antinomia", "reflected")
+		_reset_records()
 
 		_config.save(CONFIG_FILE_PATH)
+
+func _reset_records() -> void:
+	for _name in record_names:
+		_config.set_value("records", _name, -1.0)

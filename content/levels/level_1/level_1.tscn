@@ -35,6 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
@@ -727,3 +728,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.67358, 5.611805, -177.108
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.258892, 0.56753206, -147.6929)
 
 [node name="UI" parent="." instance=ExtResource("7_epuq2")]
+record_name = "LEVEL ONE"

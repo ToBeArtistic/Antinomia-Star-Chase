@@ -1,10 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://kp27o3ab5qnc"]
+[gd_scene load_steps=15 format=3 uid="uid://kp27o3ab5qnc"]
 
 [ext_resource type="Script" uid="uid://clpkfg2nca1mf" path="res://common/gui-utils/swap_scene.gd" id="1_8kpce"]
 [ext_resource type="Texture2D" uid="uid://1npw0cd0a5dh" path="res://assets/icons/gear.png" id="1_cggwd"]
 [ext_resource type="Script" uid="uid://58camabammqf" path="res://launch/main_menu/main.gd" id="1_wxjou"]
 [ext_resource type="Script" uid="uid://bxvgvipvqt2ja" path="res://launch/main_menu/exit.gd" id="4_2sajt"]
 [ext_resource type="Texture2D" uid="uid://d3dckog777vp5" path="res://assets/icons/exit.png" id="4_wxjou"]
+[ext_resource type="Texture2D" uid="uid://dgdh5neqcek6m" path="res://assets/art/the_collector.png" id="6_xuqhd"]
+[ext_resource type="FontFile" uid="uid://b8lw831v2twn8" path="res://assets/fonts/antinomia-bold.otf" id="7_3ent3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xuqhd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ent3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_unnij"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tgq3n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yenej"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lmvyu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3fxfu"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -67,13 +83,26 @@ offset_right = -549.0
 offset_bottom = -264.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "1"
 
 [node name="SceneSwapper" type="Node" parent="Level 1"]
 script = ExtResource("1_8kpce")
 scene_file = "uid://cnw1mp8wm61d8"
 add_to_history = false
 metadata/_custom_type_script = "uid://clpkfg2nca1mf"
+
+[node name="Label" type="Label" parent="Level 1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_3ent3")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xuqhd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
+text = "ONE"
+horizontal_alignment = 1
 
 [node name="Level 2" type="Button" parent="."]
 layout_mode = 1
@@ -88,8 +117,23 @@ offset_right = -421.0
 offset_bottom = -105.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "2
+text = "
 "
+
+[node name="Label" type="Label" parent="Level 2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_3ent3")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xuqhd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
+text = "TWO
+"
+horizontal_alignment = 1
 
 [node name="Level 3" type="Button" parent="."]
 layout_mode = 1
@@ -104,7 +148,20 @@ offset_right = -182.0
 offset_bottom = -198.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "3"
+
+[node name="Label" type="Label" parent="Level 3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_3ent3")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xuqhd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
+text = "THREE"
+horizontal_alignment = 1
 
 [node name="Level 4" type="Button" parent="."]
 layout_mode = 1
@@ -119,7 +176,20 @@ offset_right = 64.0
 offset_bottom = -260.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "4"
+
+[node name="Label" type="Label" parent="Level 4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_3ent3")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xuqhd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
+text = "FOUR"
+horizontal_alignment = 1
 
 [node name="Level 5" type="Button" parent="."]
 layout_mode = 1
@@ -134,7 +204,20 @@ offset_right = 91.0
 offset_bottom = -89.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "5"
+
+[node name="Label" type="Label" parent="Level 5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_3ent3")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xuqhd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
+text = "FIVE"
+horizontal_alignment = 1
 
 [node name="Level 6" type="Button" parent="."]
 layout_mode = 1
@@ -149,7 +232,20 @@ offset_right = 196.0
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "6"
+
+[node name="Label" type="Label" parent="Level 6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_3ent3")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xuqhd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
+text = "SIX"
+horizontal_alignment = 1
 
 [node name="Level 7" type="Button" parent="."]
 layout_mode = 1
@@ -164,7 +260,20 @@ offset_right = 310.0
 offset_bottom = 273.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "7"
+
+[node name="Label" type="Label" parent="Level 7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_3ent3")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xuqhd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
+text = "SEVEN"
+horizontal_alignment = 1
 
 [node name="Level 8" type="Button" parent="."]
 layout_mode = 1
@@ -179,7 +288,20 @@ offset_right = 544.0
 offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "8"
+
+[node name="Label" type="Label" parent="Level 8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_3ent3")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xuqhd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
+text = "EIGHT"
+horizontal_alignment = 1
 
 [node name="Level 9" type="Button" parent="."]
 layout_mode = 1
@@ -194,7 +316,20 @@ offset_right = 647.0
 offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "9"
+
+[node name="Label" type="Label" parent="Level 9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_3ent3")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xuqhd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
+text = "NINE"
+horizontal_alignment = 1
 
 [node name="Level 10" type="Button" parent="."]
 layout_mode = 1
@@ -209,5 +344,63 @@ offset_right = 795.0
 offset_bottom = -191.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "10
+text = "
 "
+
+[node name="Label" type="Label" parent="Level 10"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_3ent3")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xuqhd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
+text = "TEN"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -376.0
+offset_top = -350.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("6_xuqhd")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -164.0
+offset_right = 132.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_3ent3")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_unnij")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tgq3n")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yenej")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_lmvyu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3fxfu")
+text = "RECORDS"
+
+[node name="SceneSwapper" type="Node" parent="TextureRect/Button"]
+script = ExtResource("1_8kpce")
+scene_file = "uid://bynobdwhxchbj"
+metadata/_custom_type_script = "uid://clpkfg2nca1mf"

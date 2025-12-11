@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://cqjkndwjh0ovb"]
 
 [ext_resource type="PackedScene" uid="uid://bkybgcu7e85gl" path="res://launch/options_menu/keybind_button.tscn" id="1_6pcvm"]
-[ext_resource type="Script" uid="uid://clpkfg2nca1mf" path="res://common/gui-utils/swap_scene.gd" id="1_capxp"]
 [ext_resource type="Script" uid="uid://bvq4mcb15rftm" path="res://launch/options_menu/keybinds.gd" id="1_f02ta"]
 [ext_resource type="Script" uid="uid://bi3rbqk253yns" path="res://launch/options_menu/game.gd" id="1_klw63"]
 [ext_resource type="PackedScene" uid="uid://bv88uvw34cwi8" path="res://launch/options_menu/sensitivity_slider.tscn" id="1_oulcd"]
-[ext_resource type="Script" uid="uid://v7rhe7u2kqss" path="res://launch/options_menu/escape_listener.gd" id="4_l6qpn"]
+[ext_resource type="Script" uid="uid://bym4imwqxha8r" path="res://launch/options_menu/display_full_screen.gd" id="5_klw63"]
+[ext_resource type="PackedScene" uid="uid://cfe4m46mokgju" path="res://common/gui-utils/back_button.tscn" id="5_oulcd"]
 
 [node name="Options" type="Control"]
 process_mode = 3
@@ -28,9 +28,10 @@ grow_vertical = 2
 theme_override_constants/side_margin = 6
 theme_override_constants/tab_separation = 17
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 
 [node name="Game" type="Control" parent="TabContainer" node_paths=PackedStringArray("container")]
+visible = false
 layout_mode = 2
 script = ExtResource("1_klw63")
 container = NodePath("MarginContainer/VBoxContainer")
@@ -85,29 +86,46 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Video" type="Control" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Video"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Video/MarginContainer"]
+layout_mode = 2
+
+[node name="Full screen" type="HBoxContainer" parent="TabContainer/Video/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Video/MarginContainer/VBoxContainer/Full screen"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Full screen"
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="TabContainer/Video/MarginContainer/VBoxContainer/Full screen"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_klw63")
 
 [node name="Audio" type="Control" parent="TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="Back" type="Button" parent="."]
-z_index = 1
-layout_mode = 1
-offset_left = 8.0
-offset_top = 7.0
-offset_right = 129.0
-offset_bottom = 45.0
-text = "<<"
-
-[node name="SceneSwapper" type="Node" parent="Back"]
-script = ExtResource("1_capxp")
-add_to_history = false
-back_button = true
-metadata/_custom_type_script = "uid://clpkfg2nca1mf"
-
-[node name="UICancelListener" type="Node" parent="Back"]
-script = ExtResource("4_l6qpn")
+[node name="Back" parent="." instance=ExtResource("5_oulcd")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 121.0
+offset_bottom = 38.0

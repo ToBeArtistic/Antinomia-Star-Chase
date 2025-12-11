@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfe4m46mokgju"]
+
+[ext_resource type="Script" uid="uid://clpkfg2nca1mf" path="res://common/gui-utils/swap_scene.gd" id="1_uey2s"]
+[ext_resource type="Script" uid="uid://v7rhe7u2kqss" path="res://launch/options_menu/escape_listener.gd" id="2_ag048"]
+
+[node name="Back" type="Button"]
+z_index = 1
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 129.0
+offset_bottom = 45.0
+text = "<< BACK"
+
+[node name="SceneSwapper" type="Node" parent="."]
+script = ExtResource("1_uey2s")
+scene_file = "uid://kp27o3ab5qnc"
+add_to_history = false
+back_button = true
+load_scene_on_ready = false
+metadata/_custom_type_script = "uid://clpkfg2nca1mf"
+
+[node name="UICancelListener" type="Node" parent="."]
+script = ExtResource("2_ag048")

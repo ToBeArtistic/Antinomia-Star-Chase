@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://lw6ak306www7" path="res://content/mechanics/waypoints/waypoint.gd" id="1_e86pf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e86pf"]
-radius = 1.0
+radius = 1.2
 
 [sub_resource type="SphereMesh" id="SphereMesh_66bej"]
 
@@ -24,7 +24,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("SphereShape3D_e86pf")
 
 [node name="Mesh" type="MeshInstance3D" parent="Area3D"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, 0, 0, 0)
 mesh = SubResource("SphereMesh_66bej")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_xcqqn")

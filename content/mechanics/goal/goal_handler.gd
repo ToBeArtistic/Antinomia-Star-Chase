@@ -1,6 +1,6 @@
 extends Control
 
-class_name goal_handler
+class_name GoalHandler
 
 var waypoint_manager : WaypointManager 
 @onready var timer : SimpleTimerElement = $Time
@@ -8,7 +8,7 @@ var waypoint_manager : WaypointManager
 @onready var completed_time_label : RichTextLabel = $CompletedTime
 @onready var completed_best_label : RichTextLabel = $CompletedBest
 
-@export var record_name : String
+var record_name : String = ""
 var best_time : float = 0.0
 
 func _enter_tree() -> void:
@@ -19,9 +19,6 @@ func _ready() -> void:
 	completed_time_label.visible = false
 	completed_best_label.visible = false
 
-	if Config.has_setting(Config.SECTION.RECORDS, record_name):
-		best_time = Config.get_setting(Config.SECTION.RECORDS, record_name)
-
 func _complete() -> void:
 	timer.stopped = true
 	timer.visible = false
@@ -29,6 +26,9 @@ func _complete() -> void:
 	completed_time_label.visible = true
 	completed_best_label.visible = true
 	completed_time_label.text = timer.text
+
+	if Config.has_setting(Config.SECTION.RECORDS, record_name):
+		best_time = Config.get_setting(Config.SECTION.RECORDS, record_name)
 
 	if best_time < 0.5 || timer.time < best_time:
 		Config.save_setting(Config.SECTION.RECORDS, record_name, timer.time)
