@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqy3aqhl2lfin"]
+[gd_scene load_steps=8 format=3 uid="uid://cqy3aqhl2lfin"]
 
 [ext_resource type="Script" uid="uid://bbe2touqu7ffw" path="res://common/player/player.gd" id="1_i15vv"]
 [ext_resource type="PackedScene" uid="uid://bcpoe44pybdqr" path="res://common/player/camera/camera_player/camera_player.tscn" id="2_oyiqq"]
+[ext_resource type="AudioStream" uid="uid://k8ye8bq3n2fq" path="res://assets/audio/effects/run_sound.wav" id="3_f6svf"]
+[ext_resource type="AudioStream" uid="uid://b4oqvbchlrgfd" path="res://assets/audio/effects/dash_sound.wav" id="4_ujhar"]
+[ext_resource type="AudioStream" uid="uid://ckqpp1gpv7u77" path="res://assets/audio/effects/sprint_sound.wav" id="5_40njg"]
+[ext_resource type="AudioStream" uid="uid://5y68faufg4eh" path="res://assets/audio/effects/heavy_wind.wav" id="6_dg8k7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_245is"]
 
@@ -14,3 +18,26 @@ shape = SubResource("CapsuleShape3D_245is")
 
 [node name="camera_player" parent="." instance=ExtResource("2_oyiqq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="run_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_f6svf")
+volume_db = -7.633
+
+[node name="dash_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ujhar")
+volume_db = -11.45
+
+[node name="sprint_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_40njg")
+volume_db = -4.335
+
+[node name="jump_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ujhar")
+volume_db = -8.587
+pitch_scale = 1.22
+
+[node name="wind_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_dg8k7")
+volume_db = -80.0
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]

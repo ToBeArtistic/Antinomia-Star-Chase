@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b63sl0wkb023f"]
+
+[ext_resource type="Script" uid="uid://lw6ak306www7" path="res://content/mechanics/waypoints/waypoint.gd" id="1_e86pf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e86pf"]
+radius = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_66bej"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xcqqn"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.99823254, 0.8928209, 0.7280785, 0.24313726)
+
+[node name="Waypoint" type="Node3D"]
+script = ExtResource("1_e86pf")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Collider" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("SphereShape3D_e86pf")
+
+[node name="Mesh" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("SphereMesh_66bej")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_xcqqn")

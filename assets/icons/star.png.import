@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://dtme18dfpvgpm"
+path="res://.godot/imported/star.png-2e8a8be320498e4bbe97387665811236.image"
+
+[deps]
+
+source_file="res://assets/icons/star.png"
+dest_files=["res://.godot/imported/star.png-2e8a8be320498e4bbe97387665811236.image"]
+
+[params]
+

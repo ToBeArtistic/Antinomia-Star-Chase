@@ -84,6 +84,11 @@ pause={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Geometry"
+3d_physics/layer_2="Triggers"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.96035105, 0.96035105, 0.96035093, 1)

@@ -14,6 +14,7 @@ var _dash_timer : float = 0.0
 var _dash_cooldown : float = 0.0
 var _dash_active : bool = false
 var _double_jump : bool = true
+var _is_jumping : bool = false
 
 var _coyote_timer : float = 0.0
 
@@ -52,6 +53,12 @@ var MOUSE_SENS_Y := 0.5
 var MOUSE_SENS_X := 0.5
 
 @onready var camera : Camera3D = $camera_player
+@onready var run_sound : AudioStreamPlayer = $run_sound
+@onready var dash_sound : AudioStreamPlayer = $dash_sound
+@onready var sprint_sound : AudioStreamPlayer = $sprint_sound
+@onready var jump_sound : AudioStreamPlayer = $jump_sound
+@onready var wind_sound : AudioStreamPlayer = $wind_sound
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -146,9 +153,12 @@ func _physics_process(delta : float) -> void:
 	move_and_slide()
 	data.velocity = velocity.length()
 	Signals.player_data_updated.emit(data)
+
+	_play_sounds()
 	
 	
 func handle_jump() -> void:
+	_is_jumping = false
 	if not Input.is_action_just_pressed("jump"): 
 		return
 	var jump_velocity : float = JUMP_VELOCITY
@@ -158,3 +168,28 @@ func handle_jump() -> void:
 		_double_jump = false
 		jump_velocity = JUMP_VELOCITY / DOUBLE_JUMP_FACTOR
 	velocity.y = jump_velocity
+	_is_jumping = true
+	
+
+func _play_sounds() -> void:
+	if is_on_floor() and velocity.length() >= STARTING_SPEED and velocity.length() < MAX_SPEED*2 and not run_sound.playing:
+		run_sound.pitch_scale = randf_range(0.9, 1.05)
+		run_sound.play()
+	if is_on_floor() and velocity.length() >= MAX_SPEED * 2 and not sprint_sound.playing:
+		sprint_sound.pitch_scale = randf_range(0.6, 0.8)
+		sprint_sound.play()
+	if _dash_active and not dash_sound.playing:
+		if is_on_floor():
+			dash_sound.volume_db = -11
+		else:
+			dash_sound.volume_db = -18
+		dash_sound.pitch_scale = randf_range(0.9, 1.1)
+		dash_sound.play()
+	if _is_jumping:
+		jump_sound.pitch_scale = randf_range(1.0, 1.2)
+		jump_sound.play()
+
+	wind_sound.volume_db = clampf(-75.0 + velocity.length(), -80.0, -2.0) 
+	if not wind_sound.playing:
+		wind_sound.play()
+	
