@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqjkndwjh0ovb"]
+[gd_scene load_steps=8 format=3 uid="uid://cqjkndwjh0ovb"]
 
 [ext_resource type="PackedScene" uid="uid://bkybgcu7e85gl" path="res://launch/options_menu/keybind_button.tscn" id="1_6pcvm"]
 [ext_resource type="Script" uid="uid://bvq4mcb15rftm" path="res://launch/options_menu/keybinds.gd" id="1_f02ta"]
 [ext_resource type="Script" uid="uid://bi3rbqk253yns" path="res://launch/options_menu/game.gd" id="1_klw63"]
-[ext_resource type="PackedScene" uid="uid://bv88uvw34cwi8" path="res://launch/options_menu/sensitivity_slider.tscn" id="1_oulcd"]
+[ext_resource type="PackedScene" uid="uid://bv88uvw34cwi8" path="res://launch/options_menu/setting_slider.tscn" id="1_oulcd"]
 [ext_resource type="Script" uid="uid://bym4imwqxha8r" path="res://launch/options_menu/display_full_screen.gd" id="5_klw63"]
 [ext_resource type="PackedScene" uid="uid://cfe4m46mokgju" path="res://common/gui-utils/back_button.tscn" id="5_oulcd"]
+[ext_resource type="Script" uid="uid://drgneh8afm3qd" path="res://launch/options_menu/audio.gd" id="6_q3lx8"]
 
 [node name="Options" type="Control"]
 process_mode = 3
@@ -28,10 +29,9 @@ grow_vertical = 2
 theme_override_constants/side_margin = 6
 theme_override_constants/tab_separation = 17
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 
 [node name="Game" type="Control" parent="TabContainer" node_paths=PackedStringArray("container")]
-visible = false
 layout_mode = 2
 script = ExtResource("1_klw63")
 container = NodePath("MarginContainer/VBoxContainer")
@@ -45,11 +45,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Game/MarginContainer"]
 layout_mode = 2
 
-[node name="SensitivitySlider" parent="TabContainer/Game/MarginContainer/VBoxContainer" instance=ExtResource("1_oulcd")]
+[node name="SettingSlider" parent="TabContainer/Game/MarginContainer/VBoxContainer" instance=ExtResource("1_oulcd")]
 layout_mode = 2
 
 [node name="Keybinds" type="Control" parent="TabContainer" node_paths=PackedStringArray("keybind_container")]
@@ -86,6 +90,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Video" type="Control" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -118,10 +123,31 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("5_klw63")
 
-[node name="Audio" type="Control" parent="TabContainer"]
+[node name="Audio" type="Control" parent="TabContainer" node_paths=PackedStringArray("container")]
 visible = false
 layout_mode = 2
+script = ExtResource("6_q3lx8")
+container = NodePath("MarginContainer/VBoxContainer")
+setting_scene = ExtResource("1_oulcd")
 metadata/_tab_index = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/MarginContainer"]
+layout_mode = 2
+
+[node name="SettingSlider" parent="TabContainer/Audio/MarginContainer/VBoxContainer" instance=ExtResource("1_oulcd")]
+layout_mode = 2
 
 [node name="Back" parent="." instance=ExtResource("5_oulcd")]
 layout_mode = 0

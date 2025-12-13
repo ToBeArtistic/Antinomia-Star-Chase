@@ -10,6 +10,8 @@ var waypoint_manager : WaypointManager
 var margin : int = 3
 var offset : Vector2
 var random_offset : Vector2
+var random_rot_size : float = 2.0
+var random_offset_size : float = 2.0
 
 func _enter_tree() -> void:
 	Signals.waypoint_manager_changed.connect(_handle_waypointmanager)
@@ -25,7 +27,7 @@ func _process(_delta: float) -> void:
 		return
 	
 	marker.visible = true
-	random_offset = Vector2(randf_range(-3,3), randf_range(-3, 3))
+	random_offset = Vector2(randf_range(-random_offset_size,random_offset_size), randf_range(-random_offset_size,random_offset_size))
 
 	var unproject_position : Vector2 = waypoint_manager.get_waypoint_unproject_position()
 
@@ -34,7 +36,7 @@ func _process(_delta: float) -> void:
 	else:
 		marker.position = get_clamped_vector2(unproject_position) - offset + random_offset
 
-	marker.rotation_degrees = randf_range(-3.5, 3.5)
+	marker.rotation_degrees = randf_range(-random_rot_size, random_rot_size)
 
 func _handle_waypointmanager(_waypoint_manager : WaypointManager) -> void:
 	waypoint_manager = _waypoint_manager

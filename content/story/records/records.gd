@@ -20,7 +20,7 @@ func _ready() -> void:
 		if record_value is float and record_value > 0.0:
 			record_time_label.text = get_timer_text(record_value)
 		else:
-			record_time_label.text = "N0Ne FnD"
+			record_time_label.text = "--"
 		container.add_child(record)
 
 func get_timer_text(_time : float) -> String:

@@ -45,6 +45,7 @@ func _ready() -> void:
 func _initialize_settings_in_game() -> void:
 	_load_keybinds()
 	_load_display_setting()
+	_load_audio_setting()
 
 func save_setting(section : SECTION, key : String, value : Variant) -> void:
 	_config.set_value(_get_section(section), key, value)
@@ -97,6 +98,25 @@ func _load_display_setting() -> void:
 	var display_mode : String = get_setting(Config.SECTION.VIDEO, "display") 
 	var full_screen: bool = display_mode == "full_screen"
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if full_screen else DisplayServer.WINDOW_MODE_WINDOWED)
+
+func refresh_audio() -> void:
+	_load_audio_setting()
+
+func _load_audio_setting() -> void:
+	var audio_settings : Dictionary[String, Variant] = get_all_settings_in_section(Config.SECTION.AUDIO)
+	var master_volume : float = audio_settings.get("master") / 100.0
+	var music_volume : float = audio_settings.get("music") /100.0
+	var sfx_volume : float = audio_settings.get("sound_effects") /100.0
+	_set_bus_volume("Master", master_volume)
+	_set_bus_volume("Music", music_volume)
+	_set_bus_volume("SFX", sfx_volume)
+
+func _set_bus_volume(bus_name : String, value : float) -> void:
+		AudioServer.set_bus_volume_linear(
+		AudioServer.get_bus_index(bus_name),
+		value
+	)
+		
 
 func set_full_screen(value : bool) -> void:
 	var string_value : String = "windowed"

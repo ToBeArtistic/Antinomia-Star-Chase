@@ -21,8 +21,6 @@ container = NodePath("RecordContainer")
 
 [node name="Back" parent="." instance=ExtResource("2_awssc")]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 121.0
 offset_bottom = 38.0
 
@@ -49,14 +47,14 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -924.0
-offset_top = 196.0
-offset_right = -176.0
-offset_bottom = 632.0
+offset_left = -757.0
+offset_top = 76.0
+offset_right = -95.0
+offset_bottom = 326.0
 grow_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fl8cg")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_726ui")
-text = "The Collector's robes hide items of unknowable nature. Its wind chimes are an omen of capture.
-In this case, being unremarkable is of the greatest importance."
-horizontal_alignment = 1
-vertical_alignment = 1
+text = "The Collector's robes hide items of unknowable nature. Appearances defy conventional logic. Chimes, rattles, brown noise - an omen of imminent captivity.
+
+If encountered, remember that being unremarkable is of the greatest importance - value is disregarded, the coal will be picked from the pile of diamonds. DO NOT stand out."
+autowrap_mode = 2

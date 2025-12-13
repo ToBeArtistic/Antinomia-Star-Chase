@@ -1,9 +1,12 @@
-extends RefCounted
+extends Node
 
-class_name ContextManager
+var data : Dictionary[String, Variant] = {
+	"secret" : {
+		"1337" : "magic"
+	}
+}
 
-static var previous : Variant
-
-static var increment : int = 0
+func _ready() -> void:
+	print_debug(data)
 
 

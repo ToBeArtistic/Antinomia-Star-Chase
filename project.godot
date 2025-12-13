@@ -19,6 +19,7 @@ boot_splash/show_image=false
 
 Signals="*res://common/autoload/signals.gd"
 Config="*res://common/autoload/config.gd"
+Context="*res://launch/context/context.gd"
 
 [debug]
 

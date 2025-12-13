@@ -1,17 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfe4m46mokgju"]
+[gd_scene load_steps=4 format=3 uid="uid://cfe4m46mokgju"]
 
+[ext_resource type="FontFile" uid="uid://b8lw831v2twn8" path="res://assets/fonts/antinomia-bold.otf" id="1_ag048"]
 [ext_resource type="Script" uid="uid://clpkfg2nca1mf" path="res://common/gui-utils/swap_scene.gd" id="1_uey2s"]
 [ext_resource type="Script" uid="uid://v7rhe7u2kqss" path="res://launch/options_menu/escape_listener.gd" id="2_ag048"]
 
-[node name="Back" type="Button"]
-z_index = 1
-offset_left = 8.0
-offset_top = 7.0
-offset_right = 129.0
-offset_bottom = 45.0
-text = "<< BACK"
+[node name="BackButtonContainer" type="MarginContainer"]
+offset_right = 106.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="SceneSwapper" type="Node" parent="."]
+[node name="Back" type="Button" parent="."]
+z_index = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ag048")
+text = " BACK "
+
+[node name="SceneSwapper" type="Node" parent="Back"]
 script = ExtResource("1_uey2s")
 scene_file = "uid://kp27o3ab5qnc"
 add_to_history = false
@@ -19,5 +26,5 @@ back_button = true
 load_scene_on_ready = false
 metadata/_custom_type_script = "uid://clpkfg2nca1mf"
 
-[node name="UICancelListener" type="Node" parent="."]
+[node name="UICancelListener" type="Node" parent="Back"]
 script = ExtResource("2_ag048")
