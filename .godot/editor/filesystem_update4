@@ -6,3 +6,8 @@ res://assets/shaders/speed_line_shader.gdshader
 res://assets/shaders/pixel_perfect_outline.gdshader
 res://common/player/camera/camera_player/post_process.gdshader
 res://content/levels/level_1/level_1.gdshader
+res://content/levels/level_2/level_2.tscn
+res://content/mechanics/waypoints/waypoint_manager.gd
+res://common/player/player.tscn
+res://launch/main_menu/main.tscn
+res://content/mechanics/waypoints/waypoint.tscn

@@ -1,0 +1,1111 @@
+[gd_scene load_steps=16 format=3 uid="uid://ckptli8jb6e1n"]
+
+[ext_resource type="PackedScene" uid="uid://cqy3aqhl2lfin" path="res://common/player/player.tscn" id="1_p57pv"]
+[ext_resource type="Texture2D" uid="uid://bqhjj2lhi2aro" path="res://assets/textures/seamless_grime_white.png" id="2_s7obr"]
+[ext_resource type="Material" uid="uid://okfa87bw25y2" path="res://assets/materials/pixel_outline_shaded.tres" id="3_7w5hr"]
+[ext_resource type="Material" uid="uid://dkvprr5875ops" path="res://assets/materials/simple_texture_white.tres" id="4_2e2xq"]
+[ext_resource type="Script" uid="uid://c36tfsjwmrmkd" path="res://content/mechanics/waypoints/waypoint_manager.gd" id="4_mjeua"]
+[ext_resource type="AudioStream" uid="uid://cb4ehryvlruvp" path="res://assets/audio/effects/pickup_glass_reverb.wav" id="5_thi3p"]
+[ext_resource type="PackedScene" uid="uid://b63sl0wkb023f" path="res://content/mechanics/waypoints/waypoint.tscn" id="6_q5s0r"]
+[ext_resource type="PackedScene" uid="uid://bkrroji64u325" path="res://content/levels/level_ui.tscn" id="7_2jl2a"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_upjnr"]
+sky_top_color = Color(0.6970754, 0.8431585, 0.8496053, 1)
+sky_horizon_color = Color(0.9249275, 0.81167746, 0.5948165, 1)
+ground_bottom_color = Color(0.8854958, 0.75382054, 0.47686338, 1)
+ground_horizon_color = Color(0.93811053, 0.7739903, 0.5697424, 1)
+
+[sub_resource type="Sky" id="Sky_upjnr"]
+sky_material = SubResource("ProceduralSkyMaterial_upjnr")
+
+[sub_resource type="Environment" id="Environment_upjnr"]
+background_mode = 2
+sky = SubResource("Sky_upjnr")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8uhj0"]
+
+[sub_resource type="Compositor" id="Compositor_jy6mt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpdst"]
+emission_enabled = true
+emission = Color(1, 1, 0.77254903, 1)
+emission_energy_multiplier = 14.87
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_na1p5"]
+albedo_color = Color(0.9999983, 0.6686829, 0.39207488, 1)
+albedo_texture = ExtResource("2_s7obr")
+
+[node name="Level1" type="Node3D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+canvas_cull_mask = 4294966272
+oversampling = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.9931082, -0.11659325, 0.011919821, 0.018989842, 0.26043722, 0.965304, -0.115652286, -0.95842505, 0.26085642, 0, 423.78992, 0)
+light_angular_distance = 0.3
+light_specular = 4.629
+shadow_enabled = true
+shadow_blur = 2.237
+directional_shadow_split_1 = 0.135
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 3000.0
+directional_shadow_pancake_size = 23.1
+
+[node name="player" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_p57pv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.9882793, 0)
+collision_mask = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_upjnr")
+camera_attributes = SubResource("CameraAttributesPractical_8uhj0")
+compositor = SubResource("Compositor_jy6mt")
+
+[node name="Waypoints" type="Node3D" parent="SubViewportContainer/SubViewport"]
+script = ExtResource("4_mjeua")
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Waypoints"]
+stream = ExtResource("5_thi3p")
+bus = &"SFX"
+
+[node name="Waypoint" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.579954, -44.714813)
+
+[node name="Waypoint2" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.66993, -10.633896, -134.97893)
+
+[node name="Waypoint3" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.78943, 16.079853, -225.3625)
+
+[node name="Waypoint4" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.56956, 16.079853, -286.0954)
+
+[node name="Waypoint5" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -240.35391, 16.079853, -331.15344)
+
+[node name="Waypoint6" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -329.58463, 16.926098, -372.73648)
+
+[node name="Waypoint7" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -537.8325, -8.941086, -436.16907)
+
+[node name="Waypoint8" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -684.9704, 72.69304, -486.0444)
+
+[node name="Waypoint9" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -748.115, 70.19897, -509.7141)
+
+[node name="Waypoint10" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -809.2525, 60.285286, -547.25653)
+
+[node name="Waypoint11" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -823.5923, 53.743195, -608.0911)
+
+[node name="Waypoint12" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -792.1887, 40.358704, -666.82184)
+
+[node name="Waypoint13" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -742.16016, 23.077995, -698.8972)
+
+[node name="Waypoint14" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -658.4683, 15.124092, -702.74695)
+
+[node name="Waypoint15" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -589.4196, -0.06817818, -696.2568)
+
+[node name="Waypoint16" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -467.45923, -9.595831, -688.8441)
+
+[node name="Waypoint17" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -375.30917, -9.595831, -638.67755)
+
+[node name="Waypoint18" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -344.1361, -9.595831, -634.96826)
+
+[node name="Waypoint19" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -309.88004, -9.595831, -631.0207)
+
+[node name="Waypoint20" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -279.02444, -9.595829, -628.06476)
+
+[node name="Waypoint21" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -234.25291, -9.595831, -634.66675)
+
+[node name="Waypoint22" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -199.03755, -9.595831, -664.9391)
+
+[node name="Waypoint23" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -159.49525, -9.595831, -691.3641)
+
+[node name="Waypoint24" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.591324, -9.595831, -686.0525)
+
+[node name="Waypoint25" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.152176, -9.595831, -686.0289)
+
+[node name="Waypoint26" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.25008, -9.595831, -687.6368)
+
+[node name="Waypoint27" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.493687, -9.595831, -694.91376)
+
+[node name="Waypoint28" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.326893, -9.595831, -715.8614)
+
+[node name="Waypoint29" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.012764, -9.595831, -731.7886)
+
+[node name="Waypoint30" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 181.46506, -9.595831, -746.1677)
+
+[node name="Waypoint31" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 281.25537, 17.403387, -762.3804)
+
+[node name="Waypoint32" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 414.164, -9.443861, -783.73303)
+
+[node name="Waypoint33" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 495.0605, 4.2107353, -754.21674)
+
+[node name="Waypoint34" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 416.48752, -9.735804, -712.0983)
+
+[node name="Waypoint35" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 355.886, -9.735804, -709.4636)
+
+[node name="Waypoint36" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 311.72455, -9.735804, -595.08514)
+
+[node name="Waypoint37" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228.59009, 11.713244, -584.22797)
+
+[node name="Waypoint38" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.32215, 17.635794, -635.7734)
+
+[node name="Waypoint39" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.806847, 17.635794, -686.1077)
+
+[node name="Waypoint40" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.327927, 17.635794, -639.5272)
+
+[node name="Waypoint41" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.02041, 33.630917, -379.31152)
+
+[node name="Waypoint42" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.61911, 44.335716, -555.771)
+
+[node name="Waypoint43" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.1697, 44.335716, -631.5184)
+
+[node name="Waypoint44" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25338, 44.335716, -618.1243)
+
+[node name="Waypoint45" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9952235, 44.335716, -521.5835)
+
+[node name="Waypoint46" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -172.07068, -8.797615, -481.46964)
+
+[node name="Waypoint47" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250.23492, -8.797615, -429.47702)
+
+[node name="Waypoint48" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -338.61627, -8.797615, -360.55356)
+
+[node name="Waypoint49" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -314.5889, -8.797611, -182.53358)
+
+[node name="Waypoint50" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.41152, -8.797619, -167.5252)
+
+[node name="Waypoint51" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 194.3977, -8.797619, -93.80287)
+
+[node name="Waypoint52" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 286.7738, -8.7976265, -63.343494)
+
+[node name="Waypoint53" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 318.85522, -10.062742, -128.16891)
+
+[node name="Waypoint54" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240.24713, -11.035503, -189.3181)
+
+[node name="Waypoint55" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.88533, -11.035503, -248.12575)
+
+[node name="Waypoint56" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_q5s0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132.74895, 157.08966, -577.1155)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.03846419, -0.82851213, -0.55864835, 0.49999994, 0.49999994, -0.70710677, 0.8651707, -0.25212586, 0.43348822, -105.51581, 21.766933, -501.74805)
+material_override = SubResource("StandardMaterial3D_dpdst")
+material_overlay = ExtResource("3_7w5hr")
+size = Vector3(20, 20, 20)
+
+[node name="Ground" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport"]
+material_override = SubResource("StandardMaterial3D_na1p5")
+material_overlay = ExtResource("3_7w5hr")
+use_collision = true
+
+[node name="Ground" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.099586, 0)
+size = Vector3(8000, 10.893, 8000)
+
+[node name="SmallHillsCluster" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Ground"]
+
+[node name="SmallHills" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 340.79892, 0, -669.878)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster/SmallHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.96681, -389.36057, -364.874)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster/SmallHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.535385, -367.42944, -324.04135)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster/SmallHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.724304, -768.20087, -581.8273)
+radius = 811.757
+radial_segments = 20
+rings = 20
+
+[node name="SmallHills2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 691.0079, 0, 184.29645)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster/SmallHills2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.96681, -389.36057, -364.874)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster/SmallHills2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.535385, -367.42944, -324.04135)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster/SmallHills2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.724304, -768.20087, -581.8273)
+radius = 811.757
+radial_segments = 20
+rings = 20
+
+[node name="SmallHills3" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster"]
+transform = Transform3D(0.92168045, 0, -0.38794994, 0, 1, 0, 0.38794994, 0, 0.92168045, 636.5995, 0, -338.7926)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster/SmallHills3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.96681, -389.36057, -364.874)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster/SmallHills3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.535385, -367.42944, -324.04135)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster/SmallHills3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.724304, -768.20087, -581.8273)
+radius = 811.757
+radial_segments = 20
+rings = 20
+
+[node name="SmallHillsCluster3" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Ground"]
+transform = Transform3D(0.9205526, 0, -0.39061868, 0, 1, 0, 0.39061868, 0, 0.9205526, -1860.5918, 37.882202, -268.45218)
+
+[node name="SmallHills" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 340.79892, 0, -669.878)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster3/SmallHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.96681, -389.36057, -364.874)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster3/SmallHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.535385, -367.42944, -324.04135)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster3/SmallHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.724304, -768.20087, -581.8273)
+radius = 811.757
+radial_segments = 20
+rings = 20
+
+[node name="SmallHills4" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster3"]
+transform = Transform3D(0.939734, 0, 0.34190515, 0, 1, 0, -0.34190515, 0, 0.939734, 1304.8301, -45.960526, 130.29419)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster3/SmallHills4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.96681, -389.36057, -364.874)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster3/SmallHills4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.535385, -367.42944, -324.04135)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster3/SmallHills4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.724304, -768.20087, -581.8273)
+radius = 811.757
+radial_segments = 20
+rings = 20
+
+[node name="SmallHills2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 691.0079, 0, 184.29645)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster3/SmallHills2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.96681, -389.36057, -364.874)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster3/SmallHills2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.535385, -367.42944, -324.04135)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster3/SmallHills2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.724304, -768.20087, -581.8273)
+radius = 811.757
+radial_segments = 20
+rings = 20
+
+[node name="SmallHills3" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster3"]
+transform = Transform3D(0.92168045, 0, -0.38794994, 0, 1, 0, 0.38794994, 0, 0.92168045, 636.5995, 0, -338.7926)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster3/SmallHills3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.96681, -389.36057, -364.874)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster3/SmallHills3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.535385, -367.42944, -324.04135)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster3/SmallHills3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.72449, -822.21735, -581.82745)
+radius = 811.757
+radial_segments = 20
+rings = 20
+
+[node name="SmallHillsCluster2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Ground"]
+transform = Transform3D(0.8781166, 0, -0.47844666, 0, 1, 0, 0.47844666, 0, 0.8781166, -720.5664, 13.897263, 882.04254)
+
+[node name="SmallHills" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster2"]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster2/SmallHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.96681, -389.36057, -364.874)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster2/SmallHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.535385, -367.42944, -324.04135)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster2/SmallHills"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.724304, -768.20087, -581.8273)
+radius = 811.757
+radial_segments = 20
+rings = 20
+
+[node name="SmallHills2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 691.0079, 0, 184.29645)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster2/SmallHills2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.96681, -389.36057, -364.874)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster2/SmallHills2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.535385, -367.42944, -324.04135)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster2/SmallHills2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.724304, -768.20087, -581.8273)
+radius = 811.757
+radial_segments = 20
+rings = 20
+
+[node name="SmallHills3" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster2"]
+transform = Transform3D(0.92168045, 0, -0.38794994, 0, 1, 0, 0.38794994, 0, 0.92168045, 636.5995, 0, -338.7926)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster2/SmallHills3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.96681, -389.36057, -364.874)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster2/SmallHills3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.535385, -367.42944, -324.04135)
+radius = 413.41086
+radial_segments = 20
+rings = 20
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/SmallHillsCluster2/SmallHills3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.724304, -768.20087, -581.8273)
+radius = 811.757
+radial_segments = 20
+rings = 20
+
+[node name="Objects" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport"]
+material_override = ExtResource("4_2e2xq")
+material_overlay = ExtResource("3_7w5hr")
+use_collision = true
+
+[node name="Tent" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 232.96893, -68.04328, -188.46275)
+material_override = ExtResource("4_2e2xq")
+material_overlay = ExtResource("3_7w5hr")
+use_collision = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 69.430046, 0)
+size = Vector3(100, 100, 100)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent"]
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 0, -0.99999994, 0, 0.99999994, 0, 0.010253906, 33.177353, -13.606873)
+size = Vector3(120.302734, 196.23016, 71.74414)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent/CSGCombiner3D2/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.70710343, 0.70710343, 0, -0.70710343, 0.70710343, 1.9556885, 13.606873, -27.40664)
+size = Vector3(103.931885, 100, 100)
+
+[node name="Tent8" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.60644364, 0, 0.34960845, 0, 0.7, 0, -0.34960845, 0, 0.60644364, 232.57635, -68.0433, -607.0256)
+material_override = ExtResource("4_2e2xq")
+material_overlay = ExtResource("3_7w5hr")
+use_collision = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent8"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent8/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 69.430046, 0)
+size = Vector3(100, 100, 100)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent8"]
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent8/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 0, -0.99999994, 0, 0.99999994, 0, 0.010253906, 33.177353, -13.606873)
+size = Vector3(120.302734, 196.23016, 71.74414)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent8/CSGCombiner3D2/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.70710343, 0.70710343, 0, -0.70710343, 0.70710343, 1.9556885, 13.606873, -27.40664)
+size = Vector3(103.931885, 100, 100)
+
+[node name="Tent2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.43779972, 0, 0.24151894, 0, 0.5, 0, -0.24151894, 0, 0.43779972, 207.76566, -55.902115, -268.96808)
+material_override = ExtResource("4_2e2xq")
+material_overlay = ExtResource("3_7w5hr")
+use_collision = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent2"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 69.430046, 0)
+size = Vector3(100, 100, 100)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent2"]
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent2/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 0, -0.99999994, 0, 0.99999994, 0, 0.010253906, 33.177353, -13.606873)
+size = Vector3(120.302734, 196.23016, 71.74414)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent2/CSGCombiner3D2/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.70710343, 0.70710343, 0, -0.70710343, 0.70710343, 1.9556885, 13.606873, -27.40664)
+size = Vector3(103.931885, 100, 100)
+
+[node name="Tent3" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.10129964, 0, -0.4896309, 0, 0.5, 0, 0.4896309, 0, 0.10129964, -18.084206, -55.9021, -214.65488)
+material_override = ExtResource("4_2e2xq")
+material_overlay = ExtResource("3_7w5hr")
+use_collision = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent3"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent3/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 69.430046, 0)
+size = Vector3(100, 100, 100)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent3"]
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent3/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 0, -0.99999994, 0, 0.99999994, 0, 0.010253906, 33.177353, -13.606873)
+size = Vector3(120.302734, 196.23016, 71.74414)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent3/CSGCombiner3D2/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.70710343, 0.70710343, 0, -0.70710343, 0.70710343, 1.9556885, 13.606873, -27.40664)
+size = Vector3(103.931885, 100, 100)
+
+[node name="Tent4" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.48134828, 0, -0.13529181, 0, 0.5, 0, 0.13529181, 0, 0.48134828, -69.35459, -55.9021, -168.08539)
+material_override = ExtResource("4_2e2xq")
+material_overlay = ExtResource("3_7w5hr")
+use_collision = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent4"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent4/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 69.430046, 0)
+size = Vector3(100, 100, 100)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent4"]
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent4/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 0, -0.99999994, 0, 0.99999994, 0, 0.010253906, 33.177353, -13.606873)
+size = Vector3(120.302734, 196.23016, 71.74414)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent4/CSGCombiner3D2/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.70710343, 0.70710343, 0, -0.70710343, 0.70710343, 1.9556885, 13.606873, -27.40664)
+size = Vector3(103.931885, 100, 100)
+
+[node name="Tent5" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.38366652, 0, -0.32062435, 0, 0.5, 0, 0.32062435, 0, 0.38366652, 204.6711, -55.9021, -88.35744)
+material_override = ExtResource("4_2e2xq")
+material_overlay = ExtResource("3_7w5hr")
+use_collision = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent5"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent5/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 69.430046, 0)
+size = Vector3(100, 100, 100)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent5"]
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent5/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 0, -0.99999994, 0, 0.99999994, 0, 0.010253906, 33.177353, -13.606873)
+size = Vector3(120.302734, 196.23016, 71.74414)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent5/CSGCombiner3D2/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.70710343, 0.70710343, 0, -0.70710343, 0.70710343, 1.9556885, 13.606873, -27.40664)
+size = Vector3(103.931885, 100, 100)
+
+[node name="Tent6" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.20590031, 0, 0.45563704, 0, 0.5, 0, -0.45563704, 0, -0.20590031, 212.5177, -55.902084, -754.64856)
+material_override = ExtResource("4_2e2xq")
+material_overlay = ExtResource("3_7w5hr")
+use_collision = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent6"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent6/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 69.430046, 0)
+size = Vector3(100, 100, 100)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent6"]
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent6/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 0, -0.99999994, 0, 0.99999994, 0, 0.010253906, 33.177353, -13.606873)
+size = Vector3(120.302734, 196.23016, 71.74414)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent6/CSGCombiner3D2/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.70710343, 0.70710343, 0, -0.70710343, 0.70710343, 1.9556885, 13.606873, -27.40664)
+size = Vector3(103.931885, 100, 100)
+
+[node name="Tent7" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.028886631, 0, 0.49916482, 0, 0.5, 0, -0.49916482, 0, 0.028886631, 277.04108, -55.902084, -765.9252)
+material_override = ExtResource("4_2e2xq")
+material_overlay = ExtResource("3_7w5hr")
+use_collision = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent7"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent7/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 69.430046, 0)
+size = Vector3(100, 100, 100)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent7"]
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent7/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 0, -0.99999994, 0, 0.99999994, 0, 0.010253906, 33.177353, -13.606873)
+size = Vector3(120.302734, 196.23016, 71.74414)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent7/CSGCombiner3D2/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.70710343, 0.70710343, 0, -0.70710343, 0.70710343, 1.9556885, 13.606873, -27.40664)
+size = Vector3(103.931885, 100, 100)
+
+[node name="Tent9" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.41199383, 0, -0.28330386, 0, 0.5, 0, 0.28330386, 0, 0.41199383, 409.23773, -55.902084, -717.26337)
+material_override = ExtResource("4_2e2xq")
+material_overlay = ExtResource("3_7w5hr")
+use_collision = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent9"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent9/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 69.430046, 0)
+size = Vector3(100, 100, 100)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent9"]
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent9/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 0, -0.99999994, 0, 0.99999994, 0, 0.010253906, 33.177353, -13.606873)
+size = Vector3(120.302734, 196.23016, 71.74414)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent9/CSGCombiner3D2/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.70710343, 0.70710343, 0, -0.70710343, 0.70710343, 1.9556885, 13.606873, -27.40664)
+size = Vector3(103.931885, 100, 100)
+
+[node name="Tent10" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.47777575, 0, 0.14741205, 0, 0.5, 0, -0.14741205, 0, 0.47777575, 418.15314, -55.902084, -784.3525)
+material_override = ExtResource("4_2e2xq")
+material_overlay = ExtResource("3_7w5hr")
+use_collision = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent10"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent10/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 69.430046, 0)
+size = Vector3(100, 100, 100)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent10"]
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent10/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 0, -0.99999994, 0, 0.99999994, 0, 0.010253906, 33.177353, -13.606873)
+size = Vector3(120.302734, 196.23016, 71.74414)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent10/CSGCombiner3D2/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.70710343, 0.70710343, 0, -0.70710343, 0.70710343, 1.9556885, 13.606873, -27.40664)
+size = Vector3(103.931885, 100, 100)
+
+[node name="Tent11" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.4178749, 0, -0.27455524, 0, 0.5, 0, 0.27455524, 0, 0.4178749, -442.87857, -55.9021, -676.1108)
+material_override = ExtResource("4_2e2xq")
+material_overlay = ExtResource("3_7w5hr")
+use_collision = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent11"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent11/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 69.430046, 0)
+size = Vector3(100, 100, 100)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent11"]
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent11/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 0, -0.99999994, 0, 0.99999994, 0, 0.010253906, 33.177353, -13.606873)
+size = Vector3(120.302734, 196.23016, 71.74414)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent11/CSGCombiner3D2/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.70710343, 0.70710343, 0, -0.70710343, 0.70710343, 1.9556885, 13.606873, -27.40664)
+size = Vector3(103.931885, 100, 100)
+
+[node name="Tent12" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.38981664, 0, 0.31311822, 0, 0.5, 0, -0.31311822, 0, 0.38981664, -332.40356, -55.902115, -365.3375)
+material_override = ExtResource("4_2e2xq")
+material_overlay = ExtResource("3_7w5hr")
+use_collision = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent12"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent12/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 69.430046, 0)
+size = Vector3(100, 100, 100)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent12"]
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent12/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 0, -0.99999994, 0, 0.99999994, 0, 0.010253906, 33.177353, -13.606873)
+size = Vector3(120.302734, 196.23016, 71.74414)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent12/CSGCombiner3D2/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.70710343, 0.70710343, 0, -0.70710343, 0.70710343, 1.9556885, 13.606873, -27.40664)
+size = Vector3(103.931885, 100, 100)
+
+[node name="Ziggurat" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.6130449, 0, -0.79004806, 0, 1, 0, 0.79004806, 0, 0.6130449, 27.937744, 0, 215.86037)
+
+[node name="Pyramid" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -36.42963, -358.8343)
+size = Vector3(500, 85.046, 500)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -33.285614, -358.8343)
+size = Vector3(480, 91.33403, 480)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(400, 105, 400)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(385, 120, 385)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(370, 135, 370)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(355, 150, 355)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(340, 165, 340)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(325, 180, 325)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(310, 195, 310)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(295, 210, 295)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(280, 225, 280)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(265, 240, 265)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(250, 255, 250)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(235, 270, 235)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(220, 285, 220)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(205, 300, 205)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(190, 315, 190)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(175, 330, 175)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(155, 345, 155)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(130, 360, 130)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(70, 400, 70)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(60, 410, 60)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Pyramid"]
+transform = Transform3D(-0.0112299025, -0.99983, 0.014635265, 0.7933533, -3.8465107e-08, 0.6087614, -0.6086579, 0.01844722, 0.7932184, -709.8033, 8.231599, -558.67316)
+radius = 4.2226563
+height = 27.037598
+sides = 18
+
+[node name="Ramps" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat"]
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Ramps"]
+transform = Transform3D(0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0, 1, -502.34738, 78.06562, -358.33047)
+size = Vector3(269.09283, 50, 20)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Ramps"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -653.3217, 160.28072, -358.3305)
+size = Vector3(203.11282, 16.88916, 20)
+
+[node name="Internals" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat"]
+operation = 2
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -632.009, 36.268913, -390.21158)
+size = Vector3(110.04666, 62.548157, 83.76221)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -702.35046, 21.479359, -443.1378)
+size = Vector3(76.39167, 23.753487, 83.76221)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -657.95685, 20.966742, -334.49146)
+size = Vector3(110.04666, 46.627018, 83.76221)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -586.10767, 23.622194, -328.21332)
+size = Vector3(110.04666, 21.193245, 83.76221)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -588.58905, 38.48319, -289.10596)
+size = Vector3(144.65494, 20.683083, 138.60468)
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -572.5637, 33.964996, -312.119)
+size = Vector3(112.603836, 29.719471, 92.57878)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -633.18915, 42.28257, -242.1983)
+size = Vector3(144.65494, 28.281849, 81.902695)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -744.04236, 48.32797, -352.69556)
+size = Vector3(15.945654, 16.19105, 292.7724)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(-0.045833647, 0, -0.99894917, 0, 0.9999999, 0, 0.998949, 0, -0.045833826, -660.14557, 48.32797, -471.4844)
+size = Vector3(53.379192, 16.19105, 202.25371)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(-0.045833647, 0, -0.99894917, 0, 0.9999999, 0, 0.998949, 0, -0.045833826, -584.7409, 48.32797, -434.5237)
+size = Vector3(53.379192, 16.19105, 53.214333)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -702.66315, 10.5276375, -306.77893)
+size = Vector3(158.87341, 40.807648, 96.4476)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -681.35077, -2.0085776, -240.57912)
+size = Vector3(45.343857, 21.328432, 125.26286)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -707.1501, 51.74594, -253.97687)
+size = Vector3(96.94244, 21.328432, 98.46737)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999471, -0.010279807, 0, 0.010279807, 0.9999472, -680.1733, -8.832407, -186.75449)
+size = Vector3(6.9964333, 9.006105, 157.70358)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.71277297, -0.007210199, -0.7013574, -3.647791e-10, 0.999947, -0.010279805, 0.7013943, 0.0073271682, 0.7127354, -886.82056, -8.832407, -241.37355)
+size = Vector3(8.717943, 9.006105, 157.70358)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(-0.9839128, 0.001836462, 0.17863822, -1.4002777e-09, 0.99994713, -0.010279807, -0.1786476, -0.010114435, -0.9838611, -722.3628, -9.120833, -576.5265)
+size = Vector3(8.717943, 9.006105, 101.58763)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -834.8723, -7.746785, -349.1015)
+size = Vector3(20.390285, 9.751743, 125.26286)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.77322066, 0, -0.6341369, 0, 0.9999999, 0, 0.6341369, 0, 0.7732208, -814.2214, -7.6745596, -432.95074)
+size = Vector3(20.390285, 9.894505, 72.29159)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.78676265, 3.0116087e-10, -0.6172555, 0.006248317, 0.99994886, 0.007964193, 0.61722386, -0.010122735, 0.7867225, -783.92957, -7.7730746, -451.9843)
+size = Vector3(20.390285, 10.091546, 72.29159)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(0.7729747, 0.018481206, -0.6341673, -0.019779084, 0.99979156, 0.005028037, 0.6341282, 0.008656701, 0.77317965, -752.17834, -4.939849, -507.8065)
+size = Vector3(22.243996, 16.069374, 94.0353)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+transform = Transform3D(-0.99965584, -0.00026963372, -0.026227891, -1.4592623e-09, 0.99994713, -0.010279808, 0.026229292, -0.010276269, -0.99960303, -708.1884, 17.432732, -508.33713)
+size = Vector3(18.387, 9.03, 101.68611)
+
+[node name="InternalAdders" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals"]
+operation = 2
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals/InternalAdders"]
+transform = Transform3D(0.7925343, -0.03434822, -0.60885906, -0.012659934, 0.9972706, -0.07273921, 0.6096959, 0.06535644, 0.78993696, -772.20764, -15.915458, -466.39)
+size = Vector3(21.384974, 3.322258, 35.14443)
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals/InternalAdders"]
+transform = Transform3D(0.9664675, -0.2554667, -0.026019692, 0.25546667, 0.94627726, 0.19823168, -0.026019722, -0.19823171, 0.9798098, -547.4825, 26.200233, -273.09555)
+size = Vector3(109.3799, 6.1511116, 204.9644)
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat/Internals/InternalAdders"]
+transform = Transform3D(0.022115558, 0.14664169, -0.9889423, 0.17788792, 0.9728223, 0.14822955, 0.98380196, -0.1791991, -0.004571378, -662.6863, 30.34853, -221.10587)
+size = Vector3(65.96118, 14.386591, 229.1619)
+
+[node name="Ziggurat2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.94872725, 0, -0.31609622, 0, 1, 0, 0.31609622, 0, 0.94872725, -159.19263, -83.98767, 67.91748)
+
+[node name="Pyramid" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -36.42963, -358.8343)
+size = Vector3(500, 85.046, 500)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -33.285614, -358.8343)
+size = Vector3(480, 91.33403, 480)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(400, 105, 400)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(385, 120, 385)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(370, 135, 370)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(355, 150, 355)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(340, 165, 340)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(325, 180, 325)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(310, 195, 310)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(295, 210, 295)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(280, 225, 280)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(265, 240, 265)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(250, 255, 250)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(235, 270, 235)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(220, 285, 220)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(205, 300, 205)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(190, 315, 190)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(175, 330, 175)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(155, 345, 155)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(130, 360, 130)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(70, 400, 70)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(60, 410, 60)
+
+[node name="Ramps" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2"]
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Ramps"]
+transform = Transform3D(0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0, 1, -502.34738, 78.06562, -358.33047)
+size = Vector3(269.09283, 50, 20)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Ramps"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -653.3217, 160.28072, -358.3305)
+size = Vector3(203.11282, 16.88916, 20)
+
+[node name="Ziggurat3" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.87664264, 0, -0.4811419, 0, 1, 0, 0.4811419, 0, 0.87664264, 117.74515, -165.71362, 462.95645)
+
+[node name="Pyramid" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat3"]
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat3/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(130, 360, 130)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat3/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(70, 400, 70)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat3/Pyramid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
+size = Vector3(60, 410, 60)
+
+[node name="Ramps" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat3"]
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat3/Ramps"]
+transform = Transform3D(0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0, 1, -502.34738, 78.06562, -358.33047)
+size = Vector3(269.09283, 50, 20)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat3/Ramps"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -653.3217, 160.28072, -358.3305)
+size = Vector3(203.11282, 16.88916, 20)
+
+[node name="UI" parent="." instance=ExtResource("7_2jl2a")]
+record_name = "LEVEL TWO"

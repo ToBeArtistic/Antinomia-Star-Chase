@@ -1,3 +1,10 @@
+CSGCylinder3D
+CSGSphere3D
+CSGCombiner3D
+OmniLight3D
+SceneSwapper
+CSGBox3D
+CSGPolygon3D
 VBoxContainer
 HSlider
 MarginContainer
@@ -5,10 +12,4 @@ Label
 Control
 HBoxContainer
 CheckBox
-SceneSwapper
 ColorRect
-TextureRect
-PanelContainer
-Panel
-Container
-Button

@@ -135,6 +135,11 @@ text = "TWO
 "
 horizontal_alignment = 1
 
+[node name="SceneSwapper" type="Node" parent="Level 2"]
+script = ExtResource("1_8kpce")
+scene_file = "uid://ckptli8jb6e1n"
+metadata/_custom_type_script = "uid://clpkfg2nca1mf"
+
 [node name="Level 3" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8

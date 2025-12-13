@@ -19,7 +19,8 @@ func _ready() -> void:
 	if not _waypoints.is_empty():
 		_active_waypoint = _waypoints[0]
 		_active_waypoint.active = true
-	print_debug("active waypoint: " + _active_waypoint.name)
+	if _active_waypoint:
+		print_debug("active waypoint: " + _active_waypoint.name)
 	
 	Signals.waypoint_manager_changed.emit(self)
 
@@ -51,6 +52,8 @@ func is_waypoint_behind() -> bool:
 	return camera.is_position_behind(_active_waypoint.global_position)
 
 func has_active_waypoint() -> bool:
+	if not _active_waypoint:
+		return false
 	return _active_waypoint.active
 
 func _play_pickup_sound() -> void:

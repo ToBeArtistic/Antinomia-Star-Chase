@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dkvprr5875ops"]
+
+[ext_resource type="Texture2D" uid="uid://bqhjj2lhi2aro" path="res://assets/textures/seamless_grime_white.png" id="1_5ih3c"]
+
+[resource]
+albedo_color = Color(0.87221706, 0.89406365, 1, 1)
+albedo_texture = ExtResource("1_5ih3c")
