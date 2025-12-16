@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqjkndwjh0ovb"]
+[gd_scene load_steps=10 format=3 uid="uid://cqjkndwjh0ovb"]
 
 [ext_resource type="PackedScene" uid="uid://bkybgcu7e85gl" path="res://launch/options_menu/keybind_button.tscn" id="1_6pcvm"]
 [ext_resource type="Script" uid="uid://bvq4mcb15rftm" path="res://launch/options_menu/keybinds.gd" id="1_f02ta"]
 [ext_resource type="Script" uid="uid://bi3rbqk253yns" path="res://launch/options_menu/game.gd" id="1_klw63"]
 [ext_resource type="PackedScene" uid="uid://bv88uvw34cwi8" path="res://launch/options_menu/setting_slider.tscn" id="1_oulcd"]
+[ext_resource type="Script" uid="uid://cj4ou62flh3tu" path="res://launch/options_menu/tab_container.gd" id="1_r2tia"]
 [ext_resource type="Script" uid="uid://bym4imwqxha8r" path="res://launch/options_menu/display_full_screen.gd" id="5_klw63"]
 [ext_resource type="PackedScene" uid="uid://cfe4m46mokgju" path="res://common/gui-utils/back_button.tscn" id="5_oulcd"]
 [ext_resource type="Script" uid="uid://drgneh8afm3qd" path="res://launch/options_menu/audio.gd" id="6_q3lx8"]
+[ext_resource type="Script" uid="uid://bll6nv22ptsix" path="res://common/music_on_ready_requester.gd" id="8_gwb3c"]
 
 [node name="Options" type="Control"]
 process_mode = 3
@@ -30,6 +32,7 @@ theme_override_constants/side_margin = 6
 theme_override_constants/tab_separation = 17
 tab_alignment = 1
 current_tab = 0
+script = ExtResource("1_r2tia")
 
 [node name="Game" type="Control" parent="TabContainer" node_paths=PackedStringArray("container")]
 layout_mode = 2
@@ -151,7 +154,11 @@ layout_mode = 2
 
 [node name="Back" parent="." instance=ExtResource("5_oulcd")]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 121.0
 offset_bottom = 38.0
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="MusicOnReadyRequester" type="Node" parent="."]
+script = ExtResource("8_gwb3c")
+metadata/_custom_type_script = "uid://bll6nv22ptsix"

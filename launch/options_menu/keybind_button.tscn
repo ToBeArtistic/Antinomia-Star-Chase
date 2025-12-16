@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkybgcu7e85gl"]
+[gd_scene load_steps=3 format=3 uid="uid://bkybgcu7e85gl"]
 
 [ext_resource type="Script" uid="uid://c275pbtdpba2n" path="res://launch/options_menu/keybind_button.gd" id="1_1kacx"]
+[ext_resource type="Script" uid="uid://cr0n23xf5b08n" path="res://common/gui-utils/button_sound_handler.gd" id="2_70ior"]
 
 [node name="KeybindButton" type="Button"]
 custom_minimum_size = Vector2(0, 40)
@@ -35,3 +36,7 @@ size_flags_horizontal = 3
 mouse_filter = 1
 text = "A"
 horizontal_alignment = 1
+
+[node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="."]
+script = ExtResource("2_70ior")
+metadata/_custom_type_script = "uid://cr0n23xf5b08n"

@@ -12,15 +12,17 @@
 [node name="player" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER")]
 collision_layer = 3
 collision_mask = 0
-safe_margin = 0.002
+floor_stop_on_slope = false
+floor_snap_length = 3.0
+safe_margin = 0.003
 script = ExtResource("1_i15vv")
 CAMERA_CONTROLLER = NodePath("camera_player")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("CapsuleShape3D_245is")
 
 [node name="camera_player" parent="." instance=ExtResource("2_oyiqq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="run_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_f6svf")

@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://dep27de17ki3r"]
+
+[ext_resource type="Texture2D" uid="uid://dqhv460goinos" path="res://assets/sprites/1024-evil-eye.png" id="1_nj0hb"]
+[ext_resource type="Script" uid="uid://df6nhae6ahco8" path="res://content/levels/level_4/evil_eye.gd" id="2_uuguu"]
+[ext_resource type="Script" uid="uid://s6qgl7mh8c2u" path="res://content/mechanics/sprite_3d_bill_board_to_player.gd" id="3_fm0yp"]
+[ext_resource type="Script" uid="uid://bx87ualvcvld" path="res://content/mechanics/hazard_area.gd" id="4_uuguu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nj0hb"]
+transparency = 1
+albedo_color = Color(0.52156866, 0, 0.09411765, 0.003921569)
+emission_enabled = true
+emission_energy_multiplier = 13.51
+
+[sub_resource type="SphereMesh" id="SphereMesh_uuguu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fm0yp"]
+radius = 4.848145
+
+[node name="EvilEye" type="Sprite3D"]
+modulate = Color(0.27752757, 0.27752775, 0.27752772, 1)
+texture = ExtResource("1_nj0hb")
+script = ExtResource("2_uuguu")
+
+[node name="Sprite3DBillBoardToPlayer" type="Node" parent="."]
+script = ExtResource("3_fm0yp")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("4_uuguu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_nj0hb")
+mesh = SubResource("SphereMesh_uuguu")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_fm0yp")

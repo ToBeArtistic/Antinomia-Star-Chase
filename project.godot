@@ -11,15 +11,18 @@ config_version=5
 [application]
 
 config/name="Antinomia-Star-Chase"
+config/version="0.5"
 run/main_scene="uid://b2kki88a5412x"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/show_image=false
+config/icon="uid://dtme18dfpvgpm"
 
 [autoload]
 
 Signals="*res://common/autoload/signals.gd"
 Config="*res://common/autoload/config.gd"
 Context="*res://launch/context/context.gd"
+AudioGlobal="*res://common/autoload/audio.gd"
 
 [debug]
 
@@ -89,6 +92,10 @@ pause={
 
 3d_physics/layer_1="Geometry"
 3d_physics/layer_2="Triggers"
+
+[physics]
+
+common/physics_interpolation=true
 
 [rendering]
 

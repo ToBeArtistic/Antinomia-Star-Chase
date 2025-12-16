@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cnw1mp8wm61d8"]
+[gd_scene load_steps=16 format=3 uid="uid://cnw1mp8wm61d8"]
 
 [ext_resource type="PackedScene" uid="uid://cqy3aqhl2lfin" path="res://common/player/player.tscn" id="1_upjnr"]
 [ext_resource type="Texture2D" uid="uid://bqhjj2lhi2aro" path="res://assets/textures/seamless_grime_white.png" id="2_epuq2"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b63sl0wkb023f" path="res://content/mechanics/waypoints/waypoint.tscn" id="5_66bej"]
 [ext_resource type="AudioStream" uid="uid://cb4ehryvlruvp" path="res://assets/audio/effects/pickup_glass_reverb.wav" id="5_xifa1"]
 [ext_resource type="PackedScene" uid="uid://bkrroji64u325" path="res://content/levels/level_ui.tscn" id="7_epuq2"]
+[ext_resource type="Script" uid="uid://bll6nv22ptsix" path="res://common/music_on_ready_requester.gd" id="9_tmc8m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ir7bu"]
 albedo_color = Color(0.6319981, 0, 0.01530914, 1)
@@ -31,6 +32,11 @@ sky = SubResource("Sky_upjnr")
 [sub_resource type="Compositor" id="Compositor_jy6mt"]
 
 [node name="Level1" type="Node3D"]
+
+[node name="MusicOnReadyRequester" type="Node" parent="."]
+script = ExtResource("9_tmc8m")
+theme_name = "level_1"
+metadata/_custom_type_script = "uid://bll6nv22ptsix"
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 texture_filter = 1

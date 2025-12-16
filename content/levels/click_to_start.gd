@@ -3,6 +3,7 @@ extends Button
 var has_paused_tree : bool = false
 
 func _ready() -> void:
+	AudioGlobal.stop_sfx()
 	pressed.connect(_remove_self)
 
 func _input(event: InputEvent) -> void:

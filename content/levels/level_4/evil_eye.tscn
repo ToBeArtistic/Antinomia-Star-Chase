@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlale11peg2cl"]
+
+[ext_resource type="Texture2D" uid="uid://dqhv460goinos" path="res://assets/sprites/1024-evil-eye.png" id="1_5k1n6"]
+[ext_resource type="Script" uid="uid://s6qgl7mh8c2u" path="res://content/mechanics/sprite_3d_bill_board_to_player.gd" id="2_2gmxf"]
+[ext_resource type="Script" uid="uid://df6nhae6ahco8" path="res://content/levels/level_4/evil_eye.gd" id="2_lej33"]
+
+[node name="EvilEye" type="Sprite3D"]
+modulate = Color(0.13319641, 0.13319641, 0.13319638, 1)
+texture = ExtResource("1_5k1n6")
+script = ExtResource("2_lej33")
+
+[node name="Sprite3DBillBoardToPlayer" type="Node" parent="."]
+script = ExtResource("2_2gmxf")

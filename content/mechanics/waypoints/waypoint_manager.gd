@@ -58,3 +58,6 @@ func has_active_waypoint() -> bool:
 
 func _play_pickup_sound() -> void:
 	pickup_sound.play()
+
+func end() -> void:
+	_active_waypoint.active = false

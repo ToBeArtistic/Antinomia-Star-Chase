@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://thswh6p5l4sj"]
+
+[node name="SimpleHouse" type="CSGCombiner3D"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -75.74658, 0)
+radius = 19.560547
+height = 190.29004
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.593964, 0)
+inner_radius = 24.932154
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.961082, 0)
+radius = 7.2654424

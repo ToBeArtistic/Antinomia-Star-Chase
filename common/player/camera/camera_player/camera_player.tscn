@@ -22,6 +22,7 @@ shader = ExtResource("3_lucf3")
 
 [node name="camera_player" type="Camera3D"]
 fov = 85.0
+far = 6000.0
 script = ExtResource("1_pex7r")
 
 [node name="post_processing_mesh" type="MeshInstance3D" parent="."]

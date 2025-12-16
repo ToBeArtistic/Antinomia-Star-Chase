@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bynobdwhxchbj"]
+[gd_scene load_steps=8 format=3 uid="uid://bynobdwhxchbj"]
 
 [ext_resource type="Script" uid="uid://ca8yrwrpn33qk" path="res://content/story/records/records.gd" id="1_aexog"]
 [ext_resource type="PackedScene" uid="uid://cfe4m46mokgju" path="res://common/gui-utils/back_button.tscn" id="2_awssc"]
 [ext_resource type="PackedScene" uid="uid://dwhj0o7tgea8a" path="res://content/story/records/record.tscn" id="3_fl8cg"]
+[ext_resource type="Script" uid="uid://bll6nv22ptsix" path="res://common/music_on_ready_requester.gd" id="4_726ui"]
+[ext_resource type="Script" uid="uid://cxfh75mm1wpj7" path="res://content/story/records/reset_records.gd" id="5_xpqcj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fl8cg"]
 
@@ -27,19 +29,39 @@ offset_bottom = 38.0
 [node name="RecordContainer" type="VBoxContainer" parent="."]
 z_index = -1
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 19.0
-offset_top = -479.0
-offset_right = 560.0
-offset_bottom = 484.5
-grow_vertical = 2
+offset_left = 16.0
+offset_top = 67.0
+offset_right = 541.0
+offset_bottom = 963.5
 
-[node name="Record" parent="RecordContainer" instance=ExtResource("3_fl8cg")]
+[node name="Record1" parent="RecordContainer" instance=ExtResource("3_fl8cg")]
 layout_mode = 2
 
 [node name="Record2" parent="RecordContainer" instance=ExtResource("3_fl8cg")]
+layout_mode = 2
+
+[node name="Record3" parent="RecordContainer" instance=ExtResource("3_fl8cg")]
+layout_mode = 2
+
+[node name="Record4" parent="RecordContainer" instance=ExtResource("3_fl8cg")]
+layout_mode = 2
+
+[node name="Record5" parent="RecordContainer" instance=ExtResource("3_fl8cg")]
+layout_mode = 2
+
+[node name="Record6" parent="RecordContainer" instance=ExtResource("3_fl8cg")]
+layout_mode = 2
+
+[node name="Record7" parent="RecordContainer" instance=ExtResource("3_fl8cg")]
+layout_mode = 2
+
+[node name="Record8" parent="RecordContainer" instance=ExtResource("3_fl8cg")]
+layout_mode = 2
+
+[node name="Record9" parent="RecordContainer" instance=ExtResource("3_fl8cg")]
+layout_mode = 2
+
+[node name="Record10" parent="RecordContainer" instance=ExtResource("3_fl8cg")]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="."]
@@ -58,3 +80,22 @@ text = "The Collector's robes hide items of unknowable nature. Appearances defy 
 
 If encountered, remember that being unremarkable is of the greatest importance - value is disregarded, the coal will be picked from the pile of diamonds. DO NOT stand out."
 autowrap_mode = 2
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="MusicOnReadyRequester" type="Node" parent="."]
+script = ExtResource("4_726ui")
+metadata/_custom_type_script = "uid://bll6nv22ptsix"
+
+[node name="ResetRecords" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -69.0
+offset_right = 454.0
+offset_bottom = -15.0
+grow_vertical = 0
+text = "Reset Records"
+script = ExtResource("5_xpqcj")

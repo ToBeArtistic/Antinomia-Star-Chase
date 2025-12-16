@@ -1,12 +1,16 @@
 extends Node
 
 var data : Dictionary[String, Variant] = {
-	"secret" : {
-		"1337" : "magic"
-	}
+
 }
+
+var theme_offsets : Dictionary[String, float] = {}
 
 func _ready() -> void:
 	print_debug(data)
 
+
+func reset_theme_offsets() -> void:
+	theme_offsets = {}
+	
 

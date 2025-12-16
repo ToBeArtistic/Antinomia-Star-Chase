@@ -39,7 +39,7 @@ func _ready() -> void:
 	
 	for _name in record_names:
 		if not _config.has_section_key("records", _name):
-			_reset_records()
+			reset_records()
 	_initialize_settings_in_game()
 
 func _initialize_settings_in_game() -> void:
@@ -146,10 +146,10 @@ func _reset_config_file() -> void:
 		_config.set_value("audio", "music", 75)
 		_config.set_value("audio", "sound_effects", 75)
 
-		_reset_records()
+		reset_records()
 
 		_config.save(CONFIG_FILE_PATH)
 
-func _reset_records() -> void:
+func reset_records() -> void:
 	for _name in record_names:
 		_config.set_value("records", _name, -1.0)

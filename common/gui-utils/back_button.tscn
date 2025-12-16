@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfe4m46mokgju"]
+[gd_scene load_steps=5 format=3 uid="uid://cfe4m46mokgju"]
 
 [ext_resource type="FontFile" uid="uid://b8lw831v2twn8" path="res://assets/fonts/antinomia-bold.otf" id="1_ag048"]
 [ext_resource type="Script" uid="uid://clpkfg2nca1mf" path="res://common/gui-utils/swap_scene.gd" id="1_uey2s"]
 [ext_resource type="Script" uid="uid://v7rhe7u2kqss" path="res://launch/options_menu/escape_listener.gd" id="2_ag048"]
+[ext_resource type="Script" uid="uid://cr0n23xf5b08n" path="res://common/gui-utils/button_sound_handler.gd" id="4_cki7g"]
 
 [node name="BackButtonContainer" type="MarginContainer"]
 offset_right = 106.0
@@ -28,3 +29,7 @@ metadata/_custom_type_script = "uid://clpkfg2nca1mf"
 
 [node name="UICancelListener" type="Node" parent="Back"]
 script = ExtResource("2_ag048")
+
+[node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Back"]
+script = ExtResource("4_cki7g")
+metadata/_custom_type_script = "uid://cr0n23xf5b08n"

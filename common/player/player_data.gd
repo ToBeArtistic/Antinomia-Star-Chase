@@ -2,6 +2,8 @@ extends Node
 
 class_name PlayerData
 
+var position : Vector3 = Vector3.ZERO
+
 var health : float = 100
 var max_health : float = 100
 

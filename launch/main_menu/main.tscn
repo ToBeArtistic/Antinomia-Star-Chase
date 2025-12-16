@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://kp27o3ab5qnc"]
+[gd_scene load_steps=21 format=3 uid="uid://kp27o3ab5qnc"]
 
 [ext_resource type="Script" uid="uid://clpkfg2nca1mf" path="res://common/gui-utils/swap_scene.gd" id="1_8kpce"]
 [ext_resource type="Texture2D" uid="uid://1npw0cd0a5dh" path="res://assets/icons/gear.png" id="1_cggwd"]
@@ -7,6 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://d3dckog777vp5" path="res://assets/icons/exit.png" id="4_wxjou"]
 [ext_resource type="Texture2D" uid="uid://dgdh5neqcek6m" path="res://assets/art/the_collector.png" id="6_xuqhd"]
 [ext_resource type="FontFile" uid="uid://b8lw831v2twn8" path="res://assets/fonts/antinomia-bold.otf" id="7_3ent3"]
+[ext_resource type="Texture2D" uid="uid://plttlqjkdota" path="res://assets/icons/level_icons/data_stream.png" id="7_unnij"]
+[ext_resource type="Texture2D" uid="uid://dvmbmgwxk0pou" path="res://assets/icons/level_icons/ziggurat.png" id="8_unnij"]
+[ext_resource type="Script" uid="uid://cr0n23xf5b08n" path="res://common/gui-utils/button_sound_handler.gd" id="8_yenej"]
+[ext_resource type="Texture2D" uid="uid://pnib3adu6sf1" path="res://assets/icons/level_icons/planar_palace.png" id="10_lmvyu"]
+[ext_resource type="Script" uid="uid://bll6nv22ptsix" path="res://common/music_on_ready_requester.gd" id="10_tgq3n"]
+[ext_resource type="Texture2D" uid="uid://dqhv460goinos" path="res://assets/sprites/1024-evil-eye.png" id="11_3fxfu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xuqhd"]
 
@@ -63,6 +69,10 @@ script = ExtResource("1_8kpce")
 scene_file = "uid://cqjkndwjh0ovb"
 metadata/_custom_type_script = "uid://clpkfg2nca1mf"
 
+[node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="VBoxContainer/Settings"]
+script = ExtResource("8_yenej")
+metadata/_custom_type_script = "uid://cr0n23xf5b08n"
+
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Exit"
@@ -104,6 +114,20 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
 text = "ONE"
 horizontal_alignment = 1
 
+[node name="LevelIcon" type="TextureRect" parent="Level 1"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_unnij")
+expand_mode = 2
+
+[node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Level 1"]
+script = ExtResource("8_yenej")
+
 [node name="Level 2" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -140,6 +164,21 @@ script = ExtResource("1_8kpce")
 scene_file = "uid://ckptli8jb6e1n"
 metadata/_custom_type_script = "uid://clpkfg2nca1mf"
 
+[node name="LevelIcon2" type="TextureRect" parent="Level 2"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_unnij")
+expand_mode = 2
+
+[node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Level 2"]
+script = ExtResource("8_yenej")
+metadata/_custom_type_script = "uid://cr0n23xf5b08n"
+
 [node name="Level 3" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -167,6 +206,26 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_xuqhd")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
 text = "THREE"
 horizontal_alignment = 1
+
+[node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Level 3"]
+script = ExtResource("8_yenej")
+metadata/_custom_type_script = "uid://cr0n23xf5b08n"
+
+[node name="SceneSwapper" type="Node" parent="Level 3"]
+script = ExtResource("1_8kpce")
+scene_file = "uid://b0muolfdf3fw7"
+metadata/_custom_type_script = "uid://clpkfg2nca1mf"
+
+[node name="LevelIcon3" type="TextureRect" parent="Level 3"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_lmvyu")
+expand_mode = 2
 
 [node name="Level 4" type="Button" parent="."]
 layout_mode = 1
@@ -196,6 +255,26 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
 text = "FOUR"
 horizontal_alignment = 1
 
+[node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Level 4"]
+script = ExtResource("8_yenej")
+metadata/_custom_type_script = "uid://cr0n23xf5b08n"
+
+[node name="LevelIcon3" type="TextureRect" parent="Level 4"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_3fxfu")
+expand_mode = 2
+
+[node name="SceneSwapper" type="Node" parent="Level 4"]
+script = ExtResource("1_8kpce")
+scene_file = "uid://bfgo3jqp2qs8w"
+metadata/_custom_type_script = "uid://clpkfg2nca1mf"
+
 [node name="Level 5" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -223,6 +302,10 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_xuqhd")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
 text = "FIVE"
 horizontal_alignment = 1
+
+[node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Level 5"]
+script = ExtResource("8_yenej")
+metadata/_custom_type_script = "uid://cr0n23xf5b08n"
 
 [node name="Level 6" type="Button" parent="."]
 layout_mode = 1
@@ -252,6 +335,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
 text = "SIX"
 horizontal_alignment = 1
 
+[node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Level 6"]
+script = ExtResource("8_yenej")
+metadata/_custom_type_script = "uid://cr0n23xf5b08n"
+
 [node name="Level 7" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -279,6 +366,10 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_xuqhd")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
 text = "SEVEN"
 horizontal_alignment = 1
+
+[node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Level 7"]
+script = ExtResource("8_yenej")
+metadata/_custom_type_script = "uid://cr0n23xf5b08n"
 
 [node name="Level 8" type="Button" parent="."]
 layout_mode = 1
@@ -308,6 +399,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
 text = "EIGHT"
 horizontal_alignment = 1
 
+[node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Level 8"]
+script = ExtResource("8_yenej")
+metadata/_custom_type_script = "uid://cr0n23xf5b08n"
+
 [node name="Level 9" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -335,6 +430,10 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_xuqhd")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
 text = "NINE"
 horizontal_alignment = 1
+
+[node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Level 9"]
+script = ExtResource("8_yenej")
+metadata/_custom_type_script = "uid://cr0n23xf5b08n"
 
 [node name="Level 10" type="Button" parent="."]
 layout_mode = 1
@@ -366,7 +465,11 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_3ent3")
 text = "TEN"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Level 10"]
+script = ExtResource("8_yenej")
+metadata/_custom_type_script = "uid://cr0n23xf5b08n"
+
+[node name="Records" type="TextureRect" parent="."]
 z_index = -1
 layout_mode = 1
 anchors_preset = 3
@@ -383,7 +486,7 @@ texture = ExtResource("6_xuqhd")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="TextureRect"]
+[node name="Button" type="Button" parent="Records"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -396,6 +499,7 @@ offset_right = 132.0
 offset_bottom = 136.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0.65012825, 0.6501283, 0.6501282, 1)
 theme_override_fonts/font = ExtResource("7_3ent3")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxEmpty_unnij")
@@ -405,7 +509,35 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_lmvyu")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3fxfu")
 text = "RECORDS"
 
-[node name="SceneSwapper" type="Node" parent="TextureRect/Button"]
+[node name="SceneSwapper" type="Node" parent="Records/Button"]
 script = ExtResource("1_8kpce")
 scene_file = "uid://bynobdwhxchbj"
 metadata/_custom_type_script = "uid://clpkfg2nca1mf"
+
+[node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Records/Button"]
+script = ExtResource("8_yenej")
+metadata/_custom_type_script = "uid://cr0n23xf5b08n"
+
+[node name="RecordsColorBackground" type="ColorRect" parent="Records"]
+z_index = -2
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -639.2339
+offset_top = 246.63171
+offset_right = 444.72168
+offset_bottom = 730.90466
+grow_horizontal = 0
+grow_vertical = 0
+rotation = -0.7853982
+mouse_filter = 2
+color = Color(0.029506557, 0.029506557, 0.029506557, 1)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="MusicOnReadyRequester" type="Node" parent="."]
+script = ExtResource("10_tgq3n")
+metadata/_custom_type_script = "uid://bll6nv22ptsix"

@@ -107,14 +107,19 @@ func _physics_process(delta : float) -> void:
 
 	move_and_slide()
 
+
+	_update_player_data()
+	_play_sounds()
+
+func _update_player_data() -> void:
 	#update player data
+	data.position = camera.global_position
 	data.velocity = velocity.length()
 	data.has_jump = _act_as_if_grounded() and not _is_jumping
 	data.has_double_jump = _double_jump
 	data.dash_cooldown = _dash_cooldown
 	Signals.player_data_updated.emit(data)
 
-	_play_sounds()
 	
 func _handle_base_movement(delta : float) -> void:
 	#reset to base values

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cl6lqne0quc22"]
+
+[node name="WallTower" type="CSGCombiner3D"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+radius = 20.0
+height = 425.57715
+sides = 14
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 235.30443, 0)
+radius = 1.8994141
+height = 49.016693
+sides = 14
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 189.57094, 0)
+outer_radius = 56.005875
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 208.81142, 0)
+outer_radius = 33.688457
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 218.41296, 0)
+radius = 10.914061
