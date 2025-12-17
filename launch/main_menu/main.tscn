@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://kp27o3ab5qnc"]
+[gd_scene load_steps=33 format=3 uid="uid://kp27o3ab5qnc"]
 
 [ext_resource type="Script" uid="uid://clpkfg2nca1mf" path="res://common/gui-utils/swap_scene.gd" id="1_8kpce"]
 [ext_resource type="Texture2D" uid="uid://1npw0cd0a5dh" path="res://assets/icons/gear.png" id="1_cggwd"]
@@ -7,12 +7,20 @@
 [ext_resource type="Texture2D" uid="uid://d3dckog777vp5" path="res://assets/icons/exit.png" id="4_wxjou"]
 [ext_resource type="Texture2D" uid="uid://dgdh5neqcek6m" path="res://assets/art/the_collector.png" id="6_xuqhd"]
 [ext_resource type="FontFile" uid="uid://b8lw831v2twn8" path="res://assets/fonts/antinomia-bold.otf" id="7_3ent3"]
+[ext_resource type="Script" uid="uid://bkd05s36opul5" path="res://launch/main_menu/level_button.gd" id="7_dauqf"]
 [ext_resource type="Texture2D" uid="uid://plttlqjkdota" path="res://assets/icons/level_icons/data_stream.png" id="7_unnij"]
 [ext_resource type="Texture2D" uid="uid://dvmbmgwxk0pou" path="res://assets/icons/level_icons/ziggurat.png" id="8_unnij"]
 [ext_resource type="Script" uid="uid://cr0n23xf5b08n" path="res://common/gui-utils/button_sound_handler.gd" id="8_yenej"]
+[ext_resource type="PackedScene" uid="uid://ciaoriyla4r6t" path="res://content/levels/level_1/leveldata_1.tscn" id="10_0d67m"]
 [ext_resource type="Texture2D" uid="uid://pnib3adu6sf1" path="res://assets/icons/level_icons/planar_palace.png" id="10_lmvyu"]
 [ext_resource type="Script" uid="uid://bll6nv22ptsix" path="res://common/music_on_ready_requester.gd" id="10_tgq3n"]
 [ext_resource type="Texture2D" uid="uid://dqhv460goinos" path="res://assets/sprites/1024-evil-eye.png" id="11_3fxfu"]
+[ext_resource type="Texture2D" uid="uid://bw8jsmfloxye7" path="res://assets/icons/level_icons/inverted_forest.png" id="12_ip6av"]
+[ext_resource type="PackedScene" uid="uid://fvf4dv8ts0wc" path="res://content/levels/level_3/leveldata_3.tscn" id="14_q00ml"]
+[ext_resource type="PackedScene" uid="uid://qsfa551xapwd" path="res://content/levels/level_4/leveldata_4.tscn" id="16_bge31"]
+[ext_resource type="Script" uid="uid://bxiqepiky5b0" path="res://launch/main_menu/level_data_visualizer.gd" id="16_j6uxm"]
+[ext_resource type="PackedScene" uid="uid://dvwo5iyg5j1lb" path="res://content/levels/level_5/leveldata_5.tscn" id="18_4mrdp"]
+[ext_resource type="PackedScene" uid="uid://cnvd4iy8h7ms0" path="res://content/levels/level_2/leveldata_2.tscn" id="18_bbk7f"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xuqhd"]
 
@@ -27,6 +35,14 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lmvyu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3fxfu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dauqf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j6uxm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0d67m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bbk7f"]
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -93,6 +109,7 @@ offset_right = -549.0
 offset_bottom = -264.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("7_dauqf")
 
 [node name="SceneSwapper" type="Node" parent="Level 1"]
 script = ExtResource("1_8kpce")
@@ -128,6 +145,8 @@ expand_mode = 2
 [node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Level 1"]
 script = ExtResource("8_yenej")
 
+[node name="LevelData" parent="Level 1" instance=ExtResource("10_0d67m")]
+
 [node name="Level 2" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -143,6 +162,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "
 "
+script = ExtResource("7_dauqf")
 
 [node name="Label" type="Label" parent="Level 2"]
 layout_mode = 1
@@ -179,6 +199,8 @@ expand_mode = 2
 script = ExtResource("8_yenej")
 metadata/_custom_type_script = "uid://cr0n23xf5b08n"
 
+[node name="LevelData" parent="Level 2" instance=ExtResource("18_bbk7f")]
+
 [node name="Level 3" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -192,6 +214,7 @@ offset_right = -182.0
 offset_bottom = -198.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("7_dauqf")
 
 [node name="Label" type="Label" parent="Level 3"]
 layout_mode = 1
@@ -227,6 +250,8 @@ grow_vertical = 2
 texture = ExtResource("10_lmvyu")
 expand_mode = 2
 
+[node name="LevelData" parent="Level 3" instance=ExtResource("14_q00ml")]
+
 [node name="Level 4" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -240,6 +265,7 @@ offset_right = 64.0
 offset_bottom = -260.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("7_dauqf")
 
 [node name="Label" type="Label" parent="Level 4"]
 layout_mode = 1
@@ -259,7 +285,7 @@ horizontal_alignment = 1
 script = ExtResource("8_yenej")
 metadata/_custom_type_script = "uid://cr0n23xf5b08n"
 
-[node name="LevelIcon3" type="TextureRect" parent="Level 4"]
+[node name="LevelIcon4" type="TextureRect" parent="Level 4"]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -275,6 +301,8 @@ script = ExtResource("1_8kpce")
 scene_file = "uid://bfgo3jqp2qs8w"
 metadata/_custom_type_script = "uid://clpkfg2nca1mf"
 
+[node name="LevelData" parent="Level 4" instance=ExtResource("16_bge31")]
+
 [node name="Level 5" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -288,6 +316,7 @@ offset_right = 91.0
 offset_bottom = -89.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("7_dauqf")
 
 [node name="Label" type="Label" parent="Level 5"]
 layout_mode = 1
@@ -306,6 +335,24 @@ horizontal_alignment = 1
 [node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Level 5"]
 script = ExtResource("8_yenej")
 metadata/_custom_type_script = "uid://cr0n23xf5b08n"
+
+[node name="SceneSwapper" type="Node" parent="Level 5"]
+script = ExtResource("1_8kpce")
+scene_file = "uid://bct7pu765sma5"
+metadata/_custom_type_script = "uid://clpkfg2nca1mf"
+
+[node name="LevelIcon5" type="TextureRect" parent="Level 5"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_ip6av")
+expand_mode = 2
+
+[node name="LevelData" parent="Level 5" instance=ExtResource("18_4mrdp")]
 
 [node name="Level 6" type="Button" parent="."]
 layout_mode = 1
@@ -541,3 +588,34 @@ color = Color(0.029506557, 0.029506557, 0.029506557, 1)
 [node name="MusicOnReadyRequester" type="Node" parent="."]
 script = ExtResource("10_tgq3n")
 metadata/_custom_type_script = "uid://bll6nv22ptsix"
+
+[node name="LevelDataVisualizer" type="MarginContainer" parent="." groups=["level_data_visual"]]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = -610.0
+offset_right = 556.0
+offset_bottom = -318.0
+grow_vertical = 0
+script = ExtResource("16_j6uxm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelDataVisualizer"]
+layout_mode = 2
+
+[node name="LevelTitleLabel" type="Label" parent="LevelDataVisualizer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_3ent3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dauqf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j6uxm")
+text = "TITLE"
+
+[node name="LevelDescriptionLabel" type="Label" parent="LevelDataVisualizer/VBoxContainer"]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0d67m")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bbk7f")
+text = "Title"
+autowrap_mode = 3

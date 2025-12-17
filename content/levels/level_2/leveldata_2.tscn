@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnvd4iy8h7ms0"]
+
+[ext_resource type="Script" uid="uid://bgx7b2q66dfkm" path="res://content/leveldata.gd" id="1_wfktf"]
+
+[node name="LevelData" type="Node"]
+script = ExtResource("1_wfktf")
+title = "ZIGGURAT"
+description = "Our reports do contain mentions of a desert plane, but these structures are different than previous accounts... Perhaps we've landed in a different region this time."

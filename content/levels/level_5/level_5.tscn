@@ -1,0 +1,477 @@
+[gd_scene load_steps=15 format=3 uid="uid://bct7pu765sma5"]
+
+[ext_resource type="Script" uid="uid://bll6nv22ptsix" path="res://common/music_on_ready_requester.gd" id="1_k0825"]
+[ext_resource type="PackedScene" uid="uid://cqy3aqhl2lfin" path="res://common/player/player.tscn" id="2_gw7y0"]
+[ext_resource type="Material" uid="uid://lh1bb8jb5r6p" path="res://content/levels/level_5/level_5_material.tres" id="3_0ijmv"]
+[ext_resource type="Material" uid="uid://okfa87bw25y2" path="res://assets/materials/pixel_outline_shaded.tres" id="4_u6jwo"]
+[ext_resource type="Script" uid="uid://c36tfsjwmrmkd" path="res://content/mechanics/waypoints/waypoint_manager.gd" id="6_ina6m"]
+[ext_resource type="AudioStream" uid="uid://cb4ehryvlruvp" path="res://assets/audio/effects/pickup_glass_reverb.wav" id="7_ycown"]
+[ext_resource type="PackedScene" uid="uid://bkm8p68a44o6j" path="res://content/levels/level_5/big_tree.tscn" id="8_0ijmv"]
+[ext_resource type="PackedScene" uid="uid://b63sl0wkb023f" path="res://content/mechanics/waypoints/waypoint.tscn" id="8_3fwkj"]
+[ext_resource type="PackedScene" uid="uid://bkrroji64u325" path="res://content/levels/level_ui.tscn" id="9_f86mr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_upjnr"]
+sky_top_color = Color(0.9196278, 0.9821833, 0.9120785, 1)
+sky_horizon_color = Color(0.81995225, 0.97884196, 0.663823, 1)
+ground_bottom_color = Color(0.18746585, 0.33198217, 0.22499469, 1)
+ground_horizon_color = Color(0.50280106, 0.7693098, 0.42922723, 1)
+
+[sub_resource type="Sky" id="Sky_upjnr"]
+sky_material = SubResource("ProceduralSkyMaterial_upjnr")
+
+[sub_resource type="Environment" id="Environment_upjnr"]
+background_mode = 2
+sky = SubResource("Sky_upjnr")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8uhj0"]
+
+[sub_resource type="Compositor" id="Compositor_jy6mt"]
+
+[node name="Level5" type="Node3D"]
+
+[node name="MusicOnReadyRequester" type="Node" parent="."]
+script = ExtResource("1_k0825")
+theme_name = "level_1"
+metadata/_custom_type_script = "uid://bll6nv22ptsix"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+canvas_cull_mask = 4294966272
+oversampling = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.9931082, -0.11659325, 0.011919821, 0.018989842, 0.26043722, 0.965304, -0.115652286, -0.95842505, 0.26085642, 0, 423.78992, 0)
+light_angular_distance = 0.3
+light_specular = 4.629
+shadow_enabled = true
+shadow_blur = 2.237
+directional_shadow_split_1 = 0.135
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 3000.0
+directional_shadow_pancake_size = 23.1
+
+[node name="player" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_gw7y0")]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 10.503412, 0)
+collision_mask = 1
+
+[node name="Green" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport"]
+material_override = ExtResource("3_0ijmv")
+material_overlay = ExtResource("4_u6jwo")
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Green"]
+transform = Transform3D(0.9969352, -0.078232236, 0.00013154141, 0.077668846, 0.98955154, -0.12147006, 0.009372702, 0.121107966, 0.99259496, -625.8721, 578.80164, -1141.7933)
+radius = 3125.7095
+height = 7.144104
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Green"]
+transform = Transform3D(0.95416564, -0.2992546, -0.0038585388, 0.29927558, 0.954008, 0.017397469, -0.001525199, -0.017754808, 0.99984103, -1572.6254, 734.85474, -2226.7827)
+radius = 3125.7095
+height = 7.144104
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Green"]
+transform = Transform3D(0.9993502, -0.036039263, 0.00088447356, 0.036017805, 0.9991925, 0.017798256, -0.0015251993, -0.017754808, 0.99984103, -1123.5266, 920.19934, -3230.4536)
+radius = 3125.7095
+height = 7.144104
+
+[node name="Leaf" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Green"]
+transform = Transform3D(0.9969353, -0.07823224, 0.00013154074, 0.078132555, 0.9957471, 0.04881572, -0.0039499477, -0.048655838, 0.99880785, -273.39877, 51.38446, -409.63943)
+radius = 138.32813
+height = 7.144104
+
+[node name="Leaf2" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Green"]
+transform = Transform3D(0.9614519, 0.22582768, -0.1568836, -0.22120184, 0.97411495, 0.046578165, 0.16334131, -0.010079749, 0.9865181, -419.26828, 60.017776, -251.33011)
+radius = 91.441895
+height = 3.4764557
+
+[node name="Leaf3" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Green"]
+transform = Transform3D(0.9833387, -0.07919919, -0.16362411, 0.037150014, 0.9686592, -0.24559958, 0.1779473, 0.23542885, 0.9554623, -562.55396, 80.94982, -367.66208)
+radius = 57.1709
+height = 3.735138
+
+[node name="Leaf4" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Green"]
+transform = Transform3D(0.9833387, -0.07919919, -0.1636241, 0.11631589, 0.96585, 0.23152672, 0.13969961, -0.24670123, 0.9589697, -982.8169, 132.02739, -265.79926)
+radius = 57.1709
+height = 1.4715729
+
+[node name="Leaf5" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Green"]
+transform = Transform3D(0.9779641, 0.1699752, -0.12122278, -0.1460519, 0.9719161, 0.18452136, 0.14918242, -0.1627504, 0.9753242, -1014.71686, 129.14673, -295.87878)
+radius = 57.1709
+height = 1.4715729
+
+[node name="Leaf6" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Green"]
+transform = Transform3D(0.98870504, 0.038907535, -0.14473666, -0.036829438, 0.99917674, 0.017010853, 0.1452794, -0.011488169, 0.9893243, -661.1894, 164.91727, -475.594)
+radius = 57.1709
+height = 1.4715729
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_upjnr")
+camera_attributes = SubResource("CameraAttributesPractical_8uhj0")
+compositor = SubResource("Compositor_jy6mt")
+
+[node name="Waypoints" type="Node3D" parent="SubViewportContainer/SubViewport"]
+script = ExtResource("6_ina6m")
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Waypoints"]
+stream = ExtResource("7_ycown")
+bus = &"SFX"
+
+[node name="Waypoint" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.569633, 9.833124, -53.612606)
+
+[node name="Waypoint2" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.97565, 15.229759, -163.3771)
+
+[node name="Waypoint3" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -134.55867, 18.255917, -315.72125)
+
+[node name="Waypoint4" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.55732, 12.767448, -497.47165)
+
+[node name="Waypoint5" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -171.86874, 11.45537, -621.1814)
+
+[node name="Waypoint6" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -373.3506, 10.375175, -625.9455)
+
+[node name="Waypoint7" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -499.66653, 13.009209, -619.333)
+
+[node name="Waypoint8" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -620.7685, 20.006283, -615.0686)
+
+[node name="Waypoint9" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -649.23456, 20.006283, -464.6253)
+
+[node name="Waypoint10" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -578.26465, 20.006283, -411.81772)
+
+[node name="Waypoint11" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -454.5856, 30.496208, -540.6238)
+
+[node name="Waypoint12" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -396.05902, 40.08611, -589.69635)
+
+[node name="Waypoint33" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -306.26733, 46.765514, -606.1188)
+
+[node name="Waypoint13" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -230.36725, 61.220356, -473.80002)
+
+[node name="Waypoint14" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.97332, 69.75902, -317.29596)
+
+[node name="Waypoint15" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.97332, 69.75902, -133.98184)
+
+[node name="Waypoint16" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -294.0561, 69.75902, -65.31934)
+
+[node name="Waypoint17" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -455.03403, 74.8536, -208.36034)
+
+[node name="Waypoint18" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -521.11725, 87.099815, -352.30432)
+
+[node name="Waypoint19" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -517.9811, 107.44478, -433.6838)
+
+[node name="Waypoint20" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -568.0459, 107.51993, -549.58246)
+
+[node name="Waypoint21" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -627.3209, 111.12875, -612.4633)
+
+[node name="Waypoint22" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -775.7085, 119.09056, -604.63495)
+
+[node name="Waypoint23" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -859.44147, 122.47206, -512.18964)
+
+[node name="Waypoint24" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -929.78973, 111.27121, -394.3331)
+
+[node name="Waypoint25" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1003.13257, 125.95007, -335.84256)
+
+[node name="Waypoint26" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1015.9502, 136.75941, -287.57596)
+
+[node name="Waypoint27" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -964.1775, 145.58762, -233.79414)
+
+[node name="Waypoint28" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -908.0102, 154.17633, -236.35187)
+
+[node name="Waypoint29" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -838.67694, 160.97263, -238.54204)
+
+[node name="Waypoint30" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -758.2322, 166.18301, -259.2105)
+
+[node name="Waypoint31" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -715.0578, 166.18301, -331.7983)
+
+[node name="Waypoint32" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_3fwkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -664.6251, 170.49202, -468.546)
+
+[node name="Trees" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="Tree" parent="SubViewportContainer/SubViewport/Trees" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.521088, 0, 11.426727)
+
+[node name="Tree2" parent="SubViewportContainer/SubViewport/Trees" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 110.76405, -174.21371)
+
+[node name="Tree3" parent="SubViewportContainer/SubViewport/Trees" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 37.232895, -444.7081)
+
+[node name="Tree4" parent="SubViewportContainer/SubViewport/Trees" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.9585566, 0, 0.28490216, 0, 1, 0, -0.28490216, 0, 0.9585566, -615.69836, 10.152832, -444.7081)
+
+[node name="Tree6" parent="SubViewportContainer/SubViewport/Trees" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.4792783, 0, 0.1424511, 0, 0.5, 0, -0.1424511, 0, 0.4792783, -906.49445, 101.685974, -334.22253)
+
+[node name="Tree7" parent="SubViewportContainer/SubViewport/Trees" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.4792783, 0, 0.1424511, 0, 0.5, 0, -0.1424511, 0, 0.4792783, -1001.5024, 112.915665, -281.0267)
+
+[node name="Tree9" parent="SubViewportContainer/SubViewport/Trees" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.4792783, 0, 0.1424511, 0, 0.5, 0, -0.1424511, 0, 0.4792783, -860.3665, 147.47458, -299.07047)
+
+[node name="Tree10" parent="SubViewportContainer/SubViewport/Trees" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.4792783, 0, 0.1424511, 0, 0.5, 0, -0.1424511, 0, 0.4792783, -802.44336, 161.80937, -330.36984)
+
+[node name="Tree5" parent="SubViewportContainer/SubViewport/Trees" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.8472587, 0.050348904, -0.5287888, -0.042712722, 0.9987317, 0.026657747, 0.5294603, 0, 0.84833467, -716.2971, 157.61911, -444.7081)
+
+[node name="DecorativeTrees" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.9346768, 0, -0.35549852, 0, 1, 0, 0.35549852, 0, 0.9346768, -1211.8639, 208.39493, 0)
+
+[node name="Tree" parent="SubViewportContainer/SubViewport/DecorativeTrees" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.521088, 0, 11.426727)
+
+[node name="Tree2" parent="SubViewportContainer/SubViewport/DecorativeTrees" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 110.76405, -174.21371)
+
+[node name="Tree3" parent="SubViewportContainer/SubViewport/DecorativeTrees" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 38.453094, -444.7081)
+
+[node name="Tree4" parent="SubViewportContainer/SubViewport/DecorativeTrees" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.9585566, 0, 0.28490216, 0, 1, 0, -0.28490216, 0, 0.9585566, -615.69836, 10.152832, -444.7081)
+
+[node name="Tree5" parent="SubViewportContainer/SubViewport/DecorativeTrees" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.84833467, 0, -0.5294603, 0, 1, 0, 0.5294603, 0, 0.84833467, -716.2971, 157.61911, -444.7081)
+
+[node name="DecorativeTrees2" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.64721566, 0, -0.76230717, 0, 1, 0, 0.76230717, 0, 0.64721566, -1211.8639, 276.84692, -968.50055)
+
+[node name="Tree" parent="SubViewportContainer/SubViewport/DecorativeTrees2" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.521088, 0, 11.426727)
+
+[node name="Tree2" parent="SubViewportContainer/SubViewport/DecorativeTrees2" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 110.76405, -174.21371)
+
+[node name="Tree3" parent="SubViewportContainer/SubViewport/DecorativeTrees2" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 38.453094, -444.7081)
+
+[node name="Tree4" parent="SubViewportContainer/SubViewport/DecorativeTrees2" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.9585566, 0, 0.28490216, 0, 1, 0, -0.28490216, 0, 0.9585566, -615.69836, 10.152832, -444.7081)
+
+[node name="Tree5" parent="SubViewportContainer/SubViewport/DecorativeTrees2" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.84833467, 0, -0.5294603, 0, 1, 0, 0.5294603, 0, 0.84833467, -716.2971, 157.61911, -444.7081)
+
+[node name="DecorativeTrees3" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.64721566, 0, -0.76230717, 0, 1, 0, 0.76230717, 0, 0.64721566, -1709.8997, 110.06781, -968.50055)
+
+[node name="Tree" parent="SubViewportContainer/SubViewport/DecorativeTrees3" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.521088, 0, 11.426727)
+
+[node name="Tree2" parent="SubViewportContainer/SubViewport/DecorativeTrees3" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 110.76405, -174.21371)
+
+[node name="Tree3" parent="SubViewportContainer/SubViewport/DecorativeTrees3" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 38.453094, -444.7081)
+
+[node name="Tree4" parent="SubViewportContainer/SubViewport/DecorativeTrees3" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.9585566, 0, 0.28490216, 0, 1, 0, -0.28490216, 0, 0.9585566, -615.69836, 10.152832, -444.7081)
+
+[node name="Tree5" parent="SubViewportContainer/SubViewport/DecorativeTrees3" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.84833467, 0, -0.5294603, 0, 1, 0, 0.5294603, 0, 0.84833467, -716.2971, 157.61911, -444.7081)
+
+[node name="DecorativeTrees5" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.64721566, 0, -0.76230717, 0, 1, 0, 0.76230717, 0, 0.64721566, -852.2678, 356.05817, -968.50055)
+
+[node name="Tree" parent="SubViewportContainer/SubViewport/DecorativeTrees5" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.521088, 0, 11.426727)
+
+[node name="Tree2" parent="SubViewportContainer/SubViewport/DecorativeTrees5" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 110.76405, -174.21371)
+
+[node name="Tree3" parent="SubViewportContainer/SubViewport/DecorativeTrees5" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 38.453094, -444.7081)
+
+[node name="Tree4" parent="SubViewportContainer/SubViewport/DecorativeTrees5" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.9585566, 0, 0.28490216, 0, 1, 0, -0.28490216, 0, 0.9585566, -615.69836, 10.152832, -444.7081)
+
+[node name="Tree5" parent="SubViewportContainer/SubViewport/DecorativeTrees5" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.84833467, 0, -0.5294603, 0, 1, 0, 0.5294603, 0, 0.84833467, -716.2971, 157.61911, -444.7081)
+
+[node name="DecorativeTrees6" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.64721566, 0, -0.76230717, 0, 1, 0, 0.76230717, 0, 0.64721566, -574.3297, 463.0735, -413.25842)
+
+[node name="Tree" parent="SubViewportContainer/SubViewport/DecorativeTrees6" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.521088, 0, 11.426727)
+
+[node name="Tree2" parent="SubViewportContainer/SubViewport/DecorativeTrees6" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 110.76405, -174.21371)
+
+[node name="Tree3" parent="SubViewportContainer/SubViewport/DecorativeTrees6" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 38.453094, -444.7081)
+
+[node name="Tree4" parent="SubViewportContainer/SubViewport/DecorativeTrees6" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.9585566, 0, 0.28490216, 0, 1, 0, -0.28490216, 0, 0.9585566, -615.69836, 10.152832, -444.7081)
+
+[node name="Tree5" parent="SubViewportContainer/SubViewport/DecorativeTrees6" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.84833467, 0, -0.5294603, 0, 1, 0, 0.5294603, 0, 0.84833467, -716.2971, 157.61911, -444.7081)
+
+[node name="DecorativeTrees7" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.5273265, 0, -0.84966284, 0, 1, 0, 0.84966284, 0, 0.5273265, -634.87726, 425.0569, 238.20169)
+
+[node name="Tree" parent="SubViewportContainer/SubViewport/DecorativeTrees7" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.521088, 0, 11.426727)
+
+[node name="Tree2" parent="SubViewportContainer/SubViewport/DecorativeTrees7" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 110.76405, -174.21371)
+
+[node name="Tree3" parent="SubViewportContainer/SubViewport/DecorativeTrees7" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 38.453094, -444.7081)
+
+[node name="Tree4" parent="SubViewportContainer/SubViewport/DecorativeTrees7" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.9585566, 0, 0.28490216, 0, 1, 0, -0.28490216, 0, 0.9585566, -615.69836, 10.152832, -444.7081)
+
+[node name="Tree5" parent="SubViewportContainer/SubViewport/DecorativeTrees7" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.84833467, 0, -0.5294603, 0, 1, 0, 0.5294603, 0, 0.84833467, -716.2971, 157.61911, -444.7081)
+
+[node name="DecorativeTrees8" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.6991893, 0, -0.71493673, 0, 1, 0, 0.71493673, 0, 0.6991893, 928.5567, 425.0569, 238.20169)
+
+[node name="Tree" parent="SubViewportContainer/SubViewport/DecorativeTrees8" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.521088, 0, 11.426727)
+
+[node name="Tree2" parent="SubViewportContainer/SubViewport/DecorativeTrees8" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 110.76405, -174.21371)
+
+[node name="Tree3" parent="SubViewportContainer/SubViewport/DecorativeTrees8" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 38.453094, -444.7081)
+
+[node name="Tree4" parent="SubViewportContainer/SubViewport/DecorativeTrees8" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.9585566, 0, 0.28490216, 0, 1, 0, -0.28490216, 0, 0.9585566, -615.69836, 10.152832, -444.7081)
+
+[node name="Tree5" parent="SubViewportContainer/SubViewport/DecorativeTrees8" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.84833467, 0, -0.5294603, 0, 1, 0, 0.5294603, 0, 0.84833467, -716.2971, 157.61911, -444.7081)
+
+[node name="DecorativeTrees9" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.6991893, 0, -0.71493673, 0, 1, 0, 0.71493673, 0, 0.6991893, 499.30182, 315.05518, -152.79776)
+
+[node name="Tree" parent="SubViewportContainer/SubViewport/DecorativeTrees9" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.521088, 0, 11.426727)
+
+[node name="Tree2" parent="SubViewportContainer/SubViewport/DecorativeTrees9" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 110.76405, -174.21371)
+
+[node name="Tree3" parent="SubViewportContainer/SubViewport/DecorativeTrees9" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 38.453094, -444.7081)
+
+[node name="Tree4" parent="SubViewportContainer/SubViewport/DecorativeTrees9" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.9585566, 0, 0.28490216, 0, 1, 0, -0.28490216, 0, 0.9585566, -615.69836, 10.152832, -444.7081)
+
+[node name="Tree5" parent="SubViewportContainer/SubViewport/DecorativeTrees9" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.84833467, 0, -0.5294603, 0, 1, 0, 0.5294603, 0, 0.84833467, -716.2971, 157.61911, -444.7081)
+
+[node name="DecorativeTrees10" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.99987084, 0, 0.016073555, 0, 1, 0, -0.016073555, 0, 0.99987084, 188.72864, 315.05518, -537.0348)
+
+[node name="Tree" parent="SubViewportContainer/SubViewport/DecorativeTrees10" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.521088, 0, 11.426727)
+
+[node name="Tree2" parent="SubViewportContainer/SubViewport/DecorativeTrees10" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 110.76405, -174.21371)
+
+[node name="Tree3" parent="SubViewportContainer/SubViewport/DecorativeTrees10" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 38.453094, -444.7081)
+
+[node name="Tree4" parent="SubViewportContainer/SubViewport/DecorativeTrees10" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.9585566, 0, 0.28490216, 0, 1, 0, -0.28490216, 0, 0.9585566, -615.69836, 10.152832, -444.7081)
+
+[node name="Tree5" parent="SubViewportContainer/SubViewport/DecorativeTrees10" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.84833467, 0, -0.5294603, 0, 1, 0, 0.5294603, 0, 0.84833467, -716.2971, 157.61911, -444.7081)
+
+[node name="DecorativeTrees11" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.102202445, 0, -0.9947636, 0, 1, 0, 0.9947636, 0, -0.102202445, -9.404022, 293.01492, 681.6747)
+
+[node name="Tree" parent="SubViewportContainer/SubViewport/DecorativeTrees11" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.521088, 0, 11.426727)
+
+[node name="Tree2" parent="SubViewportContainer/SubViewport/DecorativeTrees11" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 110.76405, -174.21371)
+
+[node name="Tree3" parent="SubViewportContainer/SubViewport/DecorativeTrees11" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 38.453094, -444.7081)
+
+[node name="Tree4" parent="SubViewportContainer/SubViewport/DecorativeTrees11" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.9585566, 0, 0.28490216, 0, 1, 0, -0.28490216, 0, 0.9585566, -615.69836, 10.152832, -444.7081)
+
+[node name="Tree5" parent="SubViewportContainer/SubViewport/DecorativeTrees11" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.84833467, 0, -0.5294603, 0, 1, 0, 0.5294603, 0, 0.84833467, -716.2971, 157.61911, -444.7081)
+
+[node name="DecorativeTrees12" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.48907816, 0, -0.87223995, 0, 1, 0, 0.87223995, 0, -0.48907816, -903.9237, 207.46152, 847.2406)
+
+[node name="Tree" parent="SubViewportContainer/SubViewport/DecorativeTrees12" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.521088, 0, 11.426727)
+
+[node name="Tree2" parent="SubViewportContainer/SubViewport/DecorativeTrees12" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 110.76405, -174.21371)
+
+[node name="Tree3" parent="SubViewportContainer/SubViewport/DecorativeTrees12" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 38.453094, -444.7081)
+
+[node name="Tree4" parent="SubViewportContainer/SubViewport/DecorativeTrees12" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.9585566, 0, 0.28490216, 0, 1, 0, -0.28490216, 0, 0.9585566, -615.69836, 10.152832, -444.7081)
+
+[node name="Tree5" parent="SubViewportContainer/SubViewport/DecorativeTrees12" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.84833467, 0, -0.5294603, 0, 1, 0, 0.5294603, 0, 0.84833467, -716.2971, 157.61911, -444.7081)
+
+[node name="DecorativeTrees4" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.64721566, 0, -0.76230717, 0, 1, 0, 0.76230717, 0, 0.64721566, -1196.9563, 110.06781, 1116.6031)
+
+[node name="Tree" parent="SubViewportContainer/SubViewport/DecorativeTrees4" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.521088, 0, 11.426727)
+
+[node name="Tree2" parent="SubViewportContainer/SubViewport/DecorativeTrees4" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 110.76405, -174.21371)
+
+[node name="Tree3" parent="SubViewportContainer/SubViewport/DecorativeTrees4" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.27158, 38.453094, -444.7081)
+
+[node name="Tree4" parent="SubViewportContainer/SubViewport/DecorativeTrees4" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.9585566, 0, 0.28490216, 0, 1, 0, -0.28490216, 0, 0.9585566, -615.69836, 10.152832, -444.7081)
+
+[node name="Tree5" parent="SubViewportContainer/SubViewport/DecorativeTrees4" instance=ExtResource("8_0ijmv")]
+transform = Transform3D(0.84833467, 0, -0.5294603, 0, 1, 0, 0.5294603, 0, 0.84833467, -716.2971, 157.61911, -444.7081)
+
+[node name="UI" parent="." instance=ExtResource("9_f86mr")]
+record_name = "LEVEL FIVE"

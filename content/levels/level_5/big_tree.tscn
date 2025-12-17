@@ -1,0 +1,183 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkm8p68a44o6j"]
+
+[ext_resource type="Material" uid="uid://lh1bb8jb5r6p" path="res://content/levels/level_5/level_5_material.tres" id="1_6ytqi"]
+[ext_resource type="Material" uid="uid://okfa87bw25y2" path="res://assets/materials/pixel_outline_shaded.tres" id="2_hba6n"]
+[ext_resource type="Material" uid="uid://dkvprr5875ops" path="res://assets/materials/simple_texture_white.tres" id="3_57qjw"]
+
+[node name="Tree" type="Node3D"]
+
+[node name="Leaves" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0494614, 442.99527, -15.03214)
+material_override = ExtResource("1_6ytqi")
+material_overlay = ExtResource("2_hba6n")
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(0.9864808, 0, -0.16387695, 0, 1, 0, 0.16387695, 0, 0.9864808, 0, -445.85828, 0)
+radius = 211.16748
+height = 2.8482666
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -439.21912, 0)
+radius = 177.5542
+height = 2.8482666
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(0.8500214, 0, -0.5267481, 0, 1, 0, 0.5267481, 0, 0.8500214, -24.128525, -456.24554, 50.052032)
+radius = 171.31396
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(0.8500214, 0, -0.5267481, 0, 1, 0, 0.5267481, 0, 0.8500214, -40.78055, -456.24554, -46.473602)
+radius = 171.31396
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(0.8500214, 0, -0.5267481, 0, 1, 0, 0.5267481, 0, 0.8500214, -58.666016, -464.55396, 5.215684)
+radius = 171.31396
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(0.8500214, 0, -0.5267481, 0, 1, 0, 0.5267481, 0, 0.8500214, 14.310722, -469.45184, 55.237015)
+radius = 151.21729
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(0.72284657, 0, -0.69100857, 0, 1, 0, 0.69100857, 0, 0.72284657, 60.02272, -473.72446, -1.0651388)
+radius = 151.21729
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(0.72284657, 0, -0.69100857, 0, 1, 0, 0.69100857, 0, 0.72284657, -19.59114, -476.83728, -93.58593)
+radius = 151.21729
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.05069, -457.1272, -71.98708)
+radius = 149.75684
+height = 2.6887817
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.94545615, 0, -0.3257498, 0, 1, 0, 0.3257498, 0, -0.94545615, 4.220756, -490.41956, -23.871258)
+radius = 188.75195
+height = 2.8482666
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.8792913, 0, -0.47628435, 0, 1, 0, 0.47628435, 0, -0.8792913, 4.220756, -483.7804, -23.871258)
+radius = 139.0376
+height = 2.8482666
+
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.9982983, 0, 0.05831313, 0, 1, 0, -0.05831313, 0, -0.9982983, 1.5977564, -500.80682, -79.37362)
+radius = 125.44092
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.9982983, 0, 0.05831313, 0, 1, 0, -0.05831313, 0, -0.9982983, 62.213387, -500.80682, -2.430562)
+radius = 140.0083
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.9982983, 0, 0.05831313, 0, 1, 0, -0.05831313, 0, -0.9982983, 53.32112, -509.11523, -56.399075)
+radius = 132.71729
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.9982983, 0, 0.05831313, 0, 1, 0, -0.05831313, 0, -0.9982983, -34.671066, -514.0131, -65.62471)
+radius = 90.45361
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D16" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.9647093, 0, 0.26331732, 0, 1, 0, -0.26331732, 0, -0.9647093, -48.049393, -518.28577, 5.6531916)
+radius = 115.26953
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D18" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.8792913, 0, -0.47628435, 0, 1, 0, 0.47628435, 0, -0.8792913, -62.27912, -501.68848, 68.91955)
+radius = 92.882324
+height = 2.6887817
+
+[node name="CSGCylinder3D17" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.9647093, 0, 0.26331732, 0, 1, 0, -0.26331732, 0, -0.9647093, 56.698654, -521.39856, 37.600918)
+radius = 79.72705
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D19" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.9647093, 0, 0.26331732, 0, 1, 0, -0.26331732, 0, -0.9647093, 58.942913, -527.70105, -1.3305998)
+radius = 65.17139
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D20" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.9647093, 0, 0.26331732, 0, 1, 0, -0.26331732, 0, -0.9647093, 35.22395, -533.69666, -18.004581)
+radius = 65.17139
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D21" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.9647093, 0, 0.26331732, 0, 1, 0, -0.26331732, 0, -0.9647093, 3.6430855, -536.8595, -18.004581)
+radius = 92.00049
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D22" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.9647093, 0, 0.26331732, 0, 1, 0, -0.26331732, 0, -0.9647093, 62.79935, -543.5711, -0.82296276)
+radius = 76.00195
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D23" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.9647093, 0, 0.26331732, 0, 1, 0, -0.26331732, 0, -0.9647093, 34.826527, -550.7289, -0.82296276)
+radius = 76.00195
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D24" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.9647093, 0, 0.26331732, 0, 1, 0, -0.26331732, 0, -0.9647093, -2.7400093, -555.4999, -0.82296276)
+radius = 64.362305
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D25" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.9647093, 0, 0.26331732, 0, 1, 0, -0.26331732, 0, -0.9647093, -2.7400093, -564.40186, -0.82296276)
+radius = 57.125
+height = 3.6694336
+sides = 11
+
+[node name="CSGCylinder3D26" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.9647093, 0, 0.26331732, 0, 1, 0, -0.26331732, 0, -0.9647093, -2.7400093, -574.01404, -0.82296276)
+radius = 50.626953
+height = 4.8513184
+sides = 11
+
+[node name="CSGCylinder3D27" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.9647093, 0, 0.26331732, 0, 1, 0, -0.26331732, 0, -0.9647093, -2.7400093, -584.0041, -0.82296276)
+radius = 41.248047
+height = 4.8513184
+sides = 11
+
+[node name="CSGCylinder3D28" type="CSGCylinder3D" parent="Leaves"]
+transform = Transform3D(-0.9647093, 0, 0.26331732, 0, 1, 0, -0.26331732, 0, -0.9647093, -2.7400093, -596.0308, -0.82296276)
+radius = 27.23584
+height = 4.8513184
+sides = 11
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0494614, 371.20288, -15.03214)
+material_override = ExtResource("3_57qjw")
+material_overlay = ExtResource("2_hba6n")
+use_collision = true
+radius = 9.473633
+height = 1046.1389

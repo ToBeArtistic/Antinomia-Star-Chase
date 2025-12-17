@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvwo5iyg5j1lb"]
+
+[ext_resource type="Script" uid="uid://bgx7b2q66dfkm" path="res://content/leveldata.gd" id="1_draji"]
+
+[node name="LevelData" type="Node"]
+script = ExtResource("1_draji")
+title = "INVERTED FOREST"
+description = "This is perhaps the strangest macroflora I've seen. And considering all the studies we've done on the Ur Forest back home, that's saying something."

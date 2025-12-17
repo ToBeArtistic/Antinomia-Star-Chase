@@ -8,6 +8,7 @@
 modulate = Color(0.13319641, 0.13319641, 0.13319638, 1)
 texture = ExtResource("1_5k1n6")
 script = ExtResource("2_lej33")
+wiggle_factor = 10.0
 
 [node name="Sprite3DBillBoardToPlayer" type="Node" parent="."]
 script = ExtResource("2_2gmxf")

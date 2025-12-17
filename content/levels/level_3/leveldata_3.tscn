@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://fvf4dv8ts0wc"]
+
+[ext_resource type="Script" uid="uid://bgx7b2q66dfkm" path="res://content/leveldata.gd" id="1_r74ty"]
+
+[node name="LevelData" type="Node"]
+script = ExtResource("1_r74ty")
+title = "PLANAR PALACE"
+description = "We've located the friendly demiplane mentioned in Zedric's reports. This will make an ideal outpost for continued operations."

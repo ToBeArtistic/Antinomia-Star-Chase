@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://qsfa551xapwd"]
+
+[ext_resource type="Script" uid="uid://bgx7b2q66dfkm" path="res://content/leveldata.gd" id="1_hj64x"]
+
+[node name="LevelData" type="Node"]
+script = ExtResource("1_hj64x")
+title = "THE WALL"
+description = "We're encountering interference from hostile entities. Avoid their manifestations."

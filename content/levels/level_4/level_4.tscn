@@ -346,16 +346,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.99347, -533.0641, -1464.7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 181.37256, -537.97754, -1462.016)
 
 [node name="EvilEye93" parent="SubViewportContainer/SubViewport/Hazards" instance=ExtResource("3_ewj5o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.57982, -537.97754, -1452.0614)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.90164, -537.97754, -1451.997)
 
 [node name="EvilEye89" parent="SubViewportContainer/SubViewport/Hazards" instance=ExtResource("3_ewj5o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186.24722, -536.1958, -1472.8914)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186.24722, -528.6537, -1472.8914)
 
 [node name="EvilEye90" parent="SubViewportContainer/SubViewport/Hazards" instance=ExtResource("3_ewj5o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.05835, -536.77545, -1485.8265)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.43546, -521.80316, -1493.3914)
 
 [node name="EvilEye91" parent="SubViewportContainer/SubViewport/Hazards" instance=ExtResource("3_ewj5o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 193.60194, -536.77545, -1499.2499)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.21806, -536.77545, -1529.3743)
 
 [node name="EvilEye92" parent="SubViewportContainer/SubViewport/Hazards" instance=ExtResource("3_ewj5o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.26659, -536.77545, -1514.1438)
