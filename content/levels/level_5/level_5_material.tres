@@ -3,5 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://bqhjj2lhi2aro" path="res://assets/textures/seamless_grime_white.png" id="1_ahm0n"]
 
 [resource]
-albedo_color = Color(4.813075e-07, 0.40314615, 0.066303805, 1)
+albedo_color = Color(0.23689881, 0.49801433, 0.27356097, 1)
 albedo_texture = ExtResource("1_ahm0n")

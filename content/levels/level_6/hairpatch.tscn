@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://clt174y4pvq03"]
+
+[ext_resource type="PackedScene" uid="uid://dbo2xl53q5f4k" path="res://content/levels/level_6/hairs.tscn" id="1_jljo2"]
+
+[node name="Hairpatch" type="Node3D"]
+
+[node name="Hairs" parent="." instance=ExtResource("1_jljo2")]
+
+[node name="Hairs2" parent="." instance=ExtResource("1_jljo2")]
+transform = Transform3D(0.98182315, 0, -0.18979807, 0, 1, 0, 0.18979807, 0, 0.98182315, -29.482956, 0, 0.9400482)
+
+[node name="Hairs3" parent="." instance=ExtResource("1_jljo2")]
+transform = Transform3D(0.9986002, 0, 0.052893683, 0, 1, 0, -0.052893683, 0, 0.9986002, -53.310207, -3.3768768, 0.9400482)
+
+[node name="Hairs4" parent="." instance=ExtResource("1_jljo2")]
+transform = Transform3D(0.87665117, 0, -0.48112646, 0, 1, 0, 0.48112646, 0, 0.87665117, -38.255436, -4.0679092, -34.91658)
+
+[node name="Hairs9" parent="." instance=ExtResource("1_jljo2")]
+transform = Transform3D(0.98245037, -5.551115e-17, -0.18652406, -0.03526446, 0.98196524, -0.18574321, 0.18316016, 0.18906116, 0.9647321, -68.80794, -4.0679092, -34.91658)
+
+[node name="Hairs10" parent="." instance=ExtResource("1_jljo2")]
+transform = Transform3D(0.9948353, -0.030201709, 0.096904084, 0.047208715, 0.9828363, -0.17833692, -0.089854814, 0.18199065, 0.9791861, -84.55151, -4.0679092, -18.250397)
+
+[node name="Hairs11" parent="." instance=ExtResource("1_jljo2")]
+transform = Transform3D(0.9810029, -0.11528362, -0.15602192, 0.087545425, 0.98080075, -0.17425711, 0.17311534, 0.1572878, 0.9722611, -84.55151, -4.0679092, -63.39823)
+
+[node name="Hairs5" parent="." instance=ExtResource("1_jljo2")]
+transform = Transform3D(0.9973667, 0, -0.07252455, 0, 1, 0, 0.07252455, 0, 0.9973667, -7.253296, -4.0679092, -34.91658)
+
+[node name="Hairs6" parent="." instance=ExtResource("1_jljo2")]
+transform = Transform3D(0.9973667, 0, -0.07252455, 0, 1, 0, 0.07252455, 0, 0.9973667, -7.253296, -4.0679092, -73.57954)
+
+[node name="Hairs7" parent="." instance=ExtResource("1_jljo2")]
+transform = Transform3D(0.9973566, 0, 0.072663754, 0, 1, 0, -0.072663754, 0, 0.9973566, -29.874968, -4.0679092, -68.84314)
+
+[node name="Hairs8" parent="." instance=ExtResource("1_jljo2")]
+transform = Transform3D(0.9996701, 0, 0.025688402, 0, 1, 0, -0.025688402, 0, 0.9996701, -54.922623, -4.0679092, -64.07817)

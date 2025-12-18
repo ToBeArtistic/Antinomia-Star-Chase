@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbei8lq7gc61l"]
+
+[ext_resource type="Script" uid="uid://bgx7b2q66dfkm" path="res://content/leveldata.gd" id="1_p47wx"]
+
+[node name="LevelData" type="Node"]
+script = ExtResource("1_p47wx")
+title = "FRAGMENT OF RHYME"
+description = "Several of the Frost Titan's corpse fragments seem to possess enough residual power to maintain their own demiplanes. "

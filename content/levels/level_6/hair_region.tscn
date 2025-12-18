@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt4uapijrhm6g"]
+
+[ext_resource type="PackedScene" uid="uid://clt174y4pvq03" path="res://content/levels/level_6/hairpatch.tscn" id="1_hn83e"]
+
+[node name="HairRegion" type="Node3D"]
+
+[node name="Hairpatch" parent="." instance=ExtResource("1_hn83e")]
+transform = Transform3D(0.98280346, 0.18465468, 0, -0.18465468, 0.98280346, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Hairpatch2" parent="." instance=ExtResource("1_hn83e")]
+transform = Transform3D(0.97461337, -0.076753825, -0.2103272, 0.07502664, 0.99705005, -0.01619118, 0.21094947, 0, 0.9774969, -107.70413, 7.968773, -3.2589264)
+
+[node name="Hairpatch3" parent="." instance=ExtResource("1_hn83e")]
+transform = Transform3D(0.9692375, 0.22004499, 0.11026686, -0.22432093, 0.9741174, 0.027847406, -0.101285174, -0.05172592, 0.9935118, 13.084152, 0, -89.518585)
+
+[node name="Hairpatch4" parent="." instance=ExtResource("1_hn83e")]
+transform = Transform3D(0.99065423, -0.091675416, 0.10099386, 0.09120268, 0.9957891, 0.009297809, -0.10142095, 9.2033453e-10, 0.99484354, -87.42945, 11.133942, -101.11946)

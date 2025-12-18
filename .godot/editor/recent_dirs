@@ -1,5 +1,6 @@
 C:/Projects/Antinomia-Star-Chase
 res://launch/main_menu
+res://content/levels/level_6
 res://content
 res://content/levels/level_5
 res://content/levels/level_4
@@ -19,4 +20,3 @@ res://common/player
 res://launch/options_menu
 res://content/story/records
 res://content/mechanics/goal
-res://assets/shaders

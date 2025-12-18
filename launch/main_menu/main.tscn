@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://kp27o3ab5qnc"]
+[gd_scene load_steps=35 format=3 uid="uid://kp27o3ab5qnc"]
 
 [ext_resource type="Script" uid="uid://clpkfg2nca1mf" path="res://common/gui-utils/swap_scene.gd" id="1_8kpce"]
 [ext_resource type="Texture2D" uid="uid://1npw0cd0a5dh" path="res://assets/icons/gear.png" id="1_cggwd"]
@@ -21,6 +21,8 @@
 [ext_resource type="Script" uid="uid://bxiqepiky5b0" path="res://launch/main_menu/level_data_visualizer.gd" id="16_j6uxm"]
 [ext_resource type="PackedScene" uid="uid://dvwo5iyg5j1lb" path="res://content/levels/level_5/leveldata_5.tscn" id="18_4mrdp"]
 [ext_resource type="PackedScene" uid="uid://cnvd4iy8h7ms0" path="res://content/levels/level_2/leveldata_2.tscn" id="18_bbk7f"]
+[ext_resource type="PackedScene" uid="uid://dbei8lq7gc61l" path="res://content/levels/level_6/leveldata_6.tscn" id="19_bge31"]
+[ext_resource type="Texture2D" uid="uid://ccepqct2ioavo" path="res://assets/icons/level_icons/rhyme_hand.png" id="20_4mrdp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xuqhd"]
 
@@ -367,6 +369,7 @@ offset_right = 196.0
 offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("7_dauqf")
 
 [node name="Label" type="Label" parent="Level 6"]
 layout_mode = 1
@@ -385,6 +388,24 @@ horizontal_alignment = 1
 [node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Level 6"]
 script = ExtResource("8_yenej")
 metadata/_custom_type_script = "uid://cr0n23xf5b08n"
+
+[node name="LevelData" parent="Level 6" instance=ExtResource("19_bge31")]
+
+[node name="SceneSwapper" type="Node" parent="Level 6"]
+script = ExtResource("1_8kpce")
+scene_file = "uid://cf8umep1geq7h"
+metadata/_custom_type_script = "uid://clpkfg2nca1mf"
+
+[node name="LevelIcon6" type="TextureRect" parent="Level 6"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_4mrdp")
+expand_mode = 2
 
 [node name="Level 7" type="Button" parent="."]
 layout_mode = 1
