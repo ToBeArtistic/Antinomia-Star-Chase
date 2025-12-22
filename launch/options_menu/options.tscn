@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqjkndwjh0ovb"]
+[gd_scene load_steps=11 format=3 uid="uid://cqjkndwjh0ovb"]
 
 [ext_resource type="PackedScene" uid="uid://bkybgcu7e85gl" path="res://launch/options_menu/keybind_button.tscn" id="1_6pcvm"]
 [ext_resource type="Script" uid="uid://bvq4mcb15rftm" path="res://launch/options_menu/keybinds.gd" id="1_f02ta"]
 [ext_resource type="Script" uid="uid://bi3rbqk253yns" path="res://launch/options_menu/game.gd" id="1_klw63"]
 [ext_resource type="PackedScene" uid="uid://bv88uvw34cwi8" path="res://launch/options_menu/setting_slider.tscn" id="1_oulcd"]
 [ext_resource type="Script" uid="uid://cj4ou62flh3tu" path="res://launch/options_menu/tab_container.gd" id="1_r2tia"]
+[ext_resource type="PackedScene" uid="uid://deu2ykvmxqdum" path="res://launch/options_menu/crosshair_checkbox.tscn" id="4_wbws0"]
 [ext_resource type="Script" uid="uid://bym4imwqxha8r" path="res://launch/options_menu/display_full_screen.gd" id="5_klw63"]
 [ext_resource type="PackedScene" uid="uid://cfe4m46mokgju" path="res://common/gui-utils/back_button.tscn" id="5_oulcd"]
 [ext_resource type="Script" uid="uid://drgneh8afm3qd" path="res://launch/options_menu/audio.gd" id="6_q3lx8"]
@@ -39,6 +40,7 @@ layout_mode = 2
 script = ExtResource("1_klw63")
 container = NodePath("MarginContainer/VBoxContainer")
 sensitivity_scene = ExtResource("1_oulcd")
+crosshair_scene = ExtResource("4_wbws0")
 metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Game"]
@@ -57,6 +59,9 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 
 [node name="SettingSlider" parent="TabContainer/Game/MarginContainer/VBoxContainer" instance=ExtResource("1_oulcd")]
+layout_mode = 2
+
+[node name="Crosshair" parent="TabContainer/Game/MarginContainer/VBoxContainer" instance=ExtResource("4_wbws0")]
 layout_mode = 2
 
 [node name="Keybinds" type="Control" parent="TabContainer" node_paths=PackedStringArray("keybind_container")]

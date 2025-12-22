@@ -2,6 +2,7 @@ extends Control
 
 @export var container : Container
 @export var sensitivity_scene : PackedScene
+@export var crosshair_scene : PackedScene
 
 func _ready() -> void:
 	_initialize_actions()
@@ -15,6 +16,7 @@ func _initialize_actions() -> void:
 		if action.contains("sensitivity_"):
 			print_debug("add sens " + action)
 			_add_sensitivity(action)
+	_add_crosshair()
 
 
 func _add_sensitivity(action : String) -> void:
@@ -28,6 +30,19 @@ func _add_sensitivity(action : String) -> void:
 		label_value.text = "%d" % Config.get_setting(Config.SECTION.GAME, action)
 		container.add_child(sensitivity)
 		slider.value_changed.connect(_on_sens_slider_changed.bind(sensitivity, action))
+
+func _add_crosshair() -> void:
+	var crosshair : Control = crosshair_scene.instantiate()
+	var crosshair_checkbox : CheckBox = crosshair.find_child("CrosshairCheckbox")
+	var crosshair_setting := true
+	if Config.get_setting(Config.SECTION.GAME, "crosshair") != null:
+		crosshair_setting = Config.get_setting(Config.SECTION.GAME, "crosshair")
+	crosshair_checkbox.button_pressed = crosshair_setting
+	container.add_child(crosshair)
+	crosshair_checkbox.pressed.connect(_crosshair_changed.bind(crosshair_checkbox))
+
+func _crosshair_changed(checkbox : CheckBox) -> void:
+	Config.save_setting(Config.SECTION.GAME, "crosshair", checkbox.button_pressed)
 
 func _on_sens_slider_changed(value : float, sensitivity : Control, action : String) -> void:
 	var label_value : Label = sensitivity.find_child("Value")

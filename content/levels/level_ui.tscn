@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bkrroji64u325"]
+[gd_scene load_steps=40 format=3 uid="uid://bkrroji64u325"]
 
 [ext_resource type="Theme" uid="uid://bny1ryigoh1st" path="res://assets/themes/main_theme.tres" id="1_4mnah"]
 [ext_resource type="Shader" uid="uid://b2wd5hxdtbga4" path="res://assets/shaders/speed_line_shader.gdshader" id="2_nmxgd"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://bxvgvipvqt2ja" path="res://launch/main_menu/exit.gd" id="13_4weu2"]
 [ext_resource type="Script" uid="uid://cfop5pkmwrknl" path="res://content/levels/player_ability_info_element.gd" id="15_850yv"]
 [ext_resource type="StyleBox" uid="uid://bmatsyld3qr1f" path="res://content/levels/white_stylebox.tres" id="16_cycy1"]
+[ext_resource type="Script" uid="uid://bxc2n3or0lu8d" path="res://content/levels/crosshair_ui.gd" id="18_1nopc"]
 
 [sub_resource type="Gradient" id="Gradient_jy6mt"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
@@ -452,3 +453,35 @@ theme_override_icons/grabber_disabled = SubResource("ImageTexture_bjdpp")
 theme_override_icons/tick = SubResource("ImageTexture_vlnkg")
 theme_override_styles/grabber_area = ExtResource("16_cycy1")
 value = 50.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.5
+offset_top = -3.5
+offset_right = 3.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.019607844, 0.019607844, 0.019607844, 0.54509807)
+script = ExtResource("18_1nopc")
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -2.5
+offset_right = 2.5
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

@@ -9,18 +9,22 @@ material_overlay = ExtResource("2_asslo")
 use_collision = true
 radius = 1.2480469
 height = 29.015747
+sides = 5
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9980259, 0.06289613, 0, -0.06289613, 0.9980259, 0.0037515163, 20.095215, -0.47701073)
 radius = 0.86035156
 height = 17.463867
+sides = 4
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 0.99899435, 0.04483995, 0, -0.04483995, 0.99899435, 0, 14.405975, -0.23838234)
 radius = 0.4272461
 height = 12.939819
+sides = 3
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCylinder3D2"]
 transform = Transform3D(1, 0, 0, 0, 0.9986745, 0.05156967, 0, -0.05156967, 0.9986745, 0, 10.111832, -0.1853981)
 radius = 0.20263672
 height = 9.100334
+sides = 3

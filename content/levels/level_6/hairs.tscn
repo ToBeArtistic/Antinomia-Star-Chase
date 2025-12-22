@@ -4,28 +4,14 @@
 
 [node name="Hairs" type="Node3D"]
 
-[node name="Hair" parent="." instance=ExtResource("1_h7v3p")]
-
-[node name="Hair2" parent="." instance=ExtResource("1_h7v3p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.754507, 0, -6.239601)
-
 [node name="Hair3" parent="." instance=ExtResource("1_h7v3p")]
 transform = Transform3D(1, 0, 0, 0, 0.99657416, 0.08270385, 0, -0.08270385, 0.99657416, -2.264597, 0, -8.584213)
 
 [node name="Hair4" parent="." instance=ExtResource("1_h7v3p")]
-transform = Transform3D(0.9967212, -0.08063499, -0.0066917487, 0.08091218, 0.9933066, 0.08243268, 0, -0.08270385, 0.99657416, -5.2185535, 0, -1.0468826)
+transform = Transform3D(0.9967212, -0.08063499, -0.0066917487, 0.08091218, 0.9933066, 0.08243268, 0, -0.08270385, 0.99657416, -8.537338, 0, -1.0468826)
 
 [node name="Hair5" parent="." instance=ExtResource("1_h7v3p")]
 transform = Transform3D(0.9967522, 0.08025358, 0.006660097, -0.080529466, 0.9933374, 0.08243524, 0, -0.08270385, 0.99657416, 5.995022, -3.8146973e-06, 7.12294)
 
-[node name="Hair6" parent="." instance=ExtResource("1_h7v3p")]
-transform = Transform3D(0.9967522, 0.08025358, 0.006660097, -0.080529466, 0.9933374, 0.08243524, 0, -0.08270385, 0.99657416, 11.320969, -3.8146973e-06, -14.089973)
-
-[node name="Hair7" parent="." instance=ExtResource("1_h7v3p")]
-transform = Transform3D(0.9967523, 0.080253586, 0.0066600973, -0.08012303, 0.98002505, 0.18201977, 0.008080675, -0.18196222, 0.9832723, 4.751976, -7.699047, -20.95253)
-
 [node name="Hair8" parent="." instance=ExtResource("1_h7v3p")]
 transform = Transform3D(0.9175534, -0.06180066, 0.3927808, -0.011706806, 0.98321974, 0.18204871, -0.39744067, -0.17163758, 0.90143305, 3.6020856, -7.699047, -22.996944)
-
-[node name="Hair9" parent="." instance=ExtResource("1_h7v3p")]
-transform = Transform3D(0.82886416, -0.09229705, 0.5517844, -0.011706807, 0.98321974, 0.1820487, -0.55932796, -0.15735322, 0.81387484, -3.8955865, -6.1727314, -20.996899)

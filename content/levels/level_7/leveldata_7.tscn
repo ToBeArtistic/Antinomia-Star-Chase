@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgmq848dvc3q5"]
+
+[ext_resource type="Script" uid="uid://bgx7b2q66dfkm" path="res://content/leveldata.gd" id="1_72qmb"]
+
+[node name="LevelData" type="Node"]
+script = ExtResource("1_72qmb")
+title = "THE TROUGH"
+description = "More hostile entities. Prepare yourself."

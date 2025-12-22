@@ -65,7 +65,7 @@ directional_shadow_max_distance = 3000.0
 directional_shadow_pancake_size = 23.1
 
 [node name="player" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_663qp")]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -55.415024, 262.5598, 390.66937)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -32.50266, 268.05838, 406.91144)
 collision_mask = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
@@ -84,22 +84,22 @@ bus = &"SFX"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.147224, 223.23766, 337.5734)
 
 [node name="Waypoint4" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.184502, 91.23836, 141.6637)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.184502, 89.10939, 141.6637)
 
 [node name="Waypoint6" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.416775, 25.872643, 36.155323)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0822458, 24.578339, 36.155323)
 
 [node name="Waypoint7" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.651684, -29.46957, -62.39401)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.599333, -30.664227, -62.39401)
 
 [node name="Waypoint9" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2644997, -103.90354, -186.53836)
 
 [node name="Waypoint10" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.060484, -165.97437, -292.16736)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.83724, -165.03798, -332.36508)
 
 [node name="Waypoint12" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72719, -241.0523, -460.04965)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72719, -262.03632, -460.04965)
 
 [node name="Waypoint13" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.247671, -367.5975, -644.18866)
@@ -108,34 +108,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.247671, -367.5975, -644.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.42221, -487.1168, -843.7835)
 
 [node name="Waypoint15" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.52118, -527.8626, -929.8054)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.52118, -529.72656, -929.8054)
 
 [node name="Waypoint16" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.585464, -579.26117, -1023.83374)
 
 [node name="Waypoint17" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.79109, -616.6028, -1116.5608)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.35939, -615.47784, -1123.0801)
 
 [node name="Waypoint18" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.167282, -698.70074, -1222.9591)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.551685, -698.70074, -1220.8905)
 
 [node name="Waypoint19" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.130297, -800.0049, -1358.7086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.108515, -802.2137, -1358.7086)
 
 [node name="Waypoint20" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.76251, -874.0192, -1461.4138)
 
 [node name="Waypoint21" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.8734, -914.5485, -1549.1195)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.04319, -933.2854, -1596.8004)
 
 [node name="Waypoint22" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.38675, -971.6216, -1600.2833)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.70153, -1026.4559, -1708.6516)
 
 [node name="Waypoint23" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.359085, -1046.8005, -1768.7081)
-
-[node name="Waypoint24" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.841656, -1067.3982, -1869.5377)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.38702, -1082.0353, -1843.8726)
 
 [node name="Waypoint25" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.332237, -1111.0581, -1952.703)
@@ -144,13 +141,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.332237, -1111.0581, -1952.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.37263, -1176.1227, -2077.786)
 
 [node name="Waypoint27" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.26143, -1223.6088, -2228.865)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -178.9371, -1225.6333, -2228.865)
 
 [node name="Waypoint28" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -228.99638, -1252.856, -2308.3755)
 
 [node name="Waypoint29" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -270.87183, -1325.7601, -2467.5466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -356.03644, -1323.3474, -2454.299)
 
 [node name="Waypoint30" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("7_f6v37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -948.6433, -1522.4396, -3652.1914)
@@ -405,10 +402,10 @@ transform = Transform3D(2.7087011, -0.19522527, 1.2746832, -0.53389037, 2.529559
 transform = Transform3D(2.7153308, -0.18765283, 1.261648, -0.3274008, 2.765403, 1.115951, -1.232793, -1.1477474, 2.482517, 67.81459, -1193.4934, -1892.1384)
 
 [node name="HairRegion2" parent="SubViewportContainer/SubViewport" instance=ExtResource("8_kvirc")]
-transform = Transform3D(4.6930065, 0.24905095, 0.060518365, -0.24386516, 3.997616, 2.4595923, 0.078858465, -2.4590726, 4.0045896, 252.78859, -4.5354004, 380.67523)
+transform = Transform3D(4.6930065, 0.24905095, 0.060518365, -0.24386516, 3.997616, 2.4595923, 0.078858465, -2.4590726, 4.0045896, 252.78859, 39.064346, 325.70618)
 
 [node name="HairRegion5" parent="SubViewportContainer/SubViewport" instance=ExtResource("8_kvirc")]
-transform = Transform3D(5.9667907, -0.38900816, 0.4960649, 0.0667742, 5.0848536, 3.1843054, -0.6268564, -3.1611602, 5.0610385, 483.94763, 444.307, 1165.332)
+transform = Transform3D(5.9667907, -0.38900816, 0.4960649, 0.0667742, 5.0848536, 3.1843054, -0.6268564, -3.1611602, 5.0610385, 483.94763, 584.8461, 1165.332)
 
 [node name="Hairpatch" parent="SubViewportContainer/SubViewport" instance=ExtResource("9_kvirc")]
 transform = Transform3D(1.0104736, -2.7266088, -2.4463344, 2.7436717, 2.2447765, -1.3686672, 2.4271822, -1.4023511, 2.56558, -727.2804, -272.14023, 153.55054)
@@ -438,4 +435,4 @@ transform = Transform3D(2.5351465, -1.9645492, 2.038034, 0.26017967, 2.8860075, 
 transform = Transform3D(3.1242783, -1.5593108, 1.4991477, 0.77592987, 3.2662694, 1.780287, -2.0191147, -1.157599, 3.0038528, -205.26591, -1298.7937, -2215.9236)
 
 [node name="UI" parent="." instance=ExtResource("9_h4v76")]
-record_name = "LEVEL FIVE"
+record_name = "LEVEL SIX"

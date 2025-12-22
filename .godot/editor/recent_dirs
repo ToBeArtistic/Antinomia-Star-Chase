@@ -1,5 +1,8 @@
 C:/Projects/Antinomia-Star-Chase
+res://content/levels/level_7
 res://launch/main_menu
+res://content/levels
+res://launch/options_menu
 res://content/levels/level_6
 res://content
 res://content/levels/level_5
@@ -12,11 +15,8 @@ res://common
 res://common/autoload
 res://content/levels/level_2
 res://assets/materials
-res://content/levels
 res://launch/context
 res://content/mechanics/waypoints
 res://assets/audio/effects
 res://common/player
-res://launch/options_menu
 res://content/story/records
-res://content/mechanics/goal

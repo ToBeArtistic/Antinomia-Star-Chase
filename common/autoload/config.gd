@@ -127,9 +127,9 @@ func set_full_screen(value : bool) -> void:
 
 func _reset_config_file() -> void:
 		_config = ConfigFile.new()
-		_config.set_value("game", "hyper_mode", false)
 		_config.set_value("game", "sensitivity_x", 50)
 		_config.set_value("game", "sensitivity_y", 50)
+		_config.set_value("game", "crosshair", true)
 
 		_config.set_value("keybind", "move_left", "A")
 		_config.set_value("keybind", "move_right", "D")

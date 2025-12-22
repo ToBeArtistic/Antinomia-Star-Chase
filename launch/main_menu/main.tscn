@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://kp27o3ab5qnc"]
+[gd_scene load_steps=36 format=3 uid="uid://kp27o3ab5qnc"]
 
 [ext_resource type="Script" uid="uid://clpkfg2nca1mf" path="res://common/gui-utils/swap_scene.gd" id="1_8kpce"]
 [ext_resource type="Texture2D" uid="uid://1npw0cd0a5dh" path="res://assets/icons/gear.png" id="1_cggwd"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cnvd4iy8h7ms0" path="res://content/levels/level_2/leveldata_2.tscn" id="18_bbk7f"]
 [ext_resource type="PackedScene" uid="uid://dbei8lq7gc61l" path="res://content/levels/level_6/leveldata_6.tscn" id="19_bge31"]
 [ext_resource type="Texture2D" uid="uid://ccepqct2ioavo" path="res://assets/icons/level_icons/rhyme_hand.png" id="20_4mrdp"]
+[ext_resource type="PackedScene" uid="uid://cgmq848dvc3q5" path="res://content/levels/level_7/leveldata_7.tscn" id="21_hfbvx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xuqhd"]
 
@@ -420,6 +421,7 @@ offset_right = 310.0
 offset_bottom = 273.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("7_dauqf")
 
 [node name="Label" type="Label" parent="Level 7"]
 layout_mode = 1
@@ -438,6 +440,24 @@ horizontal_alignment = 1
 [node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Level 7"]
 script = ExtResource("8_yenej")
 metadata/_custom_type_script = "uid://cr0n23xf5b08n"
+
+[node name="LevelIcon4" type="TextureRect" parent="Level 7"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_3fxfu")
+expand_mode = 2
+
+[node name="LevelData" parent="Level 7" instance=ExtResource("21_hfbvx")]
+
+[node name="SceneSwapper" type="Node" parent="Level 7"]
+script = ExtResource("1_8kpce")
+scene_file = "uid://bdj6da6eyn54h"
+metadata/_custom_type_script = "uid://clpkfg2nca1mf"
 
 [node name="Level 8" type="Button" parent="."]
 layout_mode = 1
