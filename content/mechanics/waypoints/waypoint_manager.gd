@@ -3,6 +3,7 @@ extends Node3D
 class_name WaypointManager
 
 signal waypoints_completed
+signal waypoint_triggered(waypoint:Waypoint)
 
 @onready var pickup_sound : AudioStreamPlayer = $PickupSound
 
@@ -10,12 +11,15 @@ var _waypoints : Array[Waypoint] = []
 var _active_waypoint : Waypoint
 var _current_index : int = 0
 
+var splits : Dictionary[String, float] = {}
+
 func _ready() -> void:
 	for child in get_children():
 		if child is Waypoint:
 			var waypoint : Waypoint = child
 			waypoint.connect_to_trigger(_handle_waypoint_trigger.bind(waypoint))
 			_waypoints.append(waypoint)
+			
 	if not _waypoints.is_empty():
 		_active_waypoint = _waypoints[0]
 		_active_waypoint.active = true
@@ -27,6 +31,7 @@ func _ready() -> void:
 func _handle_waypoint_trigger(_colission_object : Node3D, waypoint : Waypoint) -> void:
 	print_debug("waypoint triggered: " + waypoint.name)
 	if waypoint.name == _active_waypoint.name and _active_waypoint.active:
+		waypoint_triggered.emit(waypoint)
 		_next_waypoint()
 	pass
 

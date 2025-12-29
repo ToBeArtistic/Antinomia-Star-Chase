@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://kp27o3ab5qnc"]
+[gd_scene load_steps=41 format=3 uid="uid://kp27o3ab5qnc"]
 
 [ext_resource type="Script" uid="uid://clpkfg2nca1mf" path="res://common/gui-utils/swap_scene.gd" id="1_8kpce"]
 [ext_resource type="Texture2D" uid="uid://1npw0cd0a5dh" path="res://assets/icons/gear.png" id="1_cggwd"]
@@ -24,6 +24,11 @@
 [ext_resource type="PackedScene" uid="uid://dbei8lq7gc61l" path="res://content/levels/level_6/leveldata_6.tscn" id="19_bge31"]
 [ext_resource type="Texture2D" uid="uid://ccepqct2ioavo" path="res://assets/icons/level_icons/rhyme_hand.png" id="20_4mrdp"]
 [ext_resource type="PackedScene" uid="uid://cgmq848dvc3q5" path="res://content/levels/level_7/leveldata_7.tscn" id="21_hfbvx"]
+[ext_resource type="Texture2D" uid="uid://lrouug6xo8s7" path="res://assets/icons/level_icons/metropolis.png" id="22_3o6r0"]
+[ext_resource type="PackedScene" uid="uid://pju0sgaabpe2" path="res://content/levels/level_8/leveldata_8.tscn" id="23_vwusv"]
+[ext_resource type="PackedScene" uid="uid://cwed55mvfdetk" path="res://content/levels/level_9/leveldata_9.tscn" id="24_6jfkv"]
+[ext_resource type="Texture2D" uid="uid://dtme18dfpvgpm" path="res://assets/icons/star.png" id="25_qrx34"]
+[ext_resource type="PackedScene" uid="uid://c0ucnfofx6gkj" path="res://content/levels/level_10/leveldata_10.tscn" id="29_b83r3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xuqhd"]
 
@@ -441,7 +446,7 @@ horizontal_alignment = 1
 script = ExtResource("8_yenej")
 metadata/_custom_type_script = "uid://cr0n23xf5b08n"
 
-[node name="LevelIcon4" type="TextureRect" parent="Level 7"]
+[node name="LevelIcon7" type="TextureRect" parent="Level 7"]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -472,6 +477,7 @@ offset_right = 544.0
 offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("7_dauqf")
 
 [node name="Label" type="Label" parent="Level 8"]
 layout_mode = 1
@@ -491,6 +497,24 @@ horizontal_alignment = 1
 script = ExtResource("8_yenej")
 metadata/_custom_type_script = "uid://cr0n23xf5b08n"
 
+[node name="LevelIcon8" type="TextureRect" parent="Level 8"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("22_3o6r0")
+expand_mode = 2
+
+[node name="SceneSwapper" type="Node" parent="Level 8"]
+script = ExtResource("1_8kpce")
+scene_file = "uid://djgjgd6cygrnq"
+metadata/_custom_type_script = "uid://clpkfg2nca1mf"
+
+[node name="LevelData" parent="Level 8" instance=ExtResource("23_vwusv")]
+
 [node name="Level 9" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -504,6 +528,7 @@ offset_right = 647.0
 offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("7_dauqf")
 
 [node name="Label" type="Label" parent="Level 9"]
 layout_mode = 1
@@ -523,6 +548,24 @@ horizontal_alignment = 1
 script = ExtResource("8_yenej")
 metadata/_custom_type_script = "uid://cr0n23xf5b08n"
 
+[node name="SceneSwapper" type="Node" parent="Level 9"]
+script = ExtResource("1_8kpce")
+scene_file = "uid://6smcievd0ggr"
+metadata/_custom_type_script = "uid://clpkfg2nca1mf"
+
+[node name="LevelData" parent="Level 9" instance=ExtResource("24_6jfkv")]
+
+[node name="LevelIcon9" type="TextureRect" parent="Level 9"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_3fxfu")
+expand_mode = 2
+
 [node name="Level 10" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -538,6 +581,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "
 "
+script = ExtResource("7_dauqf")
 
 [node name="Label" type="Label" parent="Level 10"]
 layout_mode = 1
@@ -556,6 +600,28 @@ horizontal_alignment = 1
 [node name="ButtonSoundHandler" type="AudioStreamPlayer" parent="Level 10"]
 script = ExtResource("8_yenej")
 metadata/_custom_type_script = "uid://cr0n23xf5b08n"
+
+[node name="LevelIcon10" type="TextureRect" parent="Level 10"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 41.0
+offset_top = 13.0
+offset_right = -46.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_qrx34")
+expand_mode = 2
+
+[node name="SceneSwapper" type="Node" parent="Level 10"]
+script = ExtResource("1_8kpce")
+scene_file = "uid://dx4jgu8qmi1cd"
+metadata/_custom_type_script = "uid://clpkfg2nca1mf"
+
+[node name="LevelData" parent="Level 10" instance=ExtResource("29_b83r3")]
 
 [node name="Records" type="TextureRect" parent="."]
 z_index = -1

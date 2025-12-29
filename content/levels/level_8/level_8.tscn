@@ -1,0 +1,2055 @@
+[gd_scene load_steps=18 format=3 uid="uid://djgjgd6cygrnq"]
+
+[ext_resource type="Script" uid="uid://bll6nv22ptsix" path="res://common/music_on_ready_requester.gd" id="1_fgvbi"]
+[ext_resource type="PackedScene" uid="uid://cqy3aqhl2lfin" path="res://common/player/player.tscn" id="2_vhwo5"]
+[ext_resource type="Material" uid="uid://okfa87bw25y2" path="res://assets/materials/pixel_outline_shaded.tres" id="4_kf710"]
+[ext_resource type="Material" uid="uid://dkvprr5875ops" path="res://assets/materials/simple_texture_white.tres" id="5_0jlmx"]
+[ext_resource type="Script" uid="uid://c36tfsjwmrmkd" path="res://content/mechanics/waypoints/waypoint_manager.gd" id="6_cad57"]
+[ext_resource type="Material" uid="uid://djb76atyix3ep" path="res://content/levels/level_8/level_8_material.tres" id="6_jkh8s"]
+[ext_resource type="PackedScene" uid="uid://dc7n7smcdi4je" path="res://content/levels/level_8/background_buildings_section.tscn" id="7_bvrsq"]
+[ext_resource type="AudioStream" uid="uid://cb4ehryvlruvp" path="res://assets/audio/effects/pickup_glass_reverb.wav" id="7_qnnk4"]
+[ext_resource type="PackedScene" uid="uid://b63sl0wkb023f" path="res://content/mechanics/waypoints/waypoint.tscn" id="8_dw8hj"]
+[ext_resource type="PackedScene" uid="uid://h4bn2xsng55c" path="res://content/levels/level_8/medium_building.tscn" id="9_k1jll"]
+[ext_resource type="PackedScene" uid="uid://bkrroji64u325" path="res://content/levels/level_ui.tscn" id="9_v31cg"]
+[ext_resource type="PackedScene" uid="uid://pju0sgaabpe2" path="res://content/levels/level_8/leveldata_8.tscn" id="12_cglwr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_upjnr"]
+sky_top_color = Color(0.98378223, 0.987935, 0.9956632, 1)
+sky_horizon_color = Color(0.71216166, 0.34020045, 0.8331087, 1)
+ground_bottom_color = Color(0.7052723, 0.28632557, 0.79336435, 1)
+ground_horizon_color = Color(0.66917855, 0.36376935, 0.8135874, 1)
+
+[sub_resource type="Sky" id="Sky_upjnr"]
+sky_material = SubResource("ProceduralSkyMaterial_upjnr")
+
+[sub_resource type="Environment" id="Environment_upjnr"]
+background_mode = 2
+sky = SubResource("Sky_upjnr")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8uhj0"]
+
+[sub_resource type="Compositor" id="Compositor_jy6mt"]
+
+[node name="Level1" type="Node3D"]
+
+[node name="MusicOnReadyRequester" type="Node" parent="."]
+script = ExtResource("1_fgvbi")
+theme_name = "level_1"
+metadata/_custom_type_script = "uid://bll6nv22ptsix"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+canvas_cull_mask = 4294966272
+oversampling = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.9931082, -0.11659324, 0.011919823, -0.10862491, -0.87747705, 0.46715575, -0.044007868, -0.46523136, -0.88409483, 0, 423.78992, 0)
+light_color = Color(0.7455808, 0.7455801, 0.7455802, 1)
+light_angular_distance = 0.3
+light_specular = 4.629
+shadow_enabled = true
+shadow_blur = 2.237
+directional_shadow_split_1 = 0.135
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 3000.0
+directional_shadow_pancake_size = 23.1
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_upjnr")
+camera_attributes = SubResource("CameraAttributesPractical_8uhj0")
+compositor = SubResource("Compositor_jy6mt")
+
+[node name="player" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_vhwo5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.37243, 246.84473, 321.2825)
+collision_mask = 1
+
+[node name="Waypoints" type="Node3D" parent="SubViewportContainer/SubViewport"]
+script = ExtResource("6_cad57")
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Waypoints"]
+stream = ExtResource("7_qnnk4")
+bus = &"SFX"
+
+[node name="Waypoint" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.140015, 97.17935, 77.171555)
+
+[node name="Waypoint2" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.996334, 97.17935, 62.474716)
+
+[node name="Waypoint3" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146.07074, 97.17935, 31.62431)
+
+[node name="Waypoint4" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -175.91393, 100.49175, -24.124542)
+
+[node name="Waypoint5" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -184.5443, 100.49175, -91.39807)
+
+[node name="Waypoint6" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -266.12878, 74.68133, -202.27136)
+
+[node name="Waypoint7" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -362.1609, 74.78203, -231.00214)
+
+[node name="Waypoint8" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -411.2153, 80.11864, -133.47862)
+
+[node name="Waypoint9" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -517.51855, 78.81136, -33.521503)
+
+[node name="Waypoint10" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -585.6372, 83.26448, 18.01545)
+
+[node name="Waypoint11" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -634.2695, 89.4255, 54.638653)
+
+[node name="Waypoint12" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -779.7308, 32.52749, 157.96733)
+
+[node name="Waypoint13" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -883.9208, 10.1311455, 230.7247)
+
+[node name="Waypoint14" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -961.3955, 16.267628, 308.22495)
+
+[node name="Waypoint15" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -980.4017, 8.463578, 416.8129)
+
+[node name="Waypoint16" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -921.1537, 8.463578, 485.5665)
+
+[node name="Waypoint17" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -833.99567, 15.994895, 480.6866)
+
+[node name="Waypoint18" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -721.14136, 6.7824144, 472.2338)
+
+[node name="Waypoint19" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -664.53845, 6.7824144, 511.19272)
+
+[node name="Waypoint20" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -578.0038, 0.60869026, 541.9223)
+
+[node name="Waypoint21" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -498.71356, 0.13993502, 480.31845)
+
+[node name="Waypoint22" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -388.85785, 3.5188565, 433.70773)
+
+[node name="Waypoint23" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -293.84213, 8.935801, 424.48526)
+
+[node name="Waypoint24" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -203.2679, 4.240307, 373.16882)
+
+[node name="Waypoint25" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.29536, -3.6223145, 304.7976)
+
+[node name="Waypoint26" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.2957, -3.6223145, 212.21028)
+
+[node name="Waypoint27" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.87022, -2.5251503, 102.07932)
+
+[node name="Waypoint28" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.90974, -2.5251503, -13.015114)
+
+[node name="Waypoint29" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9714632, -2.0489292, -116.246254)
+
+[node name="Waypoint30" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.384026, 3.4833326, -320.87027)
+
+[node name="Waypoint31" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -201.78914, 8.931443, -343.24405)
+
+[node name="Waypoint32" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -320.12366, 8.931443, -303.3018)
+
+[node name="Waypoint33" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -466.32596, 8.931443, -297.96057)
+
+[node name="Waypoint34" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("8_dw8hj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -647.3544, 8.931443, -279.44763)
+
+[node name="Purple" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.9878299, 0, -0.15553789, 0, 1, 0, 0.15553789, 0, -0.9878299, 0, -0.47501183, 0)
+material_override = ExtResource("6_jkh8s")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 225.06165, -19.448595, -261.06573)
+size = Vector3(3000, 40, 3000)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Purple/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -235.348, 60, -60.798)
+operation = 2
+inner_radius = 214.74414
+outer_radius = 115.4133
+sides = 10
+ring_sides = 14
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Purple/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.723, 60, 48.655)
+operation = 2
+inner_radius = 214.74414
+outer_radius = 115.4133
+sides = 10
+ring_sides = 14
+
+[node name="CSGTorus3D3" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Purple/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.489, 60, -224.763)
+operation = 2
+inner_radius = 214.74414
+outer_radius = 115.4133
+sides = 10
+ring_sides = 14
+
+[node name="CSGTorus3D4" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Purple/CSGBox3D"]
+transform = Transform3D(0.9933547, 0, -0.11509319, 0, 1, 0, 0.11509319, 0, 0.9933547, 622.569, 60, 302.936)
+operation = 2
+inner_radius = 214.74414
+outer_radius = 115.4133
+sides = 10
+ring_sides = 14
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Purple/CSGBox3D"]
+transform = Transform3D(1, 0, 4.440892e-16, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.371139e-08, -230.12556, 34.54951, 262.55527)
+operation = 2
+radius = 24.35254
+height = 311.78284
+sides = 10
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Purple/CSGBox3D"]
+transform = Transform3D(0.41020966, 0.9119913, -3.9864396e-08, 5.55006e-17, -4.371138e-08, -0.9999999, -0.91199124, 0.4102096, -1.7930828e-08, 350.22107, 35.20829, 163.79422)
+operation = 2
+radius = 24.35254
+height = 311.78284
+sides = 10
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Purple/CSGBox3D"]
+transform = Transform3D(-0.22646433, 0.97401965, -4.2575635e-08, -3.514993e-16, -4.371138e-08, -1, -0.9740197, -0.22646427, 9.899065e-09, 395.27484, 35.20829, -162.2225)
+operation = 2
+radius = 24.35254
+height = 158.92795
+sides = 10
+
+[node name="BackgroundBuildings" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple"]
+
+[node name="BackgroundBuildingsSection" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -645.32214, -190.34967, -895.71814)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection"]
+transform = Transform3D(0.9410226, 0, -0.33834377, 0, 1, 0, 0.33834377, 0, 0.9410226, -222.79779, 30.761602, 193.49438)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, 14.235327, 21.325867)
+size = Vector3(69.72061, 590.3954, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -43.232788, 52.65827, -21.699585)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 22.394226, 52.65824, -106.845825)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 37.702454, 110.35468, -208.61273)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 105.474945, 110.35468, -281.11353)
+size = Vector3(126.67348, 590.3954, 69.62866)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -33.200806, -24.857904, -124.49768)
+size = Vector3(50.39406, 590.3954, 400.63855)
+
+[node name="BackgroundBuildingsSection8" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(0.90624136, 0, 0.42276064, 0, 1, 0, -0.42276064, 0, 0.90624136, -901.38306, -190.34967, -358.16724)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection8"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection8"]
+transform = Transform3D(0.9410226, 0, -0.33834377, 0, 1, 0, 0.33834377, 0, 0.9410226, -222.79779, 30.761602, 193.49438)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection8"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection8"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, 14.235327, 21.325867)
+size = Vector3(69.72061, 590.3954, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection8"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -43.232788, 52.65827, -21.699585)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection8"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 22.394226, 52.65824, -106.845825)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection8"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 37.702454, 110.35468, -208.61273)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection8"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 105.474945, 110.35468, -281.11353)
+size = Vector3(126.67348, 590.3954, 69.62866)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection8"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -33.200806, -24.857904, -124.49768)
+size = Vector3(50.39406, 590.3954, 400.63855)
+
+[node name="BackgroundBuildingsSection9" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(0.7644491, 0, 0.64468426, 0, 1, 0, -0.64468426, 0, 0.7644491, -909.4696, -190.34967, 322.19974)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection9"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection9"]
+transform = Transform3D(0.9410226, 0, -0.33834377, 0, 1, 0, 0.33834377, 0, 0.9410226, -222.79779, 118.371735, 193.49435)
+size = Vector3(95.050354, 765.61566, 105.93994)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection9"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection9"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, 14.235327, 21.325867)
+size = Vector3(69.72061, 590.3954, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection9"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -43.232788, 52.65827, -21.699585)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection9"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 22.394226, 52.65824, -106.845825)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection9"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 37.702454, 110.35468, -208.61273)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection9"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 105.474945, 110.35468, -281.11353)
+size = Vector3(126.67348, 590.3954, 69.62866)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection9"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -33.200806, -24.857904, -124.49768)
+size = Vector3(50.39406, 590.3954, 400.63855)
+
+[node name="BackgroundBuildingsSection10" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(-0.42187473, 0, 0.90665424, 0, 1, 0, -0.90665424, 0, -0.42187473, -560.4381, -190.34967, 703.0636)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection10"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection10"]
+transform = Transform3D(0.94102246, 0, -0.3383438, 0, 1, 0, 0.3383438, 0, 0.94102246, -257.6184, 30.761597, 217.96509)
+size = Vector3(95.050354, 590.3954, 224.7472)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection10"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection10"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, 14.235327, 21.325867)
+size = Vector3(69.72061, 590.3954, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection10"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -43.232788, 52.65827, -21.699585)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection10"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 22.394226, 52.65824, -106.845825)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection10"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 37.702454, 110.35468, -208.61273)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection10"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 105.474945, 110.35468, -281.11353)
+size = Vector3(126.67348, 590.3954, 69.62866)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection10"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -33.200806, -24.857904, -124.49768)
+size = Vector3(50.39406, 590.3954, 400.63855)
+
+[node name="BackgroundBuildingsSection17" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(0.008709073, 0, 0.9999621, 0, 1, 0, -0.9999621, 0, 0.008709073, -914.4131, 46.42634, 861.2696)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection17"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection17"]
+transform = Transform3D(0.9410226, 0, -0.33834377, 0, 1, 0, 0.33834377, 0, 0.9410226, -222.79791, -29.907127, 193.49438)
+size = Vector3(95.050354, 469.05792, 105.93994)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection17"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection17"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, -37.276604, 21.325867)
+size = Vector3(69.72061, 487.37152, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection17"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -43.232788, 52.65827, -21.699585)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection17"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 22.394226, 52.65824, -106.845825)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection17"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 37.702454, 110.35468, -208.61273)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection17"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 105.474945, 110.35468, -281.11353)
+size = Vector3(126.67348, 590.3954, 69.62866)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection17"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -33.200806, -84.58346, -124.49768)
+size = Vector3(50.39406, 470.94427, 400.63855)
+
+[node name="BackgroundBuildingsSection18" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(0.40413615, 0, -0.91469896, 0, 1, 0, 0.91469896, 0, 0.40413615, -106.88141, -98.521965, 1265.1313)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection18"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection18"]
+transform = Transform3D(0.9410226, 0, -0.33834377, 0, 1, 0, 0.33834377, 0, 0.9410226, -222.79779, 30.761602, 193.49438)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection18"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection18"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, 14.235327, 21.325867)
+size = Vector3(69.72061, 590.3954, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection18"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -43.232788, 52.65827, -21.699585)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection18"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 22.394226, 52.65824, -106.845825)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection18"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 37.702454, 110.35468, -208.61273)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection18"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 126.553955, 210.08792, -264.21997)
+size = Vector3(72.76057, 789.8619, 66.12634)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection18"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -33.200806, -24.857904, -124.49768)
+size = Vector3(50.39406, 590.3954, 400.63855)
+
+[node name="BackgroundBuildingsSection11" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings" instance=ExtResource("7_bvrsq")]
+transform = Transform3D(-0.4218747, 0, 0.9066543, 0, 1, 0, -0.9066543, 0, -0.4218747, 147.26245, -190.34967, 887.57104)
+
+[node name="BackgroundBuildingsSection12" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(-0.5293567, 0, 0.8483994, 0, 1, 0, -0.8483994, 0, -0.5293567, 797.10406, -140.42038, 990.92334)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection12"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection12"]
+transform = Transform3D(0.9410226, 0, -0.33834377, 0, 1, 0, 0.33834377, 0, 0.9410226, -222.79779, 30.761602, 193.49438)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection12"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection12"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, 14.235327, 21.325867)
+size = Vector3(69.72061, 590.3954, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection12"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -43.232788, 52.65827, -21.699585)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection12"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 22.394226, 52.65824, -106.845825)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection12"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 37.702454, 110.35468, -208.61273)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection12"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 105.474945, 110.35468, -281.11353)
+size = Vector3(126.67348, 590.3954, 69.62866)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection12"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -33.200806, -24.857904, -124.49768)
+size = Vector3(50.39406, 590.3954, 400.63855)
+
+[node name="BackgroundBuildingsSection13" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(-0.9999792, 0, 0.006457716, 0, 1, 0, -0.006457716, 0, -0.9999792, 1203.9045, -13.229685, 990.92334)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection13"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection13"]
+transform = Transform3D(0.9410226, 0, -0.33834377, 0, 1, 0, 0.33834377, 0, 0.9410226, -222.79779, 30.761602, 193.49438)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection13"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection13"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, 14.235327, 21.325867)
+size = Vector3(69.72061, 590.3954, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection13"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -43.232788, 52.65827, -21.699585)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection13"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 22.394226, 52.65824, -106.845825)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection13"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 37.702454, 110.35468, -208.61273)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection13"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 105.474945, 110.35468, -281.11353)
+size = Vector3(126.67348, 590.3954, 69.62866)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection13"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -33.200806, -24.857904, -124.49768)
+size = Vector3(50.39406, 590.3954, 400.63855)
+
+[node name="BackgroundBuildingsSection14" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(-0.9999792, 0, 0.006457716, 0, 1, 0, -0.006457716, 0, -0.9999792, 1393.9348, -177.60182, 532.0065)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection14"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection14"]
+transform = Transform3D(0.9410226, 0, -0.33834377, 0, 1, 0, 0.33834377, 0, 0.9410226, -222.79779, 30.761602, 193.49438)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection14"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection14"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, 14.235327, 21.325867)
+size = Vector3(69.72061, 590.3954, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection14"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -43.232788, 52.65827, -21.699585)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection14"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 22.394226, 52.65824, -106.845825)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection14"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 37.702454, 110.35468, -208.61273)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection14"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 105.474945, 110.35468, -281.11353)
+size = Vector3(126.67348, 590.3954, 69.62866)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection14"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -33.200806, -24.857904, -124.49768)
+size = Vector3(50.39406, 590.3954, 400.63855)
+
+[node name="BackgroundBuildingsSection15" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(-0.9955636, 0, -0.0940909, 0, 1, 0, 0.0940909, 0, -0.9955636, 1491.4128, -97.65693, 128.35754)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection15"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection15"]
+transform = Transform3D(0.9410226, 0, -0.33834377, 0, 1, 0, 0.33834377, 0, 0.9410226, -222.79779, 30.761602, 193.49438)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection15"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection15"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, 14.235327, 21.325867)
+size = Vector3(69.72061, 590.3954, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection15"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -43.232788, 52.65827, -21.699585)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection15"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 22.394226, 52.65824, -106.845825)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection15"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 37.702454, 110.35468, -208.61273)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection15"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 105.474945, 110.35468, -281.11353)
+size = Vector3(126.67348, 590.3954, 69.62866)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection15"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -33.200806, -24.857904, -124.49768)
+size = Vector3(50.39406, 590.3954, 400.63855)
+
+[node name="BackgroundBuildingsSection16" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(-0.6267942, 0, -0.7791848, 0, 1, 0, 0.7791848, 0, -0.6267942, 1491.4128, 47.992912, -201.88367)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection16"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection16"]
+transform = Transform3D(0.9410226, 0, -0.33834377, 0, 1, 0, 0.33834377, 0, 0.9410226, -222.79779, 30.761602, 193.49438)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection16"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection16"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, 14.235327, 21.325867)
+size = Vector3(69.72061, 590.3954, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection16"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -43.232788, 52.65827, -21.699585)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection16"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 22.394226, 52.65824, -106.845825)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection16"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 37.702454, 110.35468, -208.61273)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection16"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 105.474945, 110.35468, -281.11353)
+size = Vector3(126.67348, 590.3954, 69.62866)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection16"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -33.200806, -24.857904, -124.49768)
+size = Vector3(50.39406, 590.3954, 400.63855)
+
+[node name="BackgroundBuildingsSection2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(0.7810957, 0, -0.62441134, 0, 1, 0, 0.62441134, 0, 0.7810957, -222.14665, -88.34119, -1235.0493)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection2"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection2"]
+transform = Transform3D(0.9410226, 0, -0.33834377, 0, 1, 0, 0.33834377, 0, 0.9410226, -222.79779, 30.761602, 193.49438)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection2"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection2"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, 14.235327, 21.325867)
+size = Vector3(69.72061, 590.3954, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection2"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -43.232788, 52.65827, -21.699585)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection2"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 22.394226, 52.65824, -106.845825)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection2"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 37.702454, 110.35468, -208.61273)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection2"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 105.474945, 110.35468, -281.11353)
+size = Vector3(126.67348, 590.3954, 69.62866)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection2"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -33.200806, -24.857904, -124.49768)
+size = Vector3(50.39406, 590.3954, 400.63855)
+
+[node name="BackgroundBuildingsSection3" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(0.4398452, 0, -0.89807355, 0, 1, 0, 0.89807355, 0, 0.4398452, 170.85098, -113.82086, -1250.6246)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection3"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection3"]
+transform = Transform3D(0.9410226, 0, -0.33834377, 0, 1, 0, 0.33834377, 0, 0.9410226, -222.79779, 30.761602, 193.49438)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection3"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection3"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, 14.235327, 21.325867)
+size = Vector3(69.72061, 590.3954, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection3"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -43.232788, 52.65827, -21.699585)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection3"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 22.394226, 52.65824, -106.845825)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection3"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 37.702454, 110.35468, -208.61273)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection3"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 105.474945, 110.35468, -281.11353)
+size = Vector3(126.67348, 590.3954, 69.62866)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection3"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -33.200806, -24.857904, -124.49768)
+size = Vector3(50.39406, 590.3954, 400.63855)
+
+[node name="BackgroundBuildingsSection4" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(0.35138422, 0, -0.93623126, 0, 1, 0, 0.93623126, 0, 0.35138422, 783.3307, -20.719515, -1230.3937)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection4"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection4"]
+transform = Transform3D(0.9410226, 0, -0.33834377, 0, 1, 0, 0.33834377, 0, 0.9410226, -222.79779, 30.761602, 193.49438)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection4"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection4"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, 14.235327, 21.325867)
+size = Vector3(69.72061, 590.3954, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection4"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -43.232788, 52.65827, -21.699585)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection4"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 22.394226, 52.65824, -106.845825)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection4"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 37.702454, 110.35468, -208.61273)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection4"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 105.474945, 110.35468, -281.11353)
+size = Vector3(126.67348, 590.3954, 69.62866)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection4"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -33.200806, -24.857904, -124.49768)
+size = Vector3(50.39406, 590.3954, 400.63855)
+
+[node name="BackgroundBuildingsSection5" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(-0.903073, 0, -0.42948693, 0, 1, 0, 0.42948693, 0, -0.903073, 1026.5293, -138.34543, -1096.9111)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection5"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection5"]
+transform = Transform3D(0.9410226, 0, -0.33834377, 0, 1, 0, 0.33834377, 0, 0.9410226, -222.79779, 30.761602, 193.49438)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection5"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection5"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, 14.235327, 21.325867)
+size = Vector3(69.72061, 590.3954, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection5"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -71.56995, 52.65827, -67.5275)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection5"]
+transform = Transform3D(0.9896189, 0, 0.1437172, 0, 1, 0, -0.1437172, 0, 0.9896189, -140.78247, 52.65824, -168.33936)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="BackgroundBuildingsSection6" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(-0.903073, 0, -0.42948693, 0, 1, 0, 0.42948693, 0, -0.903073, 1345.6362, -138.34543, -622.7212)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection6"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection6"]
+transform = Transform3D(0.9410226, 0, -0.33834377, 0, 1, 0, 0.33834377, 0, 0.9410226, -222.79779, 30.761602, 193.49438)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection6"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection6"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, 14.235327, 21.325867)
+size = Vector3(69.72061, 590.3954, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection6"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -43.232788, 52.65827, -21.699585)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection6"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 22.394226, 52.65824, -106.845825)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection6"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 37.702454, 110.35468, -208.61273)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection6"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 105.474945, 110.35468, -281.11353)
+size = Vector3(126.67348, 590.3954, 69.62866)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection6"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -33.200806, -24.857904, -124.49768)
+size = Vector3(50.39406, 590.3954, 400.63855)
+
+[node name="BackgroundBuildingsSection7" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings"]
+transform = Transform3D(-0.48549628, 0, -0.8742386, 0, 1, 0, 0.8742386, 0, -0.48549628, 1278.3495, 82.60078, -962.1058)
+
+[node name="BackgroundBuilding" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection7"]
+transform = Transform3D(0.88056004, 0, -0.4739345, 0, 1, 0, 0.4739345, 0, 0.88056004, -222.27112, 45.870247, 281.49182)
+size = Vector3(44.319763, 620.6128, 105.93994)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection7"]
+transform = Transform3D(0.9410226, 0, -0.33834377, 0, 1, 0, 0.33834377, 0, 0.9410226, -222.79779, 30.761602, 193.49438)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection7"]
+transform = Transform3D(0.8842063, 0, -0.4670967, 0, 1, 0, 0.4670967, 0, 0.8842063, -136.85474, 85.63383, 115.3703)
+size = Vector3(95.050354, 590.3954, 105.93994)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection7"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -95.11914, 14.235327, 21.325867)
+size = Vector3(69.72061, 590.3954, 139.39197)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection7"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -43.232788, 52.65827, -21.699585)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection7"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 22.394226, 52.65824, -106.845825)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection7"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 37.702454, 110.35468, -208.61273)
+size = Vector3(70.08914, 590.3954, 69.62866)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection7"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, 105.474945, 110.35468, -281.11353)
+size = Vector3(126.67348, 590.3954, 69.62866)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Purple/BackgroundBuildings/BackgroundBuildingsSection7"]
+transform = Transform3D(0.8192221, 0, -0.5734763, 0, 1, 0, 0.5734763, 0, 0.8192221, -33.200806, -24.857904, -124.49768)
+size = Vector3(50.39406, 590.3954, 400.63855)
+
+[node name="Geometry" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.9878299, 0, -0.15553789, 0, 1, 0, 0.15553789, 0, -0.9878299, 0, -6.6992188, 0)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 215.59328, -35.67208, -355.38745)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+inner_radius = 197.32924
+outer_radius = 96.354294
+sides = 11
+ring_sides = 10
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGTorus3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40.471542, 0)
+operation = 2
+size = Vector3(471.6975, 164.94263, 465.0512)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Geometry/CSGTorus3D"]
+transform = Transform3D(1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 1, 0, 44.50775, 0)
+visible = false
+radius = 132.03271
+height = 1.624939
+sides = 11
+
+[node name="CSGTorus3D5" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 596.2563, -35.67211, 376.3437)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+inner_radius = 197.32924
+outer_radius = 96.354294
+sides = 11
+ring_sides = 10
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGTorus3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -41.59413, 0)
+operation = 2
+size = Vector3(471.6975, 164.94263, 465.0512)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Geometry/CSGTorus3D5"]
+transform = Transform3D(1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 1, 0, 25.115692, 0)
+radius = 88.456055
+height = 40.409058
+sides = 11
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Geometry/CSGTorus3D5"]
+transform = Transform3D(1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 1, 0, 44.428024, 0)
+operation = 2
+radius = 86.34912
+height = 3.262146
+sides = 11
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Geometry/CSGTorus3D5"]
+transform = Transform3D(1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 1, 0, 36.33718, 0)
+radius = 29.384277
+height = 23.756012
+sides = 10
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Geometry/CSGTorus3D5"]
+transform = Transform3D(1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 1, 0, 42.09955, 0)
+visible = false
+radius = 132.03271
+height = 1.624939
+sides = 11
+
+[node name="CSGTorus3D3" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 904.4879, -35.67208, -222.99529)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+inner_radius = 197.32924
+outer_radius = 96.354294
+sides = 11
+ring_sides = 10
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGTorus3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -43.429184, 0)
+operation = 2
+size = Vector3(471.6975, 171.99097, 465.0512)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Geometry/CSGTorus3D3"]
+transform = Transform3D(1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 1, 0, 44.50775, 0)
+radius = 132.03271
+height = 1.624939
+sides = 11
+
+[node name="CSGTorus3D4" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Geometry"]
+transform = Transform3D(0.1578823, 0, 0.98745793, 0, 1, 0, -0.98745793, 0, 0.1578823, 869.1491, -35.672073, -469.5609)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+inner_radius = 197.32924
+outer_radius = 96.354294
+sides = 11
+ring_sides = 10
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGTorus3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -46.953354, 0)
+operation = 2
+size = Vector3(471.6975, 164.94263, 465.0512)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Geometry/CSGTorus3D4"]
+transform = Transform3D(1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 1, 0, 44.50775, 0)
+radius = 132.03271
+height = 1.624939
+sides = 11
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Geometry"]
+transform = Transform3D(0.92419976, 0, -0.3819093, 0, 1, 0, 0.3819093, 0, 0.92419976, 14.716873, -35.67208, 323.10886)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+inner_radius = 197.32924
+outer_radius = 96.354294
+sides = 11
+ring_sides = 10
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGTorus3D2"]
+transform = Transform3D(1.0000001, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 1.0000001, 0, -40.28929, 0)
+operation = 2
+size = Vector3(471.6975, 164.94263, 465.0512)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Geometry/CSGTorus3D2"]
+transform = Transform3D(1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 1, 0, 180.30984, 0)
+radius = 1.5131836
+height = 317.8661
+sides = 5
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Geometry/CSGTorus3D2"]
+transform = Transform3D(1, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 1, 0, 44.50775, 0)
+visible = false
+radius = 132.03271
+height = 1.624939
+sides = 11
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Geometry"]
+transform = Transform3D(0.94808453, -0.3180163, 1.390093e-08, 0, -4.371139e-08, -1, 0.3180163, 0.94808453, -4.144212e-08, 106.77115, -24.762497, -23.64869)
+radius = 39.0
+height = 415.75986
+sides = 10
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 7.1054274e-15, 8.881784e-16, -7.1054274e-15, 1, 0, 0, 2.839365)
+operation = 2
+size = Vector3(166.4148, 494.51245, 68.51849)
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Geometry"]
+transform = Transform3D(-0.12831098, -0.991734, 4.3350067e-08, 8.420689e-16, -4.371139e-08, -1, 0.991734, -0.12831098, 5.6086513e-09, 307.324, -24.762499, 353.00455)
+radius = 39.0
+height = 302.78818
+sides = 10
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCylinder3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 5.245804e-15, 0, -5.4158067e-15, 1, 0, 0, 2.9880009)
+operation = 2
+size = Vector3(166.4148, 494.51245, 68.51849)
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Geometry"]
+transform = Transform3D(0.9367204, -0.35007662, 1.5302335e-08, 2.8242874e-15, -4.371139e-08, -1, 0.35007662, 0.9367204, -4.094538e-08, 826.68445, -24.762514, 137.082)
+radius = 39.0
+height = 475.88794
+sides = 10
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCylinder3D4"]
+transform = Transform3D(1, -1.4901161e-08, 0, 1.4901161e-08, 1, 0, -8.881784e-16, -3.5527137e-15, 1, 0, 0, 3.0241756)
+operation = 2
+size = Vector3(166.4148, 494.51245, 68.51849)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Geometry"]
+transform = Transform3D(-0.20461562, -0.9788424, 4.2786557e-08, 8.420689e-16, -4.371139e-08, -1, 0.9788424, -0.20461562, 8.944034e-09, 555.39557, -24.762497, -266.61325)
+radius = 39.0
+height = 410.69745
+sides = 10
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry/CSGCylinder3D2"]
+transform = Transform3D(1.0000001, 0, -2.220446e-16, 0, 1.0000001, -2.4633073e-15, 0, 1.110223e-15, 1, 0, 0, 3.388729)
+operation = 2
+size = Vector3(166.4148, 494.51245, 68.51849)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 467.04724, -20.127934, -185.6019)
+size = Vector3(1702.5417, 38.00244, 2039.6462)
+
+[node name="Objects" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.9878299, 0, -0.15553789, 0, 1, 0, 0.15553789, 0, -0.9878299, 0, 0, 0)
+
+[node name="Buildings" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings"]
+transform = Transform3D(0.98146, 0, 0.19166562, 0, 1, 0, -0.19166562, 0, 0.98146, 288.64825, 354.07776, -146.67549)
+size = Vector3(33.924316, 829.7668, 53.904816)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings"]
+transform = Transform3D(0.98146, 0, 0.19166562, 0, 1, 0, -0.19166562, 0, 0.98146, 278.22028, 278.05066, -148.64116)
+size = Vector3(33.924316, 677.7126, 76.493904)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings"]
+transform = Transform3D(0.98146, 0, 0.19166562, 0, 1, 0, -0.19166562, 0, 0.98146, 272.07364, 212.19354, -147.38094)
+size = Vector3(46.4729, 545.99835, 50.769836)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings"]
+transform = Transform3D(0.98146, 0, 0.19166562, 0, 1, 0, -0.19166562, 0, 0.98146, 265.5876, 125.99547, -146.70123)
+size = Vector3(59.46515, 373.6022, 31.879105)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings"]
+transform = Transform3D(0.9814603, 0, 0.19166556, 0, 1, 0, -0.19166556, 0, 0.9814603, 312.09262, 407.23502, -162.0206)
+size = Vector3(63.245117, 844.0636, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings"]
+transform = Transform3D(0.98146, 0, 0.19166562, 0, 1, 0, -0.19166562, 0, 0.98146, 351.74182, 219.25954, -169.26285)
+size = Vector3(24.441406, 526.0132, 27.274475)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings"]
+transform = Transform3D(0.98146, 0, 0.19166562, 0, 1, 0, -0.19166562, 0, 0.98146, 357.3901, 140.87978, -170.56711)
+size = Vector3(36.028442, 369.25366, 43.955276)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings"]
+transform = Transform3D(0.9559879, 0, -0.2934063, 0, 1, 0, 0.2934063, 0, 0.9559879, 399.03174, 215.16653, -561.4126)
+size = Vector3(85.910645, 517.82715, 65.82132)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings"]
+transform = Transform3D(0.2884804, 0, -0.95748574, 0, 1, 0, 0.95748574, 0, 0.2884804, 438.50928, 356.85754, -453.66193)
+size = Vector3(85.910645, 801.20917, 65.82132)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings"]
+transform = Transform3D(0.2884804, 0, -0.95748574, 0, 1, 0, 0.95748574, 0, 0.2884804, 467.71503, 303.61166, -441.09442)
+size = Vector3(85.910645, 694.7174, 65.82132)
+
+[node name="Buildings3" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.6943193, 0, 0.7196671, 0, 1, 0, -0.7196671, 0, 0.6943193, -86.48985, 3.0517578e-05, -4.4996185)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings3"]
+transform = Transform3D(0.98146075, 0, 0.19166547, 0, 1, 0, -0.19166547, 0, 0.98146075, 261.58658, 78.9456, -189.11987)
+size = Vector3(84.38574, 279.5025, 112.06448)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings3"]
+transform = Transform3D(0.98146075, 0, 0.19166547, 0, 1, 0, -0.19166547, 0, 0.98146075, 307.0737, 115.039185, -196.94571)
+size = Vector3(59.708984, 259.67194, 78.483795)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings3"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 334.6307, 112.8638, -219.22165)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings3"]
+transform = Transform3D(0.955988, 0, -0.2934064, 0, 1, 0, 0.2934064, 0, 0.955988, 399.03177, 312.6633, -561.4126)
+size = Vector3(85.910645, 712.8207, 65.82132)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings3"]
+transform = Transform3D(0.955988, 0, -0.2934064, 0, 1, 0, 0.2934064, 0, 0.955988, 392.5211, 307.774, -541.6925)
+size = Vector3(63.65271, 703.04205, 39.11757)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings3"]
+transform = Transform3D(0.28848037, 0, -0.9574861, 0, 1, 0, 0.9574861, 0, 0.28848037, 438.50934, 85.752014, -453.66196)
+size = Vector3(85.910645, 258.99814, 65.82132)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildings3"]
+transform = Transform3D(0.28848037, 0, -0.9574861, 0, 1, 0, 0.9574861, 0, 0.28848037, 467.71506, 52.860535, -441.09445)
+size = Vector3(85.910645, 193.21515, 65.82132)
+
+[node name="MediumBuilding" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.18014152, 0, 0.98364073, 0, 1, 0, -0.98364073, 0, 0.18014152, -287.7738, 3.0517578e-05, -307.53143)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding"]
+transform = Transform3D(0.9814617, 0, 0.19166563, 0, 1, 0, -0.19166563, 0, 0.9814617, -15.000259, 3.4851456, 11.948914)
+size = Vector3(63.245117, 128.58159, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding13" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.18014152, 0, 0.98364073, 0, 1, 0, -0.98364073, 0, 0.18014152, -289.82028, 3.0517578e-05, -395.3251)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding13"]
+transform = Transform3D(0.9814617, 0, 0.19166563, 0, 1, 0, -0.19166563, 0, 0.9814617, -15.000259, 3.4851456, 11.948914)
+size = Vector3(63.245117, 128.58159, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding13"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding13"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding14" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.18014152, 0, 0.98364073, 0, 1, 0, -0.98364073, 0, 0.18014152, -289.82028, 3.0517578e-05, -476.2118)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding14"]
+transform = Transform3D(0.9814617, 0, 0.19166563, 0, 1, 0, -0.19166563, 0, 0.9814617, -15.000259, 3.4851456, 11.948914)
+size = Vector3(63.245117, 128.58159, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding14"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding14"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding15" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.18014152, 0, 0.98364073, 0, 1, 0, -0.98364073, 0, 0.18014152, -393.12897, 0, -485.48047)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding15"]
+transform = Transform3D(0.9814617, 0, 0.19166563, 0, 1, 0, -0.19166563, 0, 0.9814617, -15.000259, 3.4851456, 11.948914)
+size = Vector3(63.245117, 128.58159, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding15"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding15"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding16" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.18014152, 0, 0.98364073, 0, 1, 0, -0.98364073, 0, 0.18014152, -395.17545, 0, -573.2742)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding16"]
+transform = Transform3D(0.9814617, 0, 0.19166563, 0, 1, 0, -0.19166563, 0, 0.9814617, -15.000259, 3.4851456, 11.948914)
+size = Vector3(63.245117, 128.58159, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding16"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding16"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding17" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.18014152, 0, 0.98364073, 0, 1, 0, -0.98364073, 0, 0.18014152, -395.17545, 0, -654.1608)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding17"]
+transform = Transform3D(0.9814617, 0, 0.19166563, 0, 1, 0, -0.19166563, 0, 0.9814617, -15.000259, 3.4851456, 11.948914)
+size = Vector3(63.245117, 128.58159, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding17"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding17"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.49359268, 0, 0.8696931, 0, 1, 0, -0.8696931, 0, 0.49359268, 471.69525, -170.28912, 110.87433)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding2"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding2"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding2"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding39" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.49359262, 0, 0.86969316, 0, 1, 0, -0.86969316, 0, 0.49359262, 406.72632, -98.05881, 41.211143)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding39"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding39"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding39"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding38" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.36434034, 0, 0.93126583, 0, 1, 0, -0.93126583, 0, -0.36434034, 580.39844, -189.485, 138.78668)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding38"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding38"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding38"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding38"]
+transform = Transform3D(0.98146105, 0, 0.19166598, 0, 1, 0, -0.19166598, 0, 0.98146105, 67.13382, 96.24278, 85.325165)
+size = Vector3(24.441406, 358.117, 27.274475)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding38"]
+transform = Transform3D(0.6010346, 0, 0.7992245, 0, 1, 0, -0.7992245, 0, 0.6010346, 80.35776, 68.395615, 250.913)
+size = Vector3(24.441406, 302.42267, 27.274475)
+
+[node name="MediumBuilding30" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.83539504, 0, 0.5496501, 0, 1, 0, -0.5496501, 0, -0.83539504, 546.31586, -215.69342, 12.9461975)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding30"]
+transform = Transform3D(0.981459, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.981459, -15.000229, 131.18625, 11.948853)
+size = Vector3(63.245117, 469.59875, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding30"]
+transform = Transform3D(0.9814602, 0, 0.19166562, 0, 1, 0, -0.19166562, 0, 0.9814602, 27.030975, 139.49142, 29.206787)
+size = Vector3(71.52283, 434.4395, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding30"]
+transform = Transform3D(0.9814602, 0, 0.19166562, 0, 1, 0, -0.19166562, 0, 0.9814602, 15.65538, 154.53336, 62.916748)
+size = Vector3(24.441406, 445.6902, 27.274475)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding30"]
+transform = Transform3D(0.9814602, 0, 0.19166562, 0, 1, 0, -0.19166562, 0, 0.9814602, 44.44084, 149.0126, 57.536987)
+size = Vector3(24.441406, 456.7317, 27.274475)
+
+[node name="MediumBuilding31" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.51705647, 0, -0.8559515, 0, 1, 0, 0.8559515, 0, -0.51705647, 871.77203, -149.2859, 326.59375)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding31"]
+transform = Transform3D(0.981459, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.981459, -15.000229, 131.18625, 11.948853)
+size = Vector3(63.245117, 469.59875, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding31"]
+transform = Transform3D(0.9814602, 0, 0.19166562, 0, 1, 0, -0.19166562, 0, 0.9814602, 27.030975, 139.49142, 29.206787)
+size = Vector3(71.52283, 434.4395, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding31"]
+transform = Transform3D(0.9814602, 0, 0.19166562, 0, 1, 0, -0.19166562, 0, 0.9814602, 15.65538, 154.53336, 62.916748)
+size = Vector3(24.441406, 445.6902, 27.274475)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding31"]
+transform = Transform3D(0.9814602, 0, 0.19166562, 0, 1, 0, -0.19166562, 0, 0.9814602, 44.44084, 149.0126, 57.536987)
+size = Vector3(24.441406, 456.7317, 27.274475)
+
+[node name="MediumBuilding32" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.5287349, 0, -0.8487873, 0, 1, 0, 0.8487873, 0, -0.5287349, 833.6801, -201.0522, 25.769165)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding32"]
+transform = Transform3D(0.98145854, 0, 0.19166604, 0, 1, 0, -0.19166604, 0, 0.98145854, -14.122162, 131.18625, 16.445068)
+size = Vector3(63.245117, 469.59875, 43.322327)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding32"]
+transform = Transform3D(0.9814602, 0, 0.19166562, 0, 1, 0, -0.19166562, 0, 0.9814602, 27.030975, 139.49142, 29.206787)
+size = Vector3(71.52283, 434.4395, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding32"]
+transform = Transform3D(0.9814602, 0, 0.19166562, 0, 1, 0, -0.19166562, 0, 0.9814602, 15.65538, 154.53336, 62.916748)
+size = Vector3(24.441406, 445.6902, 27.274475)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding32"]
+transform = Transform3D(0.9814602, 0, 0.19166562, 0, 1, 0, -0.19166562, 0, 0.9814602, 44.44084, 149.0126, 57.536987)
+size = Vector3(24.441406, 456.7317, 27.274475)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding32"]
+transform = Transform3D(0.98146, 0, 0.19166525, 0, 1, 0, -0.19166525, 0, 0.98146, 5.338623, 209.4507, -83.75061)
+size = Vector3(63.566406, 116.33362, 27.274475)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding32"]
+transform = Transform3D(0.98146, 0, 0.19166525, 0, 1, 0, -0.19166525, 0, 0.98146, -17.802155, 191.51291, -90.87189)
+size = Vector3(63.566406, 116.33362, 27.274475)
+
+[node name="MediumBuilding3" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.9448574, 0, -0.3274818, 0, 1, 0, 0.3274818, 0, 0.9448574, 356.4609, -173.84613, 414.48215)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding3"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding3"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding3"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding4" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.9448574, 0, -0.3274818, 0, 1, 0, 0.3274818, 0, 0.9448574, 258.98605, -173.84613, 399.14856)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding4"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding4"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding4"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding5" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.95636076, 0, 0.29218817, 0, 1, 0, -0.29218817, 0, -0.95636076, 257.80502, -173.84613, 290.96768)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding5"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding5"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding5"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding6" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.95636076, 0, 0.29218817, 0, 1, 0, -0.29218817, 0, -0.95636076, 355.78183, -173.84613, 302.67297)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding6"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding6"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding6"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding42" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.103504226, 0, 0.9946292, 0, 1, 0, -0.9946292, 0, -0.103504226, 1190.2734, -173.84616, 34.79106)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding42"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding42"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding42"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding43" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.103504226, 0, 0.9946292, 0, 1, 0, -0.9946292, 0, -0.103504226, 1253.83, -124.18356, -68.61359)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding43"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding43"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding43"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding36" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.45204562, 0, -0.89199483, 0, 1, 0, 0.89199483, 0, -0.45204562, 296.61536, -173.84613, 132.6283)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding36"]
+transform = Transform3D(0.98145896, 0, 0.19166628, 0, 1, 0, -0.19166628, 0, 0.98145896, 38.74655, 132.13791, 19.635681)
+size = Vector3(99.38904, 385.88712, 88.17624)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding36"]
+transform = Transform3D(0.98146015, 0, 0.19166565, 0, 1, 0, -0.19166565, 0, 0.98146015, 32.140823, 162.98033, 28.208893)
+size = Vector3(44.554688, 355.55423, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding36"]
+transform = Transform3D(0.98146015, 0, 0.19166565, 0, 1, 0, -0.19166565, 0, 0.98146015, 62.618073, 157.75465, 22.757874)
+size = Vector3(24.441406, 403.00342, 27.274475)
+
+[node name="MediumBuilding37" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.45204562, 0, -0.89199483, 0, 1, 0, 0.89199483, 0, -0.45204562, 404.14417, -240.48392, 125.03935)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding37"]
+transform = Transform3D(0.98145896, 0, 0.19166628, 0, 1, 0, -0.19166628, 0, 0.98145896, 38.74655, 127.89604, 19.635712)
+size = Vector3(99.38904, 377.40338, 88.17624)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding37"]
+transform = Transform3D(0.98146015, 0, 0.19166565, 0, 1, 0, -0.19166565, 0, 0.98146015, 32.140823, 162.98033, 28.208893)
+size = Vector3(44.554688, 355.55423, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding37"]
+transform = Transform3D(0.98146015, 0, 0.19166565, 0, 1, 0, -0.19166565, 0, 0.98146015, 62.618073, 157.75465, 22.757874)
+size = Vector3(24.441406, 403.00342, 27.274475)
+
+[node name="MediumBuilding28" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.932109, 0, -0.36217794, 0, 1, 0, 0.36217794, 0, 0.932109, 454.9291, -129.50763, 552.6546)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding28"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding28"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding28"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding33" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.95667654, 0, 0.29115295, 0, 1, 0, -0.29115295, 0, 0.95667654, 958.26624, -129.50763, 252.0404)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding33"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding33"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding33"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding34" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.95667654, 0, 0.29115295, 0, 1, 0, -0.29115295, 0, 0.95667654, 1053.6687, -129.50763, 191.00113)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding34"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding34"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding34"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding35" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.95667654, 0, 0.29115295, 0, 1, 0, -0.29115295, 0, 0.95667654, 1108.876, -41.760223, 274.6201)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding35"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding35"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding35"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding40" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.053520977, 0, 0.99856657, 0, 1, 0, -0.99856657, 0, -0.053520977, 1213.4778, -41.760254, -358.75977)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding40"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding40"]
+transform = Transform3D(0.9814591, 0, 0.19166616, 0, 1, 0, -0.19166616, 0, 0.9814591, -79.92128, 51.553238, 34.241333)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding40"]
+transform = Transform3D(0.98145926, 0, 0.1916662, 0, 1, 0, -0.1916662, 0, 0.98145926, -144.44803, -20.590347, 54.992188)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding40"]
+transform = Transform3D(0.9814605, 0, 0.19166572, 0, 1, 0, -0.19166572, 0, 0.9814605, -67.13718, 115.039185, 47.596558)
+size = Vector3(246.86133, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding40"]
+transform = Transform3D(0.9814603, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814603, 62.2088, 112.863815, 23.26123)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding41" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.035283074, 0, 0.9993774, 0, 1, 0, -0.9993774, 0, -0.035283074, 1092.8073, -79.166565, -605.6396)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding41"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding41"]
+transform = Transform3D(0.9814591, 0, 0.19166616, 0, 1, 0, -0.19166616, 0, 0.9814591, -79.92128, 51.553238, 34.241333)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding41"]
+transform = Transform3D(0.98145926, 0, 0.1916662, 0, 1, 0, -0.1916662, 0, 0.98145926, -144.44803, -20.590347, 54.992188)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding41"]
+transform = Transform3D(0.9814605, 0, 0.19166572, 0, 1, 0, -0.19166572, 0, 0.9814605, -67.13718, 115.039185, 47.596558)
+size = Vector3(246.86133, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding41"]
+transform = Transform3D(0.9814603, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814603, 62.2088, 112.863815, 23.26123)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding29" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.932109, 0, -0.36217794, 0, 1, 0, 0.36217794, 0, 0.932109, 358.08755, -129.50763, 533.729)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding29"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding29"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding29"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding21" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.9114965, 0, -0.4113076, 0, 1, 0, 0.4113076, 0, 0.9114965, 664.7464, -173.84613, -184.44301)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding21"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding21"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding21"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding22" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.9114965, 0, -0.4113076, 0, 1, 0, 0.4113076, 0, 0.9114965, 569.0503, -173.84613, -208.49945)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding22"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding22"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding22"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding25" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.9920906, 0, -0.12552378, 0, 1, 0, 0.12552378, 0, 0.9920906, 916.4247, -28.994904, -228.79587)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding25"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding25"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding25"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding25"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 76.92511, -0.84843826, 50.60504)
+size = Vector3(31.630371, 85.20741, 41.66005)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding25"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 66.58795, 20.931654, 40.871185)
+size = Vector3(29.375854, 85.20741, 37.984894)
+
+[node name="MediumBuilding26" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.9920906, 0, -0.12552378, 0, 1, 0, 0.12552378, 0, 0.9920906, 866.0836, -67.05815, -232.65947)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding26"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding26"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding26"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding27" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.9920906, 0, -0.12552378, 0, 1, 0, 0.12552378, 0, 0.9920906, 923.7419, 15.083481, -266.57257)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding27"]
+transform = Transform3D(0.9814611, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.9814611, -18.400635, 75.7092, 12.613007)
+size = Vector3(56.315918, 273.0297, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding27"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding27"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding23" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.92613417, 0, 0.3771944, 0, 1, 0, -0.3771944, 0, -0.92613417, 577.6242, -173.84613, -316.3465)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding23"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding23"]
+transform = Transform3D(0.9814599, 0, 0.19166552, 0, 1, 0, -0.19166552, 0, 0.9814599, 14.864655, 102.92224, -2.4606323)
+size = Vector3(24.441406, 293.33856, 27.274475)
+
+[node name="MediumBuilding24" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.92613417, 0, 0.3771944, 0, 1, 0, -0.3771944, 0, -0.92613417, 674.1473, -173.84613, -295.85828)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding24"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding24"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding24"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding7" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.5016013, 0, 0.8650989, 0, 1, 0, -0.8650989, 0, 0.5016013, 158.82492, -147.49979, 37.843754)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding7"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding7"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding7"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding8" parent="SubViewportContainer/SubViewport/Objects" instance=ExtResource("9_k1jll")]
+transform = Transform3D(0.5016012, 0, 0.8650989, 0, 1, 0, -0.8650989, 0, 0.5016012, 130.48674, -147.49979, 113.911575)
+
+[node name="MediumBuilding9" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.13234288, 0, 0.9912041, 0, 1, 0, -0.9912041, 0, 0.13234288, -98.814415, -98.17941, 106.01579)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding9"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding9"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding9"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding18" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.13234288, 0, 0.9912041, 0, 1, 0, -0.9912041, 0, 0.13234288, -169.47824, -78.85388, 41.46263)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding18"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding18"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding18"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding18"]
+transform = Transform3D(0.98835975, 0, 0.15200298, 0, 1, 0, -0.15200298, 0, 0.98835975, 108.14845, 106.699905, 94.2612)
+size = Vector3(86.461914, 97.27491, 39.071)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding18"]
+transform = Transform3D(0.9883503, 0, 0.15200222, 0, 1, 0, -0.15200222, 0, 0.9883503, 138.81357, 114.86922, 88.4591)
+size = Vector3(43.260773, 113.613525, 29.47533)
+
+[node name="SmallBuilding" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.48196787, 0, 0.87618935, 0, 1, 0, -0.87618935, 0, 0.48196787, 138.71251, -78.85388, -12.916544)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/SmallBuilding"]
+transform = Transform3D(0.9883609, 0, 0.15200303, 0, 1, 0, -0.15200303, 0, 0.9883609, -11.539812, 106.699905, 17.890104)
+size = Vector3(75.49414, 97.27491, 39.071)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/SmallBuilding"]
+transform = Transform3D(0.98835313, 0, 0.15200242, 0, 1, 0, -0.15200242, 0, 0.98835313, 10.374834, 114.86922, 13.433775)
+size = Vector3(40.810425, 113.613525, 29.47533)
+
+[node name="SmallBuilding2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.33201298, 0, 0.9432752, 0, 1, 0, -0.9432752, 0, 0.33201298, 38.781986, -78.85388, -52.760464)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/SmallBuilding2"]
+transform = Transform3D(0.9883609, 0, 0.15200303, 0, 1, 0, -0.15200303, 0, 0.9883609, -11.539812, 106.699905, 17.890104)
+size = Vector3(75.49414, 97.27491, 39.071)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/SmallBuilding2"]
+transform = Transform3D(0.98835313, 0, 0.15200242, 0, 1, 0, -0.15200242, 0, 0.98835313, 10.374834, 114.86922, 13.433775)
+size = Vector3(40.810425, 113.613525, 29.47533)
+
+[node name="MediumBuilding19" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.13234288, 0, 0.9912041, 0, 1, 0, -0.9912041, 0, 0.13234288, -224.17621, -41.34761, -46.055344)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding19"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding19"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding19"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding20" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.13234288, 0, 0.9912041, 0, 1, 0, -0.9912041, 0, 0.13234288, -294.84003, -13.433411, -110.608505)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding20"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding20"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding20"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding10" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.99851114, 0, 0.054549396, 0, 1, 0, -0.054549396, 0, 0.99851114, 21.475708, 62.149994, -689.87354)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding10"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000244, 66.26659, 11.948853)
+size = Vector3(63.245117, 376.93787, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding10"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 74.38599, 30.000122)
+size = Vector3(63.245117, 346.7688, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding10"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 15.482727, 112.8638, -0.43414307)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding11" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.99851114, 0, 0.054549396, 0, 1, 0, -0.054549396, 0, 0.99851114, 139.70386, 62.149994, -657.44257)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding11"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000244, 66.26659, 11.948853)
+size = Vector3(63.245117, 376.93787, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding11"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 74.38599, 30.000122)
+size = Vector3(63.245117, 346.7688, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding11"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 15.482727, 112.8638, -0.43414307)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="MediumBuilding12" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(0.99851114, 0, 0.054549396, 0, 1, 0, -0.054549396, 0, 0.99851114, 220.30266, 62.150024, -731.6038)
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding12"]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000244, 66.26659, 11.948853)
+size = Vector3(63.245117, 376.93787, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding12"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 74.38599, 30.000122)
+size = Vector3(63.245117, 346.7688, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/MediumBuilding12"]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 15.482727, 112.8638, -0.43414307)
+size = Vector3(24.441406, 313.2217, 27.274475)
+
+[node name="Buildingsb" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+material_override = ExtResource("5_0jlmx")
+material_overlay = ExtResource("4_kf710")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildingsb"]
+transform = Transform3D(0.99576324, 0, 0.0919535, 0, 1, 0, -0.0919535, 0, 0.99576324, 891.18365, 159.45245, -344.49533)
+size = Vector3(121.342285, 829.7668, 108.94049)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildingsb"]
+transform = Transform3D(0.99576324, 0, 0.0919535, 0, 1, 0, -0.0919535, 0, 0.99576324, 895.59485, -13.213409, -292.59595)
+size = Vector3(79.60797, 829.7668, 108.94049)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildingsb"]
+transform = Transform3D(0.99576324, 0, 0.0919535, 0, 1, 0, -0.0919535, 0, 0.99576324, 908.13556, 31.53061, -299.48874)
+size = Vector3(79.60797, 919.2548, 43.86331)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildingsb"]
+transform = Transform3D(0.99576324, 0, 0.0919535, 0, 1, 0, -0.0919535, 0, 0.99576324, 837.25934, -13.213409, -475.52588)
+size = Vector3(79.60797, 829.7668, 72.39517)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildingsb"]
+transform = Transform3D(0.95228934, 0, 0.30519676, 0, 1, 0, -0.30519676, 0, 0.95228934, 851.7393, -107.36313, -496.1782)
+size = Vector3(79.60797, 641.4673, 72.39517)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildingsb"]
+transform = Transform3D(0.8723253, 0, 0.48892576, 0, 1, 0, -0.48892576, 0, 0.8723253, 860.102, -22.135101, -490.11487)
+size = Vector3(121.28432, 241.94699, 118.25469)
+
+[node name="Subtract" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildingsb"]
+transform = Transform3D(0.99576324, 0, 0.0919535, 0, 1, 0, -0.0919535, 0, 0.99576324, 852.21875, -98.15906, -342.282)
+operation = 2
+size = Vector3(260.20667, 314.54376, 31.229456)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Buildingsb"]
+transform = Transform3D(0.9971905, 0, 0.074909136, 0, 1, 0, -0.074909136, 0, 0.9971905, 880.05524, -10.365967, -343.96188)
+size = Vector3(56.44684, 42.816856, 12.274034)
+
+[node name="UI" parent="." instance=ExtResource("9_v31cg")]
+record_name = "LEVEL EIGHT"
+level_data_scene = ExtResource("12_cglwr")
+next_level_file = "uid://6smcievd0ggr"

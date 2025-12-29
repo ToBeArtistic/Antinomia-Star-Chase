@@ -5,4 +5,9 @@
 [node name="LevelData" type="Node"]
 script = ExtResource("1_draji")
 title = "INVERTED FOREST"
+record_name = "LEVEL FIVE"
 description = "This is perhaps the strangest macroflora I've seen. And considering all the studies we've done on the Ur Forest back home, that's saying something."
+rank_s = 53.0
+rank_a = 54.0
+rank_b = 60.0
+rank_c = 85.0

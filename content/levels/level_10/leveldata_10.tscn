@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0ucnfofx6gkj"]
+
+[ext_resource type="Script" uid="uid://bgx7b2q66dfkm" path="res://content/leveldata.gd" id="1_mufow"]
+
+[node name="LevelData" type="Node"]
+script = ExtResource("1_mufow")
+title = "CONCEPT FLARE"
+record_name = "LEVEL TEN"
+description = "The entities' attempt of capture has triggered a minor concept flare. Navigate the space, then we'll end the experiment."
+rank_s = 72.0
+rank_a = 74.0
+rank_b = 88.0
+rank_c = 120.0

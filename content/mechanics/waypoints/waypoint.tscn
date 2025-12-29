@@ -28,3 +28,7 @@ transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, 0, 0, 0)
 mesh = SubResource("SphereMesh_66bej")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_xcqqn")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+omni_range = 10.0
+omni_attenuation = 2.0

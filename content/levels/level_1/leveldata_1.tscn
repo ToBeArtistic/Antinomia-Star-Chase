@@ -5,6 +5,11 @@
 [node name="LevelData" type="Node"]
 script = ExtResource("1_jovmr")
 title = "DATA STREAM"
+record_name = "LEVEL ONE"
 description = "Initializing tandem system...
 
 Remember to make good use of your mobility features. Double jumps and dashes will be key to navigating planar spaces. "
+rank_s = 47.0
+rank_a = 48.0
+rank_b = 50.0
+rank_c = 70.0

@@ -2,6 +2,9 @@ extends Button
 
 var has_paused_tree : bool = false
 
+func _enter_tree() -> void:
+	visible = true
+
 func _ready() -> void:
 	AudioGlobal.stop_sfx()
 	pressed.connect(_remove_self)

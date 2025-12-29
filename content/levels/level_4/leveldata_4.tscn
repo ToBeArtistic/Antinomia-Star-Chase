@@ -5,4 +5,9 @@
 [node name="LevelData" type="Node"]
 script = ExtResource("1_hj64x")
 title = "THE WALL"
+record_name = "LEVEL FOUR"
 description = "We're encountering interference from hostile entities. Avoid their manifestations."
+rank_s = 58.0
+rank_a = 59.5
+rank_b = 67.0
+rank_c = 90.0

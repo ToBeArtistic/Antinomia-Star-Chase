@@ -5,4 +5,9 @@
 [node name="LevelData" type="Node"]
 script = ExtResource("1_72qmb")
 title = "THE TROUGH"
+record_name = "LEVEL SEVEN"
 description = "More hostile entities. Prepare yourself."
+rank_s = 53.0
+rank_a = 54.0
+rank_b = 65.0
+rank_c = 90.0

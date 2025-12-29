@@ -16,7 +16,6 @@ func _update_time(delta : float) -> void:
 	text = get_timer_text(time)
 
 func get_timer_text(_time : float) -> String:
-	@warning_ignore("integer_division")
-	var minutes : int = int(_time)/60
+	var minutes : int = int(_time/60)
 	var seconds : float = fmod(_time, 60)
 	return format % [minutes, seconds]

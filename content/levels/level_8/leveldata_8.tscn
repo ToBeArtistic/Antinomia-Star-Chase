@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://pju0sgaabpe2"]
+
+[ext_resource type="Script" uid="uid://bgx7b2q66dfkm" path="res://content/leveldata.gd" id="1_py0k1"]
+
+[node name="LevelData" type="Node"]
+script = ExtResource("1_py0k1")
+title = "METROPOLIS"
+record_name = "LEVEL EIGHT"
+description = "According to the people of this plane, the city itself is sentient. Growing buildings like we would grow nails or hair. Supposedly it will shift in planar space if threatened."
+rank_s = 55.0
+rank_a = 56.0
+rank_b = 64.0
+rank_c = 90.0

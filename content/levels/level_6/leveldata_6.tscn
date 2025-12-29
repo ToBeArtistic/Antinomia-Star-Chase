@@ -5,4 +5,9 @@
 [node name="LevelData" type="Node"]
 script = ExtResource("1_p47wx")
 title = "FRAGMENT OF RHYME"
+record_name = "LEVEL SIX"
 description = "Several of the Frost Titan's corpse fragments seem to possess enough residual power to maintain their own demiplanes. "
+rank_s = 85.0
+rank_a = 88.0
+rank_b = 96.0
+rank_c = 120.0

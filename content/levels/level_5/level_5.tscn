@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bct7pu765sma5"]
+[gd_scene load_steps=16 format=3 uid="uid://bct7pu765sma5"]
 
 [ext_resource type="Script" uid="uid://bll6nv22ptsix" path="res://common/music_on_ready_requester.gd" id="1_k0825"]
 [ext_resource type="PackedScene" uid="uid://cqy3aqhl2lfin" path="res://common/player/player.tscn" id="2_gw7y0"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bkm8p68a44o6j" path="res://content/levels/level_5/big_tree.tscn" id="8_0ijmv"]
 [ext_resource type="PackedScene" uid="uid://b63sl0wkb023f" path="res://content/mechanics/waypoints/waypoint.tscn" id="8_3fwkj"]
 [ext_resource type="PackedScene" uid="uid://bkrroji64u325" path="res://content/levels/level_ui.tscn" id="9_f86mr"]
+[ext_resource type="PackedScene" uid="uid://dvwo5iyg5j1lb" path="res://content/levels/level_5/leveldata_5.tscn" id="10_yqj1o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_upjnr"]
 sky_top_color = Color(0.9196278, 0.9821833, 0.9120785, 1)
@@ -475,3 +476,5 @@ transform = Transform3D(0.84833467, 0, -0.5294603, 0, 1, 0, 0.5294603, 0, 0.8483
 
 [node name="UI" parent="." instance=ExtResource("9_f86mr")]
 record_name = "LEVEL FIVE"
+level_data_scene = ExtResource("10_yqj1o")
+next_level_file = "uid://cf8umep1geq7h"

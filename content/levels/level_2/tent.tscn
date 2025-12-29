@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv06is2awsr4i"]
+
+[ext_resource type="Material" uid="uid://dkvprr5875ops" path="res://assets/materials/simple_texture_white.tres" id="1_qru4u"]
+[ext_resource type="Material" uid="uid://okfa87bw25y2" path="res://assets/materials/pixel_outline_shaded.tres" id="2_vjcge"]
+
+[node name="Tent5" type="CSGCombiner3D"]
+transform = Transform3D(0.38366652, 0, -0.32062435, 0, 0.5, 0, 0.32062435, 0, 0.38366652, 0, 0, 0)
+material_override = ExtResource("1_qru4u")
+material_overlay = ExtResource("2_vjcge")
+use_collision = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 69.430046, 0)
+size = Vector3(100, 100, 100)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
+operation = 2
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 0, -0.99999994, 0, 0.99999994, 0, 0.010253906, 33.177353, -13.606873)
+size = Vector3(120.302734, 196.23016, 71.74414)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D2/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.70710343, 0.70710343, 0, -0.70710343, 0.70710343, 1.9556885, 13.606873, -27.40664)
+size = Vector3(103.931885, 100, 100)

@@ -1,10 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://bynobdwhxchbj"]
+[gd_scene load_steps=18 format=3 uid="uid://bynobdwhxchbj"]
 
 [ext_resource type="Script" uid="uid://ca8yrwrpn33qk" path="res://content/story/records/records.gd" id="1_aexog"]
 [ext_resource type="PackedScene" uid="uid://cfe4m46mokgju" path="res://common/gui-utils/back_button.tscn" id="2_awssc"]
 [ext_resource type="PackedScene" uid="uid://dwhj0o7tgea8a" path="res://content/story/records/record.tscn" id="3_fl8cg"]
 [ext_resource type="Script" uid="uid://bll6nv22ptsix" path="res://common/music_on_ready_requester.gd" id="4_726ui"]
 [ext_resource type="Script" uid="uid://cxfh75mm1wpj7" path="res://content/story/records/reset_records.gd" id="5_xpqcj"]
+[ext_resource type="PackedScene" uid="uid://ciaoriyla4r6t" path="res://content/levels/level_1/leveldata_1.tscn" id="6_jscbd"]
+[ext_resource type="PackedScene" uid="uid://cnvd4iy8h7ms0" path="res://content/levels/level_2/leveldata_2.tscn" id="7_4jswv"]
+[ext_resource type="PackedScene" uid="uid://fvf4dv8ts0wc" path="res://content/levels/level_3/leveldata_3.tscn" id="8_kv678"]
+[ext_resource type="PackedScene" uid="uid://qsfa551xapwd" path="res://content/levels/level_4/leveldata_4.tscn" id="9_of84h"]
+[ext_resource type="PackedScene" uid="uid://dvwo5iyg5j1lb" path="res://content/levels/level_5/leveldata_5.tscn" id="10_phvkf"]
+[ext_resource type="PackedScene" uid="uid://dbei8lq7gc61l" path="res://content/levels/level_6/leveldata_6.tscn" id="11_t1e06"]
+[ext_resource type="PackedScene" uid="uid://cgmq848dvc3q5" path="res://content/levels/level_7/leveldata_7.tscn" id="12_340re"]
+[ext_resource type="PackedScene" uid="uid://pju0sgaabpe2" path="res://content/levels/level_8/leveldata_8.tscn" id="13_5i0f5"]
+[ext_resource type="PackedScene" uid="uid://cwed55mvfdetk" path="res://content/levels/level_9/leveldata_9.tscn" id="14_ig0ap"]
+[ext_resource type="PackedScene" uid="uid://c0ucnfofx6gkj" path="res://content/levels/level_10/leveldata_10.tscn" id="15_nmqj1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fl8cg"]
 
@@ -65,6 +75,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -99,3 +110,25 @@ offset_bottom = -15.0
 grow_vertical = 0
 text = "Reset Records"
 script = ExtResource("5_xpqcj")
+
+[node name="LevelData" type="Node" parent="."]
+
+[node name="LevelData" parent="LevelData" instance=ExtResource("6_jscbd")]
+
+[node name="LevelData2" parent="LevelData" instance=ExtResource("7_4jswv")]
+
+[node name="LevelData3" parent="LevelData" instance=ExtResource("8_kv678")]
+
+[node name="LevelData4" parent="LevelData" instance=ExtResource("9_of84h")]
+
+[node name="LevelData5" parent="LevelData" instance=ExtResource("10_phvkf")]
+
+[node name="LevelData6" parent="LevelData" instance=ExtResource("11_t1e06")]
+
+[node name="LevelData7" parent="LevelData" instance=ExtResource("12_340re")]
+
+[node name="LevelData8" parent="LevelData" instance=ExtResource("13_5i0f5")]
+
+[node name="LevelData9" parent="LevelData" instance=ExtResource("14_ig0ap")]
+
+[node name="LevelData10" parent="LevelData" instance=ExtResource("15_nmqj1")]

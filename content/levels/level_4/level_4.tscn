@@ -7,10 +7,11 @@
 [ext_resource type="AudioStream" uid="uid://cb4ehryvlruvp" path="res://assets/audio/effects/pickup_glass_reverb.wav" id="4_q1wsx"]
 [ext_resource type="PackedScene" uid="uid://b63sl0wkb023f" path="res://content/mechanics/waypoints/waypoint.tscn" id="5_mw4r5"]
 [ext_resource type="Material" uid="uid://okfa87bw25y2" path="res://assets/materials/pixel_outline_shaded.tres" id="6_1qa6x"]
-[ext_resource type="Texture2D" uid="uid://b6eebhck8hila" path="res://assets/textures/1024-basic-grime.png" id="6_lpbsm"]
+[ext_resource type="Material" uid="uid://dahi6ivkwwoa2" path="res://content/levels/level_4/hazard_level_material.tres" id="7_ewj5o"]
 [ext_resource type="Material" uid="uid://dkvprr5875ops" path="res://assets/materials/simple_texture_white.tres" id="8_uga2r"]
 [ext_resource type="PackedScene" uid="uid://bkrroji64u325" path="res://content/levels/level_ui.tscn" id="9_av8yh"]
 [ext_resource type="PackedScene" uid="uid://dlale11peg2cl" path="res://content/levels/level_4/evil_eye.tscn" id="9_lcja1"]
+[ext_resource type="PackedScene" uid="uid://qsfa551xapwd" path="res://content/levels/level_4/leveldata_4.tscn" id="12_bbtv4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_upjnr"]
 sky_top_color = Color(0.007600544, 0.020966372, 0.02303492, 1)
@@ -28,10 +29,6 @@ sky = SubResource("Sky_upjnr")
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8uhj0"]
 
 [sub_resource type="Compositor" id="Compositor_jy6mt"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_na1p5"]
-albedo_color = Color(0.083111025, 0.06858201, 0.07239964, 1)
-albedo_texture = ExtResource("6_lpbsm")
 
 [node name="Level3" type="Node3D"]
 
@@ -446,7 +443,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.02097, -532.4944, -1465.2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 547.4308, -1984.2332, -1698.3774)
 
 [node name="Ground" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport"]
-material_override = SubResource("StandardMaterial3D_na1p5")
+material_override = ExtResource("7_ewj5o")
 material_overlay = ExtResource("6_1qa6x")
 use_collision = true
 
@@ -1030,3 +1027,5 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 3533.9087, 1515.0654, -
 
 [node name="UI" parent="." instance=ExtResource("9_av8yh")]
 record_name = "LEVEL FOUR"
+level_data_scene = ExtResource("12_bbtv4")
+next_level_file = "uid://bct7pu765sma5"

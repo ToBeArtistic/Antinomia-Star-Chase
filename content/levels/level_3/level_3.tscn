@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b0muolfdf3fw7"]
+[gd_scene load_steps=20 format=3 uid="uid://b0muolfdf3fw7"]
 
 [ext_resource type="Script" uid="uid://bll6nv22ptsix" path="res://common/music_on_ready_requester.gd" id="1_nq5oy"]
 [ext_resource type="PackedScene" uid="uid://cqy3aqhl2lfin" path="res://common/player/player.tscn" id="2_1sxku"]
@@ -9,8 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bqhjj2lhi2aro" path="res://assets/textures/seamless_grime_white.png" id="7_ptwxc"]
 [ext_resource type="Material" uid="uid://dkvprr5875ops" path="res://assets/materials/simple_texture_white.tres" id="8_50pqn"]
 [ext_resource type="PackedScene" uid="uid://cl6lqne0quc22" path="res://content/levels/level_3/wall_tower.tscn" id="8_flsyx"]
+[ext_resource type="Material" uid="uid://b0w073x0dyfh6" path="res://content/levels/level_3/level_3_material.tres" id="8_wjdij"]
 [ext_resource type="PackedScene" uid="uid://thswh6p5l4sj" path="res://content/levels/level_3/simple_house.tscn" id="9_utokm"]
 [ext_resource type="PackedScene" uid="uid://bkrroji64u325" path="res://content/levels/level_ui.tscn" id="9_xqm77"]
+[ext_resource type="PackedScene" uid="uid://fvf4dv8ts0wc" path="res://content/levels/level_3/leveldata_3.tscn" id="13_p4j2i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_upjnr"]
 sky_top_color = Color(0.57737076, 0.8688049, 0.8978181, 1)
@@ -33,10 +35,6 @@ sky = SubResource("Sky_upjnr")
 transparency = 1
 depth_draw_mode = 1
 albedo_color = Color(0.33832037, 0.89090574, 0.81843716, 0.7921569)
-albedo_texture = ExtResource("7_ptwxc")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_na1p5"]
-albedo_color = Color(0.674144, 0.82324904, 0.26767376, 1)
 albedo_texture = ExtResource("7_ptwxc")
 
 [node name="Level3" type="Node3D"]
@@ -76,7 +74,7 @@ directional_shadow_max_distance = 3000.0
 directional_shadow_pancake_size = 23.1
 
 [node name="player" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_1sxku")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.277077, -320.13156, 1840.8788)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872766, 79.62667, 1812.7015)
 collision_mask = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
@@ -91,29 +89,14 @@ script = ExtResource("3_orn8y")
 stream = ExtResource("4_3ft88")
 bus = &"SFX"
 
-[node name="Waypoint" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.614376, -312.92874, 1696.1742)
-
-[node name="Waypoint2" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 253.56749, -272.3187, 1483.308)
-
-[node name="Waypoint3" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 345.36554, -255.29962, 1508.3807)
-
-[node name="Waypoint4" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 326.6224, -249.1139, 1466.7626)
-
 [node name="Waypoint5" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 387.8617, -242.0478, 1401.2084)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 313.75162, -48.237373, 1747.1776)
 
 [node name="Waypoint6" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 462.2374, -232.42194, 1356.7241)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 542.86676, -139.41338, 1492.4788)
 
 [node name="Waypoint7" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 544.0673, -232.42194, 1305.0941)
-
-[node name="Waypoint8" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 643.8531, -232.42194, 1250.6442)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 649.29596, -119.79245, 1420.1774)
 
 [node name="Waypoint9" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 836.5451, -273.46915, 1141.3672)
@@ -140,22 +123,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.47012, 123.487366, -272.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.229515, 132.78212, -314.56305)
 
 [node name="Waypoint17" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -206.13379, 165.0308, -202.81892)
-
-[node name="Waypoint18" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -431.53802, 54.431908, -171.54062)
-
-[node name="Waypoint19" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1352.7123, -145.68439, -151.03201)
-
-[node name="Waypoint20" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1390.6318, -154.04677, 216.20422)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -211.26442, 164.2525, -206.08049)
 
 [node name="Waypoint21" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -914.3998, 13.219959, 195.66582)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -292.83215, 151.78323, -138.75378)
 
-[node name="Waypoint22" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -261.94336, 265.19388, 143.26434)
+[node name="Waypoint18" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -374.54947, 195.22029, -38.47319)
+
+[node name="Waypoint19" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -327.47577, 214.23041, 27.144947)
+
+[node name="Waypoint20" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -395.56644, 216.67001, 125.13284)
 
 [node name="Waypoint23" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("5_25aru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -161.29471, 279.76035, 197.1929)
@@ -249,7 +229,7 @@ ring_sides = 11
 material = SubResource("StandardMaterial3D_utokm")
 
 [node name="Ground" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport"]
-material_override = SubResource("StandardMaterial3D_na1p5")
+material_override = ExtResource("8_wjdij")
 material_overlay = ExtResource("6_fsjli")
 use_collision = true
 
@@ -391,6 +371,24 @@ sides = 14
 [node name="CSGCylinder3D18" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Palace"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150.73611, 129.39073, 83.8657)
 radius = 132.34326
+height = 258.85938
+sides = 14
+
+[node name="CSGCylinder3D42" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Palace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -242.4289, 63.078903, 14.634026)
+radius = 132.34326
+height = 258.85938
+sides = 14
+
+[node name="CSGCylinder3D43" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Palace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -242.4289, 73.26798, 14.634026)
+radius = 114.10449
+height = 258.85938
+sides = 14
+
+[node name="CSGCylinder3D44" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Palace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -242.4289, 81.81236, 71.76339)
+radius = 114.10449
 height = 258.85938
 sides = 14
 
@@ -621,12 +619,12 @@ transform = Transform3D(0.30592343, 0.33938295, -0.88951105, 0.0882268, 0.920179
 size = Vector3(25.163086, 9.071777, 166.32999)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Palace"]
-transform = Transform3D(0.87184054, 0.06151624, -0.48591143, 0.07193241, 0.96524215, 0.25126323, 0.48447922, -0.2540142, 0.83711237, -130.0053, 477.89447, -32.809982)
-size = Vector3(59.727905, 9.071777, 37.196857)
+transform = Transform3D(0.44756386, 0.47915852, -0.7550456, 0.05465472, 0.82809657, 0.5579147, 0.89258045, -0.29096916, 0.34443808, -121.04528, 472.96304, -38.181545)
+size = Vector3(35.012268, 9.071777, 50.54976)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Palace"]
-transform = Transform3D(0.97167724, -0.1289384, -0.19803734, 0.19356865, 0.9149868, 0.35402006, 0.13555504, -0.38232696, 0.9140305, -123.74402, 484.43692, -19.875393)
-size = Vector3(31.451996, 9.071777, 28.812733)
+transform = Transform3D(0.9898785, 0.008028214, -0.14169435, 0.08165212, 0.78439426, 0.6148648, 0.11608081, -0.6202105, 0.77579963, -123.17134, 481.95187, -23.010883)
+size = Vector3(31.451996, 9.071777, 20.729486)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Palace"]
 transform = Transform3D(0.61525565, -0.012731441, 0.78822523, -0.16960964, 0.9743152, 0.1481272, -0.7698657, -0.22482656, 0.59729344, -28.274715, 512.2187, 101.43385)
@@ -676,6 +674,20 @@ transform = Transform3D(0.022285998, 0, -0.9997517, 0, 1, 0, 0.9997517, 0, 0.022
 [node name="RoadSurface" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Road8"]
 transform = Transform3D(1, 0, -1.3038516e-08, 0, 0.97681814, -0.21407044, 0, 0.21407044, 0.9768304, 3.0517578e-05, -26.6975, 121.82355)
 size = Vector3(20, 11.793945, 1323.5288)
+
+[node name="Road10" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.44164678, 0, 0.89718896, 0, 1, 0, -0.89718896, 0, -0.44164678, -362.63126, 161.09631, -104.54737)
+
+[node name="RoadSurface" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Road10"]
+transform = Transform3D(1, 0, -1.1920929e-07, 0, 0.97681814, -0.21407044, 0, 0.21407044, 0.97683066, 6.1035156e-05, -6.7579956, 30.83722)
+size = Vector3(20, 11.793945, 229.20227)
+
+[node name="Road11" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+transform = Transform3D(-0.32840508, 0, -0.9445369, 0, 1, 0, 0.9445369, 0, -0.32840508, -353.05392, 189.38416, -28.167664)
+
+[node name="RoadSurface" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Road11"]
+transform = Transform3D(1, 0, -3.874302e-07, 0, 0.97681814, -0.21407044, 0, 0.21407044, 0.9768312, 6.1035156e-05, -2.3308105, 10.635376)
+size = Vector3(20, 11.793945, 187.84027)
 
 [node name="Road9" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
 transform = Transform3D(0.019839458, 0.45552936, -0.8899997, -0.010151926, 0.89022076, 0.45541626, 0.9997517, 0, 0.022285998, -884.13403, -308.57367, 46.83394)
@@ -1449,12 +1461,6 @@ transform = Transform3D(0.52794933, 0, -0.8492759, 0, 1, 0, 0.8492759, 0, 0.5279
 [node name="SimpleHouse5" parent="SubViewportContainer/SubViewport/Houses/Houses17" instance=ExtResource("9_utokm")]
 transform = Transform3D(0.52794933, 0, -0.8492759, 0, 1, 0, 0.8492759, 0, 0.52794933, 140.76624, -174.27197, 13.452759)
 
-[node name="SimpleHouse7" parent="SubViewportContainer/SubViewport/Houses/Houses17" instance=ExtResource("9_utokm")]
-transform = Transform3D(0.52794933, 0, -0.8492759, 0, 1, 0, 0.8492759, 0, 0.52794933, 120.86951, -191.95718, 30.216187)
-
-[node name="SimpleHouse8" parent="SubViewportContainer/SubViewport/Houses/Houses17" instance=ExtResource("9_utokm")]
-transform = Transform3D(0.52794933, 0, -0.8492759, 0, 1, 0, 0.8492759, 0, 0.52794933, 97.813354, -201.54086, 50.504883)
-
 [node name="SimpleHouse6" parent="SubViewportContainer/SubViewport/Houses/Houses17" instance=ExtResource("9_utokm")]
 transform = Transform3D(0.52794933, 0, -0.8492759, 0, 1, 0, 0.8492759, 0, 0.52794933, 196.17871, -183.52255, 46.998047)
 
@@ -1931,3 +1937,5 @@ transform = Transform3D(0.16733663, 0, -0.9858998, 0, 1, 0, 0.9858998, 0, 0.1673
 
 [node name="UI" parent="." instance=ExtResource("9_xqm77")]
 record_name = "LEVEL THREE"
+level_data_scene = ExtResource("13_p4j2i")
+next_level_file = "uid://bfgo3jqp2qs8w"

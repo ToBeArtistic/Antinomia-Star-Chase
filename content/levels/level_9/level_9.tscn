@@ -1,0 +1,394 @@
+[gd_scene load_steps=16 format=3 uid="uid://6smcievd0ggr"]
+
+[ext_resource type="Script" uid="uid://bll6nv22ptsix" path="res://common/music_on_ready_requester.gd" id="1_j5r26"]
+[ext_resource type="PackedScene" uid="uid://cqy3aqhl2lfin" path="res://common/player/player.tscn" id="2_tc3ot"]
+[ext_resource type="Script" uid="uid://c36tfsjwmrmkd" path="res://content/mechanics/waypoints/waypoint_manager.gd" id="4_arfy1"]
+[ext_resource type="AudioStream" uid="uid://cb4ehryvlruvp" path="res://assets/audio/effects/pickup_glass_reverb.wav" id="5_gyd5q"]
+[ext_resource type="PackedScene" uid="uid://b63sl0wkb023f" path="res://content/mechanics/waypoints/waypoint.tscn" id="6_bqvhc"]
+[ext_resource type="Material" uid="uid://okfa87bw25y2" path="res://assets/materials/pixel_outline_shaded.tres" id="8_k0t7o"]
+[ext_resource type="Material" uid="uid://dkvprr5875ops" path="res://assets/materials/simple_texture_white.tres" id="9_ck5kk"]
+[ext_resource type="PackedScene" uid="uid://cwed55mvfdetk" path="res://content/levels/level_9/leveldata_9.tscn" id="10_3ua0r"]
+[ext_resource type="PackedScene" uid="uid://dlale11peg2cl" path="res://content/levels/level_4/evil_eye.tscn" id="10_hqqfn"]
+[ext_resource type="PackedScene" uid="uid://bkrroji64u325" path="res://content/levels/level_ui.tscn" id="11_4kbto"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_upjnr"]
+sky_top_color = Color(0.007600544, 0.020966372, 0.02303492, 1)
+sky_horizon_color = Color(0.015565732, 0.01155947, 0.029638438, 1)
+ground_bottom_color = Color(0.03218343, 0.01977518, 0.003933383, 1)
+ground_horizon_color = Color(0.024881817, 0.013263947, 0.06403979, 1)
+
+[sub_resource type="Sky" id="Sky_upjnr"]
+sky_material = SubResource("ProceduralSkyMaterial_upjnr")
+
+[sub_resource type="Environment" id="Environment_upjnr"]
+background_mode = 2
+sky = SubResource("Sky_upjnr")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8uhj0"]
+
+[sub_resource type="Compositor" id="Compositor_jy6mt"]
+
+[node name="Level9" type="Node3D"]
+
+[node name="MusicOnReadyRequester" type="Node" parent="."]
+script = ExtResource("1_j5r26")
+theme_name = "level_4"
+metadata/_custom_type_script = "uid://bll6nv22ptsix"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+canvas_cull_mask = 4294966272
+oversampling = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.9902461, -0.09070753, 0.105758704, -0.10353705, 0.02887085, 0.9942066, -0.09323536, -0.99545884, 0.019197762, 0, 423.78992, 0)
+light_color = Color(0.28485027, 0.28485027, 0.28485027, 1)
+light_angular_distance = 0.3
+light_specular = 4.629
+shadow_enabled = true
+shadow_blur = 2.237
+directional_shadow_split_1 = 0.135
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 3000.0
+directional_shadow_pancake_size = 23.1
+sky_mode = 1
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -307.89853, 173.83128, 102.99547)
+omni_range = 391.588
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.215576, 96.43082, -53.719803)
+omni_range = 689.175
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.215576, 395.7518, -53.719803)
+omni_range = 689.175
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.215576, 988.64685, -53.719803)
+light_energy = 20.0
+light_indirect_energy = 5.0
+omni_range = 1000.0
+omni_attenuation = 1.3
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.89251, 227.09341, 150.90833)
+omni_range = 689.175
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.282936, 378.65787, -390.97147)
+omni_range = 391.588
+
+[node name="player" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_tc3ot")]
+collision_mask = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_upjnr")
+camera_attributes = SubResource("CameraAttributesPractical_8uhj0")
+compositor = SubResource("Compositor_jy6mt")
+
+[node name="Waypoints" type="Node3D" parent="SubViewportContainer/SubViewport"]
+script = ExtResource("4_arfy1")
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Waypoints"]
+stream = ExtResource("5_gyd5q")
+bus = &"SFX"
+
+[node name="Waypoint" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.890495, -0.4795437, -75.25055)
+
+[node name="Waypoint2" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.07081, 12.979537, -163.02518)
+
+[node name="Waypoint3" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.88756, 46.66926, -257.47272)
+
+[node name="Waypoint4" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.773605, 96.06709, -238.03273)
+
+[node name="Waypoint5" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206.49126, 132.94983, -44.15989)
+
+[node name="Waypoint6" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200.95068, 164.51646, 108.803246)
+
+[node name="Waypoint7" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.319695, 158.29558, 125.56426)
+
+[node name="Waypoint8" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -189.58214, 164.43459, 176.34444)
+
+[node name="Waypoint9" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -281.77966, 157.09665, 156.46619)
+
+[node name="Waypoint10" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -335.22165, 187.71762, 22.603046)
+
+[node name="Waypoint11" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -253.17407, 204.0022, -40.751923)
+
+[node name="Waypoint12" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -142.78284, 219.58052, -139.01314)
+
+[node name="Waypoint13" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.957214, 247.42253, -174.8111)
+
+[node name="Waypoint14" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.253296, 266.65814, -123.830444)
+
+[node name="Waypoint15" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 209.57065, 300.29712, -159.57484)
+
+[node name="Waypoint16" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.55995, 322.22205, -279.28516)
+
+[node name="Waypoint17" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.3644, 333.36694, -378.06668)
+
+[node name="Waypoint18" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.585484, 389.57556, -254.84013)
+
+[node name="Waypoint19" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.59247, 410.2194, -180.9235)
+
+[node name="Waypoint20" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -205.51514, 436.93155, -104.82565)
+
+[node name="Waypoint21" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -240.59291, 453.30847, -44.83609)
+
+[node name="Waypoint22" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.00806, 467.05246, 59.131958)
+
+[node name="Waypoint23" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.426567, 460.03076, 43.87061)
+
+[node name="Waypoint24" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.92651, 479.56772, -20.924007)
+
+[node name="Waypoint25" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.804462, 500.3089, -45.917942)
+
+[node name="Waypoint26" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2580376, 531.69745, -0.84716034)
+
+[node name="Waypoint27" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.5183, 573.3402, 23.853231)
+
+[node name="Waypoint28" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 265.03128, 599.0007, -1.4018726)
+
+[node name="Waypoint29" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 361.55923, 630.5074, -57.747955)
+
+[node name="Waypoint30" parent="SubViewportContainer/SubViewport/Waypoints" instance=ExtResource("6_bqvhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 524.56903, 635.5369, -113.46576)
+
+[node name="HugeEyes" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="EvilEye" parent="SubViewportContainer/SubViewport/HugeEyes" instance=ExtResource("10_hqqfn")]
+transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 2858.093, -412.51636)
+
+[node name="Cage" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport"]
+material_override = ExtResource("9_ck5kk")
+material_overlay = ExtResource("8_k0t7o")
+use_collision = true
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Cage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -71.99951, 0)
+radius = 838.03424
+radial_segments = 20
+rings = 12
+
+[node name="Subtract" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Cage"]
+operation = 2
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Cage/Subtract"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 467.8058, 0)
+radius = 317.68604
+height = 937.6116
+
+[node name="CSGTorus3D8" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Subtract"]
+transform = Transform3D(0.35670164, 0.08207482, -0.9306062, 0.05066056, -0.99636674, -0.068456426, -0.9328437, -0.022726417, -0.35956365, -204.4498, 184.47449, 142.4773)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D9" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Subtract"]
+transform = Transform3D(0.3567017, 0.082074836, -0.9306063, 0.35075864, -0.93502176, 0.05198156, -0.8658708, -0.3449598, -0.36231235, -258.0394, 207.77092, 50.792015)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D10" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Subtract"]
+transform = Transform3D(-0.917979, -0.3542789, -0.17832772, 0.35075867, -0.9350219, 0.051981565, -0.1851565, -0.0148320645, 0.98259735, 63.81678, 370.42255, -311.42722)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D11" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Subtract"]
+transform = Transform3D(-0.93784726, 0.30132747, -0.17217539, -0.29352975, -0.95340514, -0.06970284, -0.18515648, -0.014832063, 0.98259723, 387.88297, 661.83655, 13.571098)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="Add" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Cage"]
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(1, 0, 0, 0, 0.93860745, -0.344987, 0, 0.344987, 0.93860745, -150.80458, -7.6293945e-06, -221.01645)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D19" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(0.88612276, -0.46335942, 0.009204394, -3.454631e-11, 0.019860564, 0.9998028, -0.4634506, -0.8859478, 0.017598895, -76.479904, 40.297844, -276.7317)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(0.38056764, 0.022555958, -0.92447805, -0.28426433, 0.9541525, -0.09373935, 0.8799786, 0.29847032, 0.3695313, 9.659073, 33.108643, -320.89355)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D3" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(0.4634454, -0.36881995, -0.8057236, -0.104194015, 0.880277, -0.46287835, 0.8799786, 0.29847032, 0.36953133, 9.659073, 48.10019, -320.89355)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D4" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(0.13911226, -0.29520935, -0.94525087, -0.051921774, 0.9510446, -0.30466026, 0.98891455, 0.09146109, 0.116974205, 155.95793, 67.59684, -157.32779)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D5" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(-0.2604964, -0.5638079, -0.7837488, -0.74513394, -0.39879504, 0.5345446, -0.61393565, 0.72324467, -0.3162279, 267.38373, 50.195854, -20.94001)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D6" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(0.35997388, -0.10000493, -0.92758715, -0.014877319, -0.99472713, 0.101469934, -0.9328437, -0.022726417, -0.35956365, 131.31367, 141.0761, 63.7322)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D7" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(0.3602727, -0.051990353, -0.9313972, 0.0024735553, -0.99838865, 0.05668664, -0.9328437, -0.022726413, -0.35956365, -110.836914, 128.55171, 192.91422)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D18" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(0.31097794, 0.47614625, -0.82254326, 0.93282247, 0.012845411, 0.360107, 0.18202965, -0.87927186, -0.44016546, -30.17115, 128.55171, 245.70316)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D8" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(0.3602727, -0.051990353, -0.9313972, 0.0024735553, -0.99838865, 0.05668664, -0.9328437, -0.022726413, -0.35956365, -284.5728, 176.72603, -120.664825)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D9" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(0.3306613, 0.34227696, -0.879494, 0.14305821, -0.9393239, -0.31177628, -0.9328437, -0.02272641, -0.35956362, -181.39133, 174.56738, -199.79993)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D17" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(0.21667057, 0.66770965, -0.7121923, 0.91312206, 0.1194543, 0.389793, 0.3453431, -0.73477495, -0.58381844, -114.73585, 194.28131, -145.39708)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D10" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(0.33137867, 0.3375346, -0.8810555, 0.14138852, -0.9410384, -0.3073362, -0.9328437, -0.02272641, -0.35956362, -55.975784, 215.96323, -96.00722)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D11" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(-0.5408357, 0.18660176, -0.8201686, 0.07351409, -0.96086365, -0.26708892, -0.8379095, -0.20474496, 0.50595176, 168.70631, 259.90375, -199.3458)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D12" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(-0.5823585, -0.09826253, -0.80697155, 0.12264222, -0.991926, 0.03227803, -0.803628, -0.0801712, 0.5897079, 191.68292, 279.68173, -242.7862)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D13" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(-0.9788772, -0.1901117, 0.07521513, 0.1991044, -0.9700049, 0.13945755, 0.046446115, 0.15148744, 0.9873675, -120.17461, 376.69653, -244.6637)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D15" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(-0.8003431, 0.59614736, 0.063714854, 0.077179685, -0.0029422636, 0.9970129, 0.59455395, 0.80286974, -0.043655887, -218.00488, 381.12714, -191.28015)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D21" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(-0.023825347, 0.9997046, 0.004794523, 0.07717966, -0.0029422627, 0.9970129, 0.9967326, 0.024124056, -0.07708715, -278.68048, 452.44818, -9.468719)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D16" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(-0.9908875, 0.11049098, 0.07703195, 0.07717968, -0.0029422592, 0.9970129, 0.110387474, 0.9938729, -0.0056122765, -15.657959, 381.12714, -278.32617)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D14" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(-0.9788772, -0.1901117, 0.07521513, 0.1991044, -0.9700049, 0.13945755, 0.046446115, 0.15148744, 0.9873675, -292.69128, 422.18686, -113.66171)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D20" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(-0.79466945, -0.07653657, 0.6021988, 0.1991044, -0.97000486, 0.13945752, 0.5734616, 0.2307229, 0.7860716, -250.03291, 451.65594, 91.07121)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D23" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(-0.6966092, -0.49027544, 0.5237995, -0.604423, 0.007698495, -0.7966263, 0.38653415, -0.87153363, -0.30169678, -151.10687, 451.65594, 45.45536)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D24" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(-0.97775584, -0.18983491, 0.08919957, -0.20969221, 0.89443463, -0.39498875, -0.0047999904, -0.40490717, -0.9143456, 40.328568, 477.8328, -62.4825)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D22" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(-0.7946694, -0.076536536, 0.60219884, -0.11569534, -0.9547406, -0.27401644, 0.5959155, -0.28742415, 0.74984777, -62.827248, 451.65594, -10.754913)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D25" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(-0.24180044, 0.9627451, 0.12105608, -0.9683496, -0.23146336, -0.09340225, -0.061903223, -0.13980931, 0.9882415, 104.87812, 521.4206, -0.64113235)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D26" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(-0.9514852, 0.30727196, -0.016129492, -0.3014037, -0.94129544, -0.15204732, -0.06190322, -0.1398093, 0.9882415, 142.5807, 523.6685, 95.53389)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D27" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(-0.9514852, 0.30727196, -0.016129492, -0.3014037, -0.94129544, -0.15204732, -0.06190322, -0.1398093, 0.9882415, 337.35312, 583.24744, 42.905777)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGTorus3D28" type="CSGTorus3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(-0.98935443, 0.13925223, -0.042271804, -0.13170466, -0.9803377, -0.14694095, -0.06190322, -0.1398093, 0.9882415, 507.66202, 591.65826, -38.698772)
+inner_radius = 56.728935
+outer_radius = 117.623535
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Cage/Add"]
+transform = Transform3D(0.9096103, -0.032947563, 0.41415423, 0.14331591, 0.96054626, -0.23835078, -0.38996127, 0.27616116, 0.87844455, -322.6592, 153.61618, 99.687004)
+size = Vector3(80.557846, 11.232422, 130.6698)
+
+[node name="UI" parent="." instance=ExtResource("11_4kbto")]
+record_name = "LEVEL NINE"
+level_data_scene = ExtResource("10_3ua0r")
+next_level_file = "uid://dx4jgu8qmi1cd"

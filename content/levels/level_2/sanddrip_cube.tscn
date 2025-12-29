@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhung23x4wlrh"]
+
+[ext_resource type="Material" uid="uid://okfa87bw25y2" path="res://assets/materials/pixel_outline_shaded.tres" id="1_o0sjp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpdst"]
+emission_enabled = true
+emission = Color(1, 1, 0.77254903, 1)
+emission_energy_multiplier = 14.87
+
+[node name="SanddripCube" type="CSGCombiner3D"]
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="."]
+transform = Transform3D(0.03846419, -0.82851213, -0.55864835, 0.49999994, 0.49999994, -0.70710677, 0.8651707, -0.25212586, 0.43348822, -0.022017479, 21.766933, -1.129879)
+material_override = SubResource("StandardMaterial3D_dpdst")
+material_overlay = ExtResource("1_o0sjp")
+size = Vector3(20, 20, 20)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGBox3D18"]
+transform = Transform3D(1, 2.9802322e-08, 8.940697e-08, -7.4505806e-08, 0.99999994, -2.2351742e-08, -1.1920929e-07, -5.2154064e-08, 1, -20.346954, -20.346893, 28.774887)
+radius = 15.0
+radial_segments = 16
+rings = 14
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 6.678773, 5.028748, 0.909214)
+height = 35.642517
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 0.13656712, 5.028748, -0.6366234)
+radius = 1.9663086
+height = 35.642517
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 1.6105509, 5.028748, -4.49786)
+radius = 0.50878906
+height = 35.642517
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, -2.2192373, 14.368044, -8.978237)
+radius = 0.50878906
+height = 19.491669
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, -2.2192373, 11.926035, 9.767368)
+radius = 0.50878906
+height = 14.607651

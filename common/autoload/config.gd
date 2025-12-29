@@ -11,7 +11,8 @@ enum SECTION
 	KEYBIND,
 	VIDEO,
 	AUDIO,
-	RECORDS
+	RECORDS,
+	SPLITS
 }
 
 var record_names : Array[String] = [
@@ -27,7 +28,7 @@ var record_names : Array[String] = [
 	"LEVEL TEN",
 ]
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	if !FileAccess.file_exists(CONFIG_FILE_PATH):
 		_reset_config_file()
 	else:
@@ -40,6 +41,9 @@ func _ready() -> void:
 	for _name in record_names:
 		if not _config.has_section_key("records", _name):
 			reset_records()
+		if not _config.has_section_key("splits", _name):
+			reset_splits()
+	
 	_initialize_settings_in_game()
 
 func _initialize_settings_in_game() -> void:
@@ -79,6 +83,8 @@ func _get_section(section : SECTION) -> String:
 			return "audio"
 		SECTION.RECORDS:
 			return "records"
+		SECTION.SPLITS:
+			return "splits"
 	return ""
 
 func _load_keybinds() -> void:
@@ -147,9 +153,15 @@ func _reset_config_file() -> void:
 		_config.set_value("audio", "sound_effects", 75)
 
 		reset_records()
+		reset_splits()
 
 		_config.save(CONFIG_FILE_PATH)
 
 func reset_records() -> void:
 	for _name in record_names:
 		_config.set_value("records", _name, -1.0)
+
+func reset_splits() -> void:
+	var default_dict : Dictionary[String, float] = {"nonsense" : -1.0} 
+	for _name in record_names:
+		_config.set_value("splits", _name, default_dict)

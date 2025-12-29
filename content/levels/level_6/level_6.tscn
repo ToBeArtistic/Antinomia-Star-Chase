@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cf8umep1geq7h"]
+[gd_scene load_steps=17 format=3 uid="uid://cf8umep1geq7h"]
 
 [ext_resource type="Script" uid="uid://bll6nv22ptsix" path="res://common/music_on_ready_requester.gd" id="1_meiyv"]
 [ext_resource type="PackedScene" uid="uid://cqy3aqhl2lfin" path="res://common/player/player.tscn" id="2_663qp"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dt4uapijrhm6g" path="res://content/levels/level_6/hair_region.tscn" id="8_kvirc"]
 [ext_resource type="PackedScene" uid="uid://bkrroji64u325" path="res://content/levels/level_ui.tscn" id="9_h4v76"]
 [ext_resource type="PackedScene" uid="uid://clt174y4pvq03" path="res://content/levels/level_6/hairpatch.tscn" id="9_kvirc"]
+[ext_resource type="PackedScene" uid="uid://dbei8lq7gc61l" path="res://content/levels/level_6/leveldata_6.tscn" id="11_5jxyb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_upjnr"]
 sky_top_color = Color(0.10044015, 0.2621428, 0.44899923, 1)
@@ -436,3 +437,5 @@ transform = Transform3D(3.1242783, -1.5593108, 1.4991477, 0.77592987, 3.2662694,
 
 [node name="UI" parent="." instance=ExtResource("9_h4v76")]
 record_name = "LEVEL SIX"
+level_data_scene = ExtResource("11_5jxyb")
+next_level_file = "uid://bdj6da6eyn54h"

@@ -5,4 +5,5 @@ func _ready() -> void:
 
 func _reset_records() -> void:
 	Config.reset_records()
+	Config.reset_splits()
 	get_tree().reload_current_scene()

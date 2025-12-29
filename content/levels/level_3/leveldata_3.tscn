@@ -5,4 +5,9 @@
 [node name="LevelData" type="Node"]
 script = ExtResource("1_r74ty")
 title = "PLANAR PALACE"
+record_name = "LEVEL THREE"
 description = "We've located the friendly demiplane mentioned in Zedric's reports. This will make an ideal outpost for continued operations."
+rank_s = 116.0
+rank_a = 119.0
+rank_b = 140.0
+rank_c = 200.0

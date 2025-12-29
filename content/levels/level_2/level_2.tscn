@@ -1,14 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://ckptli8jb6e1n"]
+[gd_scene load_steps=19 format=3 uid="uid://ckptli8jb6e1n"]
 
 [ext_resource type="PackedScene" uid="uid://cqy3aqhl2lfin" path="res://common/player/player.tscn" id="1_p57pv"]
-[ext_resource type="Texture2D" uid="uid://bqhjj2lhi2aro" path="res://assets/textures/seamless_grime_white.png" id="2_s7obr"]
 [ext_resource type="Material" uid="uid://okfa87bw25y2" path="res://assets/materials/pixel_outline_shaded.tres" id="3_7w5hr"]
 [ext_resource type="Material" uid="uid://dkvprr5875ops" path="res://assets/materials/simple_texture_white.tres" id="4_2e2xq"]
 [ext_resource type="Script" uid="uid://c36tfsjwmrmkd" path="res://content/mechanics/waypoints/waypoint_manager.gd" id="4_mjeua"]
 [ext_resource type="AudioStream" uid="uid://cb4ehryvlruvp" path="res://assets/audio/effects/pickup_glass_reverb.wav" id="5_thi3p"]
+[ext_resource type="Material" uid="uid://c5fspnh8fw3si" path="res://content/levels/level_2/level_2_material.tres" id="6_cbfog"]
 [ext_resource type="PackedScene" uid="uid://b63sl0wkb023f" path="res://content/mechanics/waypoints/waypoint.tscn" id="6_q5s0r"]
 [ext_resource type="PackedScene" uid="uid://bkrroji64u325" path="res://content/levels/level_ui.tscn" id="7_2jl2a"]
+[ext_resource type="PackedScene" uid="uid://dhung23x4wlrh" path="res://content/levels/level_2/sanddrip_cube.tscn" id="8_4ruf6"]
 [ext_resource type="Script" uid="uid://bll6nv22ptsix" path="res://common/music_on_ready_requester.gd" id="9_cbfog"]
+[ext_resource type="PackedScene" uid="uid://b7mjjximp8j0t" path="res://content/levels/level_2/ziggurat.tscn" id="9_og0mf"]
+[ext_resource type="PackedScene" uid="uid://cv06is2awsr4i" path="res://content/levels/level_2/tent.tscn" id="10_wh7or"]
+[ext_resource type="PackedScene" uid="uid://cnvd4iy8h7ms0" path="res://content/levels/level_2/leveldata_2.tscn" id="13_ywm6d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_upjnr"]
 sky_top_color = Color(0.6970754, 0.8431585, 0.8496053, 1)
@@ -26,15 +30,6 @@ sky = SubResource("Sky_upjnr")
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8uhj0"]
 
 [sub_resource type="Compositor" id="Compositor_jy6mt"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_na1p5"]
-albedo_color = Color(0.9999983, 0.6686829, 0.39207488, 1)
-albedo_texture = ExtResource("2_s7obr")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpdst"]
-emission_enabled = true
-emission = Color(1, 1, 0.77254903, 1)
-emission_energy_multiplier = 14.87
 
 [node name="Level2" type="Node3D"]
 
@@ -257,7 +252,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.88533, -11.035503, -248.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132.74895, 157.08966, -577.1155)
 
 [node name="Ground" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport"]
-material_override = SubResource("StandardMaterial3D_na1p5")
+material_override = ExtResource("6_cbfog")
 material_overlay = ExtResource("3_7w5hr")
 use_collision = true
 
@@ -482,41 +477,8 @@ radius = 811.757
 radial_segments = 20
 rings = 20
 
-[node name="CSGBox3D18" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Ground"]
-transform = Transform3D(0.03846419, -0.82851213, -0.55864835, 0.49999994, 0.49999994, -0.70710677, 0.8651707, -0.25212586, 0.43348822, -105.51581, 21.766933, -501.74805)
-material_override = SubResource("StandardMaterial3D_dpdst")
-material_overlay = ExtResource("3_7w5hr")
-size = Vector3(20, 20, 20)
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="SubViewportContainer/SubViewport/Ground/CSGBox3D18"]
-transform = Transform3D(1, 2.9802322e-08, 8.940697e-08, -7.4505806e-08, 0.99999994, -2.2351742e-08, -1.1920929e-07, -5.2154064e-08, 1, -20.346954, -20.346893, 28.774887)
-radius = 15.0
-radial_segments = 16
-rings = 14
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Ground"]
-transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, -98.81502, 5.028748, -499.70895)
-height = 35.642517
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Ground"]
-transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, -105.35722, 5.028748, -501.2548)
-radius = 1.9663086
-height = 35.642517
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Ground"]
-transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, -103.88324, 5.028748, -505.11603)
-radius = 0.50878906
-height = 35.642517
-
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Ground"]
-transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, -107.71303, 14.368044, -509.5964)
-radius = 0.50878906
-height = 19.491669
-
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="SubViewportContainer/SubViewport/Ground"]
-transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 1, -107.71303, 11.926035, -490.8508)
-radius = 0.50878906
-height = 14.607651
+[node name="SanddripCube" parent="SubViewportContainer/SubViewport/Ground" instance=ExtResource("8_4ruf6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.42089, 1.5258789e-05, -505.14713)
 
 [node name="Objects" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport"]
 material_override = ExtResource("4_2e2xq")
@@ -638,28 +600,8 @@ size = Vector3(120.302734, 196.23016, 71.74414)
 transform = Transform3D(1, 0, 0, 0, 0.70710343, 0.70710343, 0, -0.70710343, 0.70710343, 1.9556885, 13.606873, -27.40664)
 size = Vector3(103.931885, 100, 100)
 
-[node name="Tent5" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+[node name="Tent5" parent="SubViewportContainer/SubViewport/Objects" instance=ExtResource("10_wh7or")]
 transform = Transform3D(0.38366652, 0, -0.32062435, 0, 0.5, 0, 0.32062435, 0, 0.38366652, 204.6711, -55.9021, -88.35744)
-material_override = ExtResource("4_2e2xq")
-material_overlay = ExtResource("3_7w5hr")
-use_collision = true
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent5"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent5/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 69.430046, 0)
-size = Vector3(100, 100, 100)
-
-[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Tent5"]
-operation = 2
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent5/CSGCombiner3D2"]
-transform = Transform3D(1, 0, 0, 0, 0, -0.99999994, 0, 0.99999994, 0, 0.010253906, 33.177353, -13.606873)
-size = Vector3(120.302734, 196.23016, 71.74414)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Tent5/CSGCombiner3D2/CSGBox3D2"]
-transform = Transform3D(1, 0, 0, 0, 0.70710343, 0.70710343, 0, -0.70710343, 0.70710343, 1.9556885, 13.606873, -27.40664)
-size = Vector3(103.931885, 100, 100)
 
 [node name="Tent6" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
 transform = Transform3D(-0.20590031, 0, 0.45563704, 0, 0.5, 0, -0.45563704, 0, -0.20590031, 212.5177, -55.902084, -754.64856)
@@ -1011,109 +953,8 @@ size = Vector3(109.3799, 6.1511116, 204.9644)
 transform = Transform3D(0.022115558, 0.14664169, -0.9889423, 0.17788792, 0.9728223, 0.14822955, 0.98380196, -0.1791991, -0.004571378, -662.6863, 30.34853, -221.10587)
 size = Vector3(65.96118, 14.386591, 229.1619)
 
-[node name="Ziggurat2" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
+[node name="Ziggurat2" parent="SubViewportContainer/SubViewport/Objects" instance=ExtResource("9_og0mf")]
 transform = Transform3D(0.94872725, 0, -0.31609622, 0, 1, 0, 0.31609622, 0, 0.94872725, -159.19263, -83.98767, 67.91748)
-
-[node name="Pyramid" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -36.42963, -358.8343)
-size = Vector3(500, 85.046, 500)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -33.285614, -358.8343)
-size = Vector3(480, 91.33403, 480)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(400, 105, 400)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(385, 120, 385)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(370, 135, 370)
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(355, 150, 355)
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(340, 165, 340)
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(325, 180, 325)
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(310, 195, 310)
-
-[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(295, 210, 295)
-
-[node name="CSGBox3D11" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(280, 225, 280)
-
-[node name="CSGBox3D12" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(265, 240, 265)
-
-[node name="CSGBox3D13" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(250, 255, 250)
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(235, 270, 235)
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(220, 285, 220)
-
-[node name="CSGBox3D16" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(205, 300, 205)
-
-[node name="CSGBox3D17" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(190, 315, 190)
-
-[node name="CSGBox3D18" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(175, 330, 175)
-
-[node name="CSGBox3D19" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(155, 345, 155)
-
-[node name="CSGBox3D20" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(130, 360, 130)
-
-[node name="CSGBox3D21" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(70, 400, 70)
-
-[node name="CSGBox3D22" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Pyramid"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -670.73975, -26.036873, -358.8343)
-size = Vector3(60, 410, 60)
-
-[node name="Ramps" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2"]
-operation = 2
-
-[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Ramps"]
-transform = Transform3D(0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0, 1, -502.34738, 78.06562, -358.33047)
-size = Vector3(269.09283, 50, 20)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Objects/Ziggurat2/Ramps"]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -653.3217, 160.28072, -358.3305)
-size = Vector3(203.11282, 16.88916, 20)
 
 [node name="Ziggurat3" type="CSGCombiner3D" parent="SubViewportContainer/SubViewport/Objects"]
 transform = Transform3D(0.87664264, 0, -0.4811419, 0, 1, 0, 0.4811419, 0, 0.87664264, 117.74515, -165.71362, 462.95645)
@@ -1145,3 +986,5 @@ size = Vector3(203.11282, 16.88916, 20)
 
 [node name="UI" parent="." instance=ExtResource("7_2jl2a")]
 record_name = "LEVEL TWO"
+level_data_scene = ExtResource("13_ywm6d")
+next_level_file = "uid://b0muolfdf3fw7"

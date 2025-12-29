@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwhj0o7tgea8a"]
+[gd_scene load_steps=10 format=3 uid="uid://dwhj0o7tgea8a"]
 
 [ext_resource type="Script" uid="uid://cl3amri1tt6ft" path="res://content/story/records/record.gd" id="1_5i850"]
 [ext_resource type="FontFile" uid="uid://b8lw831v2twn8" path="res://assets/fonts/antinomia-bold.otf" id="2_00icg"]
@@ -15,6 +15,10 @@ border_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sfau6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ei4eq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5i850"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00icg"]
 
 [node name="Record" type="PanelContainer"]
 theme_override_styles/panel = SubResource("StyleBoxFlat_5i850")
@@ -43,3 +47,10 @@ theme_override_constants/outline_size = 4
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sfau6")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ei4eq")
 text = "0:50"
+
+[node name="Rank" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_00icg")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5i850")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_00icg")
+text = " S"

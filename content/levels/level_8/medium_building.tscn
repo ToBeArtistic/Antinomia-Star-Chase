@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://h4bn2xsng55c"]
+
+[ext_resource type="Material" uid="uid://dkvprr5875ops" path="res://assets/materials/simple_texture_white.tres" id="1_sxdmo"]
+[ext_resource type="Material" uid="uid://okfa87bw25y2" path="res://assets/materials/pixel_outline_shaded.tres" id="2_2ikne"]
+
+[node name="MediumBuilding8" type="CSGCombiner3D"]
+transform = Transform3D(0.5016013, 0, 0.8650989, 0, 1, 0, -0.8650989, 0, 0.5016013, 0, 0, 0)
+material_override = ExtResource("1_sxdmo")
+material_overlay = ExtResource("2_2ikne")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.98145896, 0, 0.19166613, 0, 1, 0, -0.19166613, 0, 0.98145896, -15.000229, 84.09111, 11.948883)
+size = Vector3(63.245117, 289.79352, 52.484497)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 22.968864, 115.039185, 30.000126)
+size = Vector3(63.245117, 259.67194, 52.484497)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(0.9814602, 0, 0.19166559, 0, 1, 0, -0.19166559, 0, 0.9814602, 62.618065, 112.8638, 22.757927)
+size = Vector3(24.441406, 313.2217, 27.274475)

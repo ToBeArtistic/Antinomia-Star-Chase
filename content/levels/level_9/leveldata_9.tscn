@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwed55mvfdetk"]
+
+[ext_resource type="Script" uid="uid://bgx7b2q66dfkm" path="res://content/leveldata.gd" id="1_b58jr"]
+
+[node name="LevelData" type="Node"]
+script = ExtResource("1_b58jr")
+title = "THE CAGE"
+record_name = "LEVEL NINE"
+description = "The entities seem to be focusing their energy on transforming this planar space into a binding cell, complicating geometry. Keep calm, the light leads the way."
+rank_s = 56.0
+rank_a = 57.0
+rank_b = 65.0
+rank_c = 90.0
