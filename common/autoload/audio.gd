@@ -9,7 +9,8 @@ var music : Dictionary = {
 	"level_1" : load("res://assets/audio/music/Theme_Foot.mp3"),
 	"level_2" : load("res://assets/audio/music/Theme_Cave_Ziggurat.mp3"),
 	"level_3" : load("res://assets/audio/music/Theme_Main.mp3"),
-	"level_4" : load("res://assets/audio/effects/throat_singing_looped.wav")
+	"level_4" : load("res://assets/audio/effects/throat_singing_looped.wav"),
+	"level_10" : load("res://assets/audio/music/Artium2.mp3")
 }
 
 var sfx : Dictionary = {

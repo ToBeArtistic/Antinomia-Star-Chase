@@ -49,7 +49,7 @@ sky = SubResource("Sky_upjnr")
 
 [node name="MusicOnReadyRequester" type="Node" parent="."]
 script = ExtResource("1_5lgkr")
-theme_name = "level_1"
+theme_name = "level_10"
 metadata/_custom_type_script = "uid://bll6nv22ptsix"
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]

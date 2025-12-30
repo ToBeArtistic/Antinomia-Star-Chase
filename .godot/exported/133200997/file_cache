@@ -1,5 +1,5 @@
 res://assets/materials/whiteblocks_outlined.tres::109c883a6fd95b11c6d6f4ad30adf2e1::1765352414::res://.godot/exported/133200997/export-98ab5404f007d849e14177332a8f6ecd-whiteblocks_outlined.res
-res://assets/themes/main_theme.tres::f4749b03ceb92aed52eae388d32a9c15::1766934952::res://.godot/exported/133200997/export-5525c3410df0afb948374c0f99087e3b-main_theme.res
+res://assets/themes/main_theme.tres::f4749b03ceb92aed52eae388d32a9c15::1767060982::res://.godot/exported/133200997/export-5525c3410df0afb948374c0f99087e3b-main_theme.res
 res://common/player/camera/camera_player/camera_player.tscn::a85f93916fe8cec32b615181e7cdfebc::1765901595::res://.godot/exported/133200997/export-85cc829e52895a81d980fefd0fef431c-camera_player.scn
 res://common/player/player.tscn::9d6aa586f0cdb75ea0e0c349a88a2866::1765928551::res://.godot/exported/133200997/export-ce9e71ab59c82a0ccbc60f379de0e129-player.scn
 res://content/levels/level_1/level_1.tscn::73bbb0ba6289152933e6192008f9a56f::1766973958::res://.godot/exported/133200997/export-cb8f0394fab9f48d0353c45e6616627b-level_1.scn
@@ -44,7 +44,7 @@ res://content/levels/level_6/hair_region.tscn::4dfd2f40834a405765c8b1cce77fce8b:
 res://launch/options_menu/crosshair_checkbox.tscn::ff99a6f8c1861d4955f2a8bb6e8baae9::1766158908::res://.godot/exported/133200997/export-41d1768e57b710601867929de8a3e6b9-crosshair_checkbox.scn
 res://content/levels/level_7/leveldata_7.tscn::0d2fe07f72df3e61cca8303413e026cf::1766973208::res://.godot/exported/133200997/export-d82267555385c29fe94cff55401f778e-leveldata_7.scn
 res://content/levels/level_7/level_7.tscn::111af3e74e8eb8f52ba5547684f484a7::1766974071::res://.godot/exported/133200997/export-3b7adc92f3a67a825d43e0e656c1b6cd-level_7.scn
-res://content/levels/level_8/leveldata_8.tscn::3f0fddb139edf043f6616c4c339a902e::1766974774::res://.godot/exported/133200997/export-83e491b5c69cb927d72f6dfa4e6d6a3c-leveldata_8.scn
+res://content/levels/level_8/leveldata_8.tscn::3f0fddb139edf043f6616c4c339a902e::1767060985::res://.godot/exported/133200997/export-83e491b5c69cb927d72f6dfa4e6d6a3c-leveldata_8.scn
 res://content/levels/level_8/level_8.tscn::b5cdf8c818249e9cda0c446e5e3fe0ce::1766974082::res://.godot/exported/133200997/export-ef68e869102e2e86ee414b590d04d1a9-level_8.scn
 res://content/levels/level_9/leveldata_9.tscn::8403e2366b6849ad1e3c016b9feb2d0d::1766973248::res://.godot/exported/133200997/export-20b522d5fd17ccdf3e2933c62fe99de8-leveldata_9.scn
 res://content/levels/level_9/level_9.tscn::820f46878d40476d144253ba420fa4a9::1766974001::res://.godot/exported/133200997/export-59d9caeecc1d01380f0b865a263999f8-level_9.scn
@@ -61,4 +61,4 @@ res://content/levels/level_8/level_8_material.tres::57e5560bda2bc96a812c890f024a
 res://content/levels/level_8/medium_building.tscn::c391d5e1b615d74ff122e6e89cf225e0::1766969842::res://.godot/exported/133200997/export-7e580bf6369a5e9a524a48b9be42d88c-medium_building.scn
 res://content/levels/level_8/background_buildings_section.tscn::6a9b2195153e04d9d48a5c50b9295d09::1766970617::res://.godot/exported/133200997/export-07b680774ee378edadbe06f56f5408c4-background_buildings_section.scn
 res://content/levels/level_10/leveldata_10.tscn::4ba6b9b382cbdd0f34c2f3765e46629d::1766973278::res://.godot/exported/133200997/export-967f586e15a19aaa4e41037446cc7f45-leveldata_10.scn
-res://content/levels/level_10/level_10.tscn::62ede914598e701e57755d175fc6667d::1766973992::res://.godot/exported/133200997/export-7430aacfaec2084e8ab5d20a19db3823-level_10.scn
+res://content/levels/level_10/level_10.tscn::d3efd084a37a665141cac8e3ab2a2cce::1767061004::res://.godot/exported/133200997/export-7430aacfaec2084e8ab5d20a19db3823-level_10.scn
